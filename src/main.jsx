@@ -7,12 +7,6 @@ import { MantineProvider } from "@mantine/core";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <MantineProvider
-      theme={{
-        fontFamily: "Barlow, sans-serif",
-      }}
-    >
-      <App />
-    </MantineProvider>
+    <App />
   </BrowserRouter>
 );

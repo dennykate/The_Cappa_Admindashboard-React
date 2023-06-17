@@ -5,3 +5,11 @@ body {
   margin: 0;
   box-sizing: border-box;
 }
+
+.custom-password-input .mantine-PasswordInput-visibilityToggle:hover {
+  background-color: transparent;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
