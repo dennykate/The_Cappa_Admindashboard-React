@@ -1,8 +1,11 @@
-import { Box, Card, Flex, Grid } from "@mantine/core";
+import { Box, Card, Flex, Grid, useMantineColorScheme } from "@mantine/core";
 import React from "react";
 import { IoBedOutline } from "react-icons/io5";
 
 const DataCard = () => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+
   return (
     <Grid.Col span={3}>
       <Card
