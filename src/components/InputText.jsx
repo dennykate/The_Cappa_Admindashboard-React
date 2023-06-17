@@ -2,17 +2,21 @@ import { TextInput } from "@mantine/core";
 import { useFocusWithin } from "@mantine/hooks";
 import React from "react";
 
-const InputText = ({dark}) => {
+const InputText = ({ dark, form, setForm, values, errors, setErrors }) => {
   const { ref, focused } = useFocusWithin();
   return (
+    <>
     <TextInput
       ref={ref}
+      // id="email"
+      // value={values.email}
+      // onChange={(e) => setForm({ ...form, email: e.target.value })}
       label="Email *"
       placeholder="Email Address"
       required
       withAsterisk={false}
       sx={{
-        input: { color: "white" },
+        input: { color: "white", borderBottom: "gray" },
       }}
       className={`border-b ${
         focused
@@ -23,7 +27,10 @@ const InputText = ({dark}) => {
       }`}
       variant="unstyled"
       labelProps={{ style: { color: "#AA8453" } }}
+      {...form.getInputProps("email")}
     />
+    {form.errors.email && <div>{form.errors.email}</div>}
+    </>
   );
 };
 

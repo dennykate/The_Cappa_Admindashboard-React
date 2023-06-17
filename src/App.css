@@ -6,8 +6,9 @@ body {
   box-sizing: border-box;
 }
 
-.custom-password-input .mantine-PasswordInput-visibilityToggle:hover {
+.custom-password-input .mantine-PasswordInput-visibilityToggle:hover:focus {
   background-color: transparent;
+  border-bottom: 1px solid #AA8453;
 }
 
 @tailwind base;
