@@ -22,9 +22,18 @@ const App = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-      </Routes>
+      <MantineProvider
+        withGlobalStyles
+        withNormalizeCSS
+        theme={{
+          fontFamily: "Barlow, sans-serif",
+          colorScheme,
+        }}
+      >
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </MantineProvider>
     </ColorSchemeProvider>
   );
 };
