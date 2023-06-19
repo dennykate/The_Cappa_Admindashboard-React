@@ -123,7 +123,8 @@ export function HeaderMegaMenu({ menuSelect, handleToggle, navbarSide}) {
         px="sm"
         style={{
           maxWidth: navbarSide,
-          // margin: "0 0 0 auto",
+          margin: "0 0 0 auto",
+          transition : "all 0.5s",
         }}
       >
         <Group position="apart" sx={{ height: "100%" }}>
