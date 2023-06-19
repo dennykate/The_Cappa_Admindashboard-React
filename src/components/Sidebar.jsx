@@ -10,17 +10,10 @@ import {
   rem,
   Stack,
   Image,
-  Avatar,
-  Burger,
-  Center,
   useMantineTheme,
   ScrollArea,
 } from "@mantine/core";
 import {
-  IconHome2,
-  IconGauge,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
   IconCalendarStats,
   IconUser,
   IconSettings,
@@ -31,24 +24,22 @@ import {
   IconList,
   IconListCheck,
   IconUsersGroup,
-  IconSwitchHorizontal,
   IconLogout,
-  IconNotes,
-  IconLock,
-  IconPresentationAnalytics,
-  IconAdjustments,
-  IconFileAnalytics,
   IconUserEdit,
   IconBookmarkEdit,
-  IconWritingSign,
-  IconBrandBlogger,
   IconWriting,
+  IconMicrophone2,
+  IconFileInvoice,
+  IconMicrophoneOff,
+  IconMicrophone,
 } from "@tabler/icons-react";
 
 import { LinksGroup } from "./NavbarLinkGroup";
-import { Modal, Group, Button } from "@mantine/core";
+import { Modal } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-
+import styled from "styled-components";
+import { Paper } from "@mantine/core";
+import { Input } from "@mantine/core";
 // import TheCappa from "src/assets/logo.png";
 
 const useStyles = createStyles((theme) => ({
@@ -63,8 +54,10 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginLeft:`${rem(9.5)}`,
+   paddingRight:`${rem(7.5)}`,
     borderRight: `${rem(0.5)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
     }`,
   },
 
@@ -75,7 +68,7 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[6]
         : theme.colors.gray[0],
   },
-
+// upper logo 
   mainLink: {
     width: rem(44),
     height: rem(44),
@@ -95,32 +88,49 @@ const useStyles = createStyles((theme) => ({
           : theme.colors.gray[0],
     },
   },
-
+  // "#AA8453"
   mainLinkActive: {
-    "&, &:hover": {
+    "& , &:hover": {
       backgroundColor: theme.fn.variant({
         variant: "light",
         color: theme.primaryColor,
       }).background,
-      color: theme.fn.variant({ variant: "light", color: theme.primaryColor })
-        .color,
+      color: "#AA8453",
     },
   },
 
-  title: {
-    boxSizing: "border-box",
-    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
-    marginBottom: theme.spacing.xl,
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-    padding: theme.spacing.md,
-    paddingTop: rem(18),
-    height: rem(60),
-    borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
-    }`,
-  },
 
+
+// lower logo 
+lowerLink: {
+  width: rem(44),
+  height: rem(44),
+  borderRadius: theme.radius.lg,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  color:
+    theme.colorScheme === "dark"
+      ? theme.colors.dark[0]
+      : theme.colors.gray[7],
+
+  "&:hover": {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[0],
+  },
+},
+// "#AA8453"
+lowerLinkActive: {
+  " &:hover": {
+    backgroundColor:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[5]
+        : theme.colors.gray[0],
+    color: "#AA8453",
+  },
+},
   logo: {
     boxSizing: "border-box",
     width: "100%",
@@ -128,9 +138,9 @@ const useStyles = createStyles((theme) => ({
     justifyContent: "center",
     height: rem(60),
     paddingTop: theme.spacing.md,
-    borderBottom: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
-    }`,
+    // borderBottom: `${rem(1)} solid ${
+    //   theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[3]
+    // }`,
     marginBottom: theme.spacing.xl,
   },
 
@@ -177,6 +187,7 @@ const useStyles = createStyles((theme) => ({
   //
 
   links: {
+    
     marginLeft: `calc(${theme.spacing.md} * -1)`,
     marginRight: `calc(${theme.spacing.md} * -1)`,
   },
@@ -191,10 +202,11 @@ const useStyles = createStyles((theme) => ({
 function NavbarLink({ icon: Icon, label, active, onClick }) {
   const { classes, cx } = useStyles();
   return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }}>
+    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} withArrow>
       <UnstyledButton
         onClick={onClick}
-        className={cx(classes.link, { [classes.active]: active })}
+        className={cx(classes.lowerLink, { [classes.lowerLinkActive]: NavbarLink.label === active })}
+    
       >
         <Icon size="1.2rem" stroke={1.5} />
       </UnstyledButton>
@@ -211,15 +223,15 @@ NavbarLink.propTypes = {
 
 const mainLinksMockdata = [
   { icon: IconLayoutDashboard, label: "Dashboard" },
-  { icon: IconCalendarStats, label: "List" }, //Room List , Guest List , Conceige List
-  { icon: IconUsersGroup, label: "Department" }, //staff
+  { icon: IconCalendarStats, label: "List" }, 
+  { icon: IconUsersGroup, label: "Department" },
   { icon: IconUser, label: "Account" },
   { icon: IconBookmarkEdit, label: "Management" },
   { icon: IconWriting, label: "Blog and Review" },
-  { icon: IconSettings, label: "Settings" },
-  { icon: IconSearch, label: "Search" },
+ 
 ];
-//mockdata practice
+
+
 
 const mockdata_dashboard = [
   {
@@ -298,14 +310,12 @@ const mockdata_Account = [
 const mockdata_Management = [
   {
     label: "Booking",
-    initiallyOpened: true,
     links: [
       { label: "All Booking", link: "/" },
       { label: "Add Booking", link: "/" },
       { label: "Remove Booking", link: "/" },
     ],
   },
-
   {
     label: "Rooms",
     links: [
@@ -314,6 +324,9 @@ const mockdata_Management = [
       { label: "Remove Room", link: "/" },
     ],
   },
+  
+
+  
   {
     label: "Services",
     links: [
@@ -330,14 +343,7 @@ const mockdata_Management = [
       { label: "Remove Facilities", link: "/" },
     ],
   },
-  {
-    label: "Booking",
-    links: [
-      { label: "All Booking", link: "/" },
-      { label: "Add Booking", link: "/" },
-      { label: "Remove Booking", link: "/" },
-    ],
-  },
+
   {
     label: "Restaurant Menu",
     links: [
@@ -386,6 +392,11 @@ const mockdata = [
   mockdata_Management,
   mockdada_Article,
 ];
+const StyledPaper = styled(Paper)`
+  // position: fixed;
+  // top: 0px;
+  // left: 0px;
+`;
 
 export function MantineSidebar({ onPropChange, sideBarWidth }) {
   const [opened, { open, close }] = useDisclosure(false);
@@ -407,6 +418,7 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
 
+
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
       label={link.label}
@@ -418,11 +430,9 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
       <UnstyledButton
         onClick={() => {
           setActive(link.label);
-          console.log(active);
           setmenuSelect(index);
-          console.log(active);
           handleMenuChange(index);
-          // console.log(menuSelect);
+        
         }}
         className={cx(classes.mainLink, {
           [classes.mainLinkActive]: link.label === active,
@@ -438,57 +448,89 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
   }, [active]);
 
   return (
-    <Navbar height={730} width={{ sm: sideBarWidth }}>
-      <Navbar.Section grow className={classes.wrapper}>
-        <div className={classes.aside}>
-          {/* Logo  */}
-          <div className={classes.logo}>
-            {/* <div className="">
-              <Burger color={colorScheme === "dark" ? "#aa8453" : "black"} />
-            </div> */}
-          </div>
+    <StyledPaper>
+      <Navbar
+        height={740}
+        width={{ sm: sideBarWidth }}
+        style={{
+          transition: "width 0.5s",
+          "min-width": "0px",
+        }}
+      >
+        <Navbar.Section grow className={classes.wrapper}>
+          <div className={classes.aside}>
+            {/* Logo  */}
+            <div className={classes.logo}></div>
 
-          {/* side bar icons  */}
-          {mainLinks}
+            {/* side bar icons  */}
+            {mainLinks}
 
-          <Modal opened={opened} onClose={close} title="Search" centered>
-            {/* Modal content */}
-          </Modal>
-          {/* footer icons  */}
-          <Stack justify="center" spacing={200} ml={9}>
-            <div className=""></div>
-            <div className="">
-              <NavbarLink
-                icon={IconSwitchHorizontal}
-                label="Change account"
-                onClick={open}
+            <Modal
+              opened={opened}
+              onClose={close}
+              centered
+              // title="Authentication"
+            >
+              {/* Modal content */}
+              <Input
+                icon={<IconSearch size={20} />}
+                placeholder="Search here"
+                radius="xs"
+                rightSection={
+                  <Tooltip
+                    label="Search by voice"
+                    transitionProps={{ transition: "slide-up", duration: 300 }}
+                    withArrow
+                  >
+                    <div>
+                      <IconMicrophone
+                        size="1rem"
+                        style={{ display: "block", opacity: 0.5 }}
+                      />
+                    </div>
+                  </Tooltip>
+                }
               />
-              <NavbarLink icon={IconLogout} label="Logout" />
-            </div>
-          </Stack>
-        </div>
-
-        <Navbar.Section grow className={classes.links} component={ScrollArea}>
-          <div>
-            <Title order={2} className={classes.title}>
-              {" "}
-
-              <Image
-                src={colorScheme === "dark" ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png" : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"}
-                width={150}
-                height={35}
-              />
-            
-            </Title>
-            {/* <Title order={4} pl={35} className={classes.title}>
-            {active}
-          </Title> */}
-            <Stack justify="center" spacing={0} ml={5}>
-              <div className={classes.linksInner}> {menuLinks}</div>
+            </Modal>
+            {/* footer icons  */}
+            <Stack justify="center" spacing={250} >
+              <div className=""></div>
+              <div className={classes}>
+                <NavbarLink  icon={IconSearch} label="Search" onClick={open} />
+                <NavbarLink icon={IconSettings} label="Setting" />
+                <NavbarLink icon={IconLogout} label="Logout" />
+              </div>
             </Stack>
           </div>
+
+          <Navbar.Section
+            grow
+            className={classes.links}
+            component={ScrollArea}
+            style={{ marginLeft: 0, marginRight: 0 }}
+          >
+            <div>
+              <Title ml={25} mt={17}>
+                <Image
+                  src={
+                    colorScheme === "dark"
+                      ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
+                      : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
+                  }
+                  width={"80%"}
+                  height={"100%"}
+                />
+              </Title>
+              {/* <Title order={4} pl={35} className={classes.title}>
+            {active}
+          </Title> */}
+              <Stack justify="center" spacing={0} ml={5}>
+                <div className={classes.linksInner}>{menuLinks}</div>
+              </Stack>
+            </div>
+          </Navbar.Section>
         </Navbar.Section>
-      </Navbar.Section>
-    </Navbar>
+      </Navbar>
+    </StyledPaper>
   );
 }

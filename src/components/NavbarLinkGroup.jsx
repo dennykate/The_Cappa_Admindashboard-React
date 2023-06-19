@@ -12,12 +12,12 @@ import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 
 const useStyles = createStyles((theme) => ({
   control: {
-    fontWeight: 500,
+    fontWeight: 600,
     display: "block",
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
     color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-    fontSize: theme.fontSizes.sm,
+    fontSize: theme.fontSizes.md,
 
     "&:hover": {
       backgroundColor:
@@ -41,7 +41,7 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[0]
         : theme.colors.gray[7],
     borderLeft: `${rem(1)} solid ${
-      theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[3]
+      theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
     }`,
 
     "&:hover": {
@@ -66,6 +66,7 @@ export function LinksGroup({ label, initiallyOpened, links }) {
   const items = (hasLinks ? links : []).map((link) => (
     <Text
       component="a"
+      // order={2}
       className={classes.link}
       href={link.link}
       key={link.label}
