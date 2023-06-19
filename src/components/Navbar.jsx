@@ -89,7 +89,7 @@ const useStyles = createStyles((theme) => ({
 
 const mockdata = [];
 
-export function HeaderMegaMenu({ menuSelect, handleSideBarWidth, navbarSide}) {
+export function HeaderMegaMenu({ menuSelect, handleToggle, navbarSide}) {
 
   const [themecolor, setTheme] = useState("light");
   const toggleTheme = () =>
@@ -99,10 +99,10 @@ export function HeaderMegaMenu({ menuSelect, handleSideBarWidth, navbarSide}) {
   // burger toggle
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-    handleSideBarWidth();
-  };
+  // const handleToggle = () => {
+  //   setIsOpen(!isOpen);
+  //   handleSideBarWidth();
+  // };
 
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);

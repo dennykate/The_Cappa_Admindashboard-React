@@ -54,8 +54,8 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft:`${rem(9.5)}`,
-   paddingRight:`${rem(7.5)}`,
+    marginLeft: `${rem(9.5)}`,
+    paddingRight: `${rem(7.5)}`,
     borderRight: `${rem(0.5)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
     }`,
@@ -68,7 +68,7 @@ const useStyles = createStyles((theme) => ({
         ? theme.colors.dark[6]
         : theme.colors.gray[0],
   },
-// upper logo 
+  // upper logo
   mainLink: {
     width: rem(44),
     height: rem(44),
@@ -99,38 +99,36 @@ const useStyles = createStyles((theme) => ({
     },
   },
 
-
-
-// lower logo 
-lowerLink: {
-  width: rem(44),
-  height: rem(44),
-  borderRadius: theme.radius.lg,
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  color:
-    theme.colorScheme === "dark"
-      ? theme.colors.dark[0]
-      : theme.colors.gray[7],
-
-  "&:hover": {
-    backgroundColor:
+  // lower logo
+  lowerLink: {
+    width: rem(44),
+    height: rem(44),
+    borderRadius: theme.radius.lg,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[5]
-        : theme.colors.gray[0],
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[5]
+          : theme.colors.gray[0],
+    },
   },
-},
-// "#AA8453"
-lowerLinkActive: {
-  " &:hover": {
-    backgroundColor:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[5]
-        : theme.colors.gray[0],
-    color: "#AA8453",
+  // "#AA8453"
+  lowerLinkActive: {
+    " &:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[5]
+          : theme.colors.gray[0],
+      color: "#AA8453",
+    },
   },
-},
   logo: {
     boxSizing: "border-box",
     width: "100%",
@@ -187,7 +185,6 @@ lowerLinkActive: {
   //
 
   links: {
-    
     marginLeft: `calc(${theme.spacing.md} * -1)`,
     marginRight: `calc(${theme.spacing.md} * -1)`,
   },
@@ -202,11 +199,17 @@ lowerLinkActive: {
 function NavbarLink({ icon: Icon, label, active, onClick }) {
   const { classes, cx } = useStyles();
   return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} withArrow>
+    <Tooltip
+      label={label}
+      position="right"
+      transitionProps={{ duration: 0 }}
+      withArrow
+    >
       <UnstyledButton
         onClick={onClick}
-        className={cx(classes.lowerLink, { [classes.lowerLinkActive]: NavbarLink.label === active })}
-    
+        className={cx(classes.lowerLink, {
+          [classes.lowerLinkActive]: NavbarLink.label === active,
+        })}
       >
         <Icon size="1.2rem" stroke={1.5} />
       </UnstyledButton>
@@ -223,15 +226,12 @@ NavbarLink.propTypes = {
 
 const mainLinksMockdata = [
   { icon: IconLayoutDashboard, label: "Dashboard" },
-  { icon: IconCalendarStats, label: "List" }, 
+  { icon: IconCalendarStats, label: "List" },
   { icon: IconUsersGroup, label: "Department" },
   { icon: IconUser, label: "Account" },
   { icon: IconBookmarkEdit, label: "Management" },
   { icon: IconWriting, label: "Blog and Review" },
- 
 ];
-
-
 
 const mockdata_dashboard = [
   {
@@ -324,9 +324,7 @@ const mockdata_Management = [
       { label: "Remove Room", link: "/" },
     ],
   },
-  
 
-  
   {
     label: "Services",
     links: [
@@ -398,7 +396,7 @@ const StyledPaper = styled(Paper)`
   // left: 0px;
 `;
 
-export function MantineSidebar({ onPropChange, sideBarWidth }) {
+export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
 
@@ -412,12 +410,13 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
   ));
   const [active, setActive] = useState("Dashboard");
   const [activeLink, setActiveLink] = useState("Settings");
+  const [isOpen, setIsOpen] = useState(false);
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
-
+  const isMainLink = true;
 
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
@@ -432,7 +431,7 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
           setActive(link.label);
           setmenuSelect(index);
           handleMenuChange(index);
-        
+          handleToggle(isMainLink);
         }}
         className={cx(classes.mainLink, {
           [classes.mainLinkActive]: link.label === active,
@@ -493,10 +492,10 @@ export function MantineSidebar({ onPropChange, sideBarWidth }) {
               />
             </Modal>
             {/* footer icons  */}
-            <Stack justify="center" spacing={250} >
+            <Stack justify="center" spacing={250}>
               <div className=""></div>
               <div className={classes}>
-                <NavbarLink  icon={IconSearch} label="Search" onClick={open} />
+                <NavbarLink icon={IconSearch} label="Search" onClick={open} />
                 <NavbarLink icon={IconSettings} label="Setting" />
                 <NavbarLink icon={IconLogout} label="Logout" />
               </div>
