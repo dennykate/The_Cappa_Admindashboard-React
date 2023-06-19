@@ -9,5 +9,13 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.addEventListener("load", () => {
+        const controls = document.querySelectorAll(".mantine-Carousel-control");
+
+        controls[0].style.transform = "translateX(-30px)";
+        controls[1].style.transform = "translateX(30px)";
+      });
+    </script>
   </body>
 </html>
