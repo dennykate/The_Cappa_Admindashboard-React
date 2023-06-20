@@ -401,6 +401,7 @@ export function MantineSidebar({
   handleIsOpen,
   isOpen,
 }) {
+  const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
   const [active, setActive] = useState("Dashboard");
@@ -473,20 +474,56 @@ export function MantineSidebar({
               // title="Authentication"
             >
               {/* Modal content */}
+              <Image
+                src={
+                  colorScheme === "dark"
+                    ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
+                    : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
+                }
+                style={{
+                  width: "55%",
+                  height: "100%",
+                  margin: "0 auto",
+                }}
+              />
               <Input
-                icon={<IconSearch size={20} />}
+                icon={
+                  <IconSearch
+                    size={20}
+                    color={
+                      colorScheme === "dark"
+                        ? defaultTheme.colors.dark[1]
+                        : defaultTheme.colors.dark[3]
+                    }
+                  />
+                }
                 placeholder="Search here"
+                sx={{
+                  input: {
+                    overflow: "auto",
+                    height: 30,
+                    borderColor:
+                      colorScheme === "dark"
+                        ? defaultTheme.colors.dark[5]
+                        : defaultTheme.colors.dark[3],
+                  },
+                  zIndex: 10,
+                  height: 100,
+                  display: "flex",
+                  alignItems: "center",
+                }}
                 radius="xs"
                 rightSection={
-                  <Tooltip
-                    label="Search by voice"
-                    transitionProps={{ transition: "slide-up", duration: 300 }}
-                    withArrow
-                  >
+                  <Tooltip label="Search by voice" position="top-end" withArrow>
                     <div>
                       <IconMicrophone
                         size="1rem"
-                        style={{ display: "block", opacity: 0.5 }}
+                        style={{ display: "block", opacity: 1 }}
+                        color={
+                          colorScheme === "dark"
+                            ? defaultTheme.colors.dark[1]
+                            : defaultTheme.colors.dark[3]
+                        }
                       />
                     </div>
                   </Tooltip>

@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
           width: "100%",
           "overflow-y": "auto",
           minHeight: "100vh",
-          backgroundColor: colorScheme === "dark" ? "#222222" : "#ffffff",
+          backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
         }}
       >
         <HeaderMegaMenu

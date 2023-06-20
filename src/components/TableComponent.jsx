@@ -27,6 +27,9 @@ import {
   IconSearch,
   IconPencil,
   IconTrash,
+  IconBookmarkPlus,
+  IconPlus,
+  IconRefresh,
 } from "@tabler/icons-react";
 import PaginationPart from "./PaginationPart";
 import { HiOutlinePlus, HiPlus } from "react-icons/hi2";
@@ -274,44 +277,45 @@ export default function TableComponent({ dark }) {
         align={"center"}
         px={30}
         py={10}
-        className={`${
-          dark ? "bg-[#1B1B1B]" : "bg-primary bg-opacity-20"
-        } rounded-t-lg`}
+        className={`${dark ? "bg-[#181818]" : "bg-primary"} rounded-t-lg`}
       >
         <Group position="apart">
-          <Text className="text-base text-center text-primary font-medium">
+          {/* <Text className="text-base text-center text-primary font-medium">
             All Booking
-          </Text>
+          </Text> */}
           <TextInput
-            placeholder="Search by any field"
+            placeholder="Search ..."
             icon={
               <IconSearch
-                size="1rem"
+                size="1.2rem"
                 stroke={1.7}
-                className="text-[#AA8453] custom-password-input"
+                className={dark? "text-[rgb(170,132,83)]":"text-[rgb(255,255,255,0.8)]"}
               />
             }
             value={search}
             onChange={handleSearchChange}
             sx={{
               input: {
-                width: "250px",
-                height: "44px",
+                width: "400px",
+                height: "40px",
                 color: "gray",
-                borderColor: "#AA8453",
-                backgroundColor: dark ? "#1F1F1F" : "#EEE6DD",
+                borderColor: dark
+                  ? "rgb(170,132,83)"
+                  : "rgb(255,255,255,0.5)",
+                backgroundColor: "transparent",
               },
               ["& .mantine-TextInput-input::placeholder"]: {
-                color: "#AA8453",
-                fontSize: "14px",
+                color: dark ? "rgb(170,132,83)" : "rgb(255,255,255,0.8)",
+                fontSize: "16px",
               },
             }}
           />
         </Group>
         <Group className="flex gap-3">
           <Tooltip label="ADD" color="dark" position="bottom-end" fz={"xs"}>
-            <button className="w-10 h-10 rounded-full bg-primary active:bg-primary active:bg-opacity-70 text-white flex justify-center items-center">
-              <HiPlus className="text-xl" />
+            <button className="w-10 h-10 rounded-full bg-transparent active:bg-primary active:bg-opacity-70 text-white flex justify-center items-center">
+              {/* <HiPlus className="text-xl" /> */}
+              <IconPlus />
             </button>
           </Tooltip>
           <Tooltip label="REFRESH" color="dark" position="bottom-end" fz={"xs"}>
@@ -319,7 +323,8 @@ export default function TableComponent({ dark }) {
               onClick={() => setPage(1)}
               className="w-10 h-10 rounded-full bg-primary active:bg-primary active:bg-opacity-70 text-white flex justify-center items-center"
             >
-              <MdOutlineRefresh className="text-xl" />
+              {/* <MdOutlineRefresh className="text-xl" /> */}
+              <IconRefresh />
             </button>
           </Tooltip>
           <Tooltip label="XLSX" color="dark" position="bottom-end" fz={"xs"}>
@@ -337,7 +342,9 @@ export default function TableComponent({ dark }) {
         </Group>
       </Flex>
       <Box
-        className={`rounded-b-lg  ${dark ? "bg-[#1B1B1B]" : "bg-[#ffffff]"}`}
+        className={`rounded-b-lg shadow-lg  ${
+          dark ? "bg-[#1B1B1B]" : "bg-[#ffffff]"
+        }`}
         px={30}
       >
         <Table
