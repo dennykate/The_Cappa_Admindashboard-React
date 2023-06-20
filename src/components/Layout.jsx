@@ -1,16 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Box, Flex, Stack, useMantineColorScheme } from "@mantine/core";
 
 import { MantineSidebar } from "./Sidebar";
 import { HeaderMegaMenu } from "./Navbar";
+import { useWindowScroll } from "@mantine/hooks";
+import NavButton from "./NavButton";
+import MessageBtn from "./MessageBtn";
 
 const Layout = ({ children }) => {
+  const [scroll, scrollTo] = useWindowScroll();
+  const [showBtn, setShowBtn] = useState(false);
   const { colorScheme } = useMantineColorScheme();
   // burger toggle
   const [isOpen, setIsOpen] = useState(true);
 
   const [menuSelect, setmenuSelect] = useState("");
+
+  useEffect(() => {
+    console.log(scroll);
+    if (scroll.y > 50) {
+      setShowBtn(true);
+    } else {
+      setShowBtn(false);
+    }
+  }, [scroll]);
 
   const handleMenuChange = (newMenu) => {
     setmenuSelect(newMenu);
@@ -29,22 +43,28 @@ const Layout = ({ children }) => {
   };
 
   const layoutStyles = {
-    height: "100vh",
-    overflow: "hidden",
+    minHeight: "100vh",
   };
 
   return (
-    <Flex direction="row" gap={0} style={layoutStyles}>
-      <MantineSidebar
-        onPropChange={handleMenuChange}
-        sideBarWidth={getSideBarWidth}
-        handleIsOpen={handleIsOpenSideBar}
-        isOpen={isOpen}
-      ></MantineSidebar>
+    <Flex
+      direction="row"
+      justify="center"
+      align="start"
+      gap={0}
+      style={layoutStyles}
+    >
+      <Box className=" sticky top-0">
+        <MantineSidebar
+          onPropChange={handleMenuChange}
+          sideBarWidth={getSideBarWidth}
+          handleIsOpen={handleIsOpenSideBar}
+          isOpen={isOpen}
+        ></MantineSidebar>
+      </Box>
       <Box
         sx={{
           width: "100%",
-          "overflow-y": "auto",
           minHeight: "100vh",
           backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
         }}
@@ -57,6 +77,9 @@ const Layout = ({ children }) => {
         ></HeaderMegaMenu>
         {children}
       </Box>
+
+      <NavButton showBtn={showBtn} />
+      <MessageBtn />
     </Flex>
   );
 };

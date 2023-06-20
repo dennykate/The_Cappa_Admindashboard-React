@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AllBooking from "./pages/AllBooking";
 import AddBooking from "./pages/AddBooking";
+import AddRoom from "./pages/AddRoom";
 
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -33,6 +34,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/all-booking" element={<AllBooking />} />
           <Route path="/add-booking" element={<AddBooking />} />
+          <Route path="/add-room" element={<AddRoom />} />
         </Routes>
       </MantineProvider>
     </ColorSchemeProvider>
