@@ -40,7 +40,7 @@ const Layout = ({ children }) => {
         handleIsOpen={handleIsOpenSideBar}
         isOpen={isOpen}
       ></MantineSidebar>
-      <Flex sx={{ width: "100%", "overflow-y": "scroll" }} direction="column">
+      <Box sx={{ width: "100%", "overflow-y": "auto" }}>
         <HeaderMegaMenu
           menuSelect={menuSelect}
           navbarSide={getNavBarWidth}
@@ -48,7 +48,7 @@ const Layout = ({ children }) => {
           isOpen={isOpen}
         ></HeaderMegaMenu>
         {children}
-      </Flex>
+      </Box>
     </Flex>
   );
 };
