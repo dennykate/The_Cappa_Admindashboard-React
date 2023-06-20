@@ -86,6 +86,13 @@ const useStyles = createStyles((theme) => ({
       color: "#AA8453",
     },
   },
+
+  title: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[0]
+        : theme.colors.dark[5],
+  },
 }));
 
 // const mockdata = [];

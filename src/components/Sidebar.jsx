@@ -517,7 +517,7 @@ export function MantineSidebar({
                 style={{
                   position: "sticky",
                   top: 0,
-                  zIndex: 999,
+                  zIndex: 1,
                   backgroundColor: colorScheme === "dark" ? "#1A1B1E" : "white",
                   padding: "10px 0px",
                 }}

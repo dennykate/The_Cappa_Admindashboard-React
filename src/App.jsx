@@ -1,9 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { ColorSchemeProvider, MantineProvider } from "@mantine/core";
+import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 
 import Dashboard from "./pages/Dashboard";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import AllBooking from "./pages/AllBooking";
 
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -22,16 +25,12 @@ const App = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{
-          fontFamily: "Barlow, sans-serif",
-          colorScheme,
-        }}
-      >
+      <MantineProvider theme={{ colorScheme }}>
         <Routes>
           <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/all-booking" element={<AllBooking />} />
         </Routes>
       </MantineProvider>
     </ColorSchemeProvider>
