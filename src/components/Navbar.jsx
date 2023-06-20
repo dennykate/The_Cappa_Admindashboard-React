@@ -2,9 +2,9 @@ import {
   createStyles,
   Header,
   Group,
-  UnstyledButton,
+  // UnstyledButton,
   Text,
-  ThemeIcon,
+  // ThemeIcon,
   Box,
   Burger,
   rem,
@@ -12,21 +12,21 @@ import {
   Title,
   Flex,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+// import { useDisclosure } from "@mantine/hooks";
 
 import { Avatar } from "@mantine/core";
 
 import {
-  IconNotification,
-  IconCode,
-  IconBook,
-  IconChartPie3,
-  IconFingerprint,
-  IconCoin,
+  // IconNotification,
+  // IconCode,
+  // IconBook,
+  // IconChartPie3,
+  // IconFingerprint,
+  // IconCoin,
   IconBell,
   IconMessage,
-  IconBookmarkEdit,
-  IconBookUpload,
+  // IconBookmarkEdit,
+  // IconBookUpload,
   IconUserShare,
   IconLogout,
   // IconChevronDown,
@@ -34,15 +34,16 @@ import {
 import { ActionToggle } from "./DarkandLightTheme";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Menu } from "@mantine/core";
-import {
-  IconSettings,
-  IconSearch,
-  IconPhoto,
-  IconMessageCircle,
-  IconTrash,
-  IconArrowsLeftRight,
-} from "@tabler/icons-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+// import {
+//   IconSettings,
+//   IconSearch,
+//   IconPhoto,
+//   IconMessageCircle,
+//   IconTrash,
+//   IconArrowsLeftRight,
+// } from "@tabler/icons-react";
+// import { useState } from "react";
 
 const useStyles = createStyles((theme) => ({
   hiddenMobile: {
@@ -87,34 +88,30 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const mockdata = [];
+// const mockdata = [];
 
-export function HeaderMegaMenu({ menuSelect, handleToggle, navbarSide}) {
-
-  const [themecolor, setTheme] = useState("light");
-  const toggleTheme = () =>
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+export function HeaderMegaMenu({
+  menuSelect,
+  navbarSide,
+  handleIsOpen,
+  isOpen,
+}) {
+  // const [themecolor, setTheme] = useState("light");
+  // const toggleTheme = () =>
+  //   setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
 
-  // burger toggle
-  const [isOpen, setIsOpen] = useState(false);
-
-  // const handleToggle = () => {
-  //   setIsOpen(!isOpen);
-  //   handleSideBarWidth();
-  // };
-
-  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
-    useDisclosure(false);
-  const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
+  // const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
+  //   useDisclosure(false);
+  // const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
 
-  const links = mockdata.map((item) => (
-    <UnstyledButton
-      className={classes.subLink}
-      key={item.title}
-    ></UnstyledButton>
-  ));
+  // const links = mockdata.map((item) => (
+  //   <UnstyledButton
+  //     className={classes.subLink}
+  //     key={item.title}
+  //   ></UnstyledButton>
+  // ));
 
   return (
     <Box>
@@ -122,9 +119,9 @@ export function HeaderMegaMenu({ menuSelect, handleToggle, navbarSide}) {
         height={60}
         px="sm"
         style={{
-          maxWidth: navbarSide,
+          maxWidth: navbarSide(),
           margin: "0 0 0 auto",
-          transition : "all 0.5s",
+          transition: "all 0.5s",
         }}
       >
         <Group position="apart" sx={{ height: "100%" }}>
@@ -136,17 +133,17 @@ export function HeaderMegaMenu({ menuSelect, handleToggle, navbarSide}) {
               },
             }}
             onClick={() => {
-              handleToggle();
+              handleIsOpen();
             }}
           >
             {isOpen ? (
-              <MdKeyboardArrowRight
-                size={35}
+              <Burger
+                size={25}
                 color={colorScheme === "dark" ? "#aa8453" : "#222222"}
               />
             ) : (
-              <Burger
-                size={25}
+              <MdKeyboardArrowRight
+                size={35}
                 color={colorScheme === "dark" ? "#aa8453" : "#222222"}
               />
             )}

@@ -396,9 +396,16 @@ const StyledPaper = styled(Paper)`
   // left: 0px;
 `;
 
-export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
+export function MantineSidebar({
+  onPropChange,
+  sideBarWidth,
+  handleIsOpen,
+  isOpen,
+}) {
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
+  const [active, setActive] = useState("Dashboard");
+  const [activeLink, setActiveLink] = useState("Settings");
 
   const [menuSelect, setmenuSelect] = useState(0);
   const handleMenuChange = (index) => {
@@ -408,15 +415,11 @@ export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
   const menuLinks = mockdata[menuSelect].map((item) => (
     <LinksGroup {...item} key={item.label} />
   ));
-  const [active, setActive] = useState("Dashboard");
-  const [activeLink, setActiveLink] = useState("Settings");
-  const [isOpen, setIsOpen] = useState(false);
 
   const [theme, setTheme] = useState("light");
   const toggleTheme = () =>
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
-  const isMainLink = true;
 
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
@@ -431,7 +434,7 @@ export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
           setActive(link.label);
           setmenuSelect(index);
           handleMenuChange(index);
-          handleToggle(isMainLink);
+          handleIsOpen();
         }}
         className={cx(classes.mainLink, {
           [classes.mainLinkActive]: link.label === active,
@@ -450,10 +453,10 @@ export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
     <StyledPaper>
       <Navbar
         height={740}
-        width={{ sm: sideBarWidth }}
+        width={{ sm: sideBarWidth() }}
         style={{
           transition: "width 0.5s",
-          "min-width": "0px",
+          minWidth: 0,
         }}
       >
         <Navbar.Section grow className={classes.wrapper}>
@@ -507,17 +510,29 @@ export function MantineSidebar({ onPropChange, sideBarWidth, handleToggle }) {
             className={classes.links}
             component={ScrollArea}
             style={{ marginLeft: 0, marginRight: 0 }}
+            h={"100vh"}
           >
             <div>
-              <Title ml={25} mt={17}>
+              <Title
+                style={{
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 999,
+                  backgroundColor: "#1A1B1E",
+                  padding: "10px 0px",
+                }}
+              >
                 <Image
                   src={
                     colorScheme === "dark"
                       ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
                       : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
                   }
-                  width={"80%"}
-                  height={"100%"}
+                  style={{
+                    width: "65%",
+                    height: "100%",
+                    margin: "0 auto",
+                  }}
                 />
               </Title>
               {/* <Title order={4} pl={35} className={classes.title}>

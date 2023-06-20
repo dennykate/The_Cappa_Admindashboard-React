@@ -6,39 +6,27 @@ import { MantineSidebar } from "./Sidebar";
 import { HeaderMegaMenu } from "./Navbar";
 
 const Layout = ({ children }) => {
+  // burger toggle
+  const [isOpen, setIsOpen] = useState(true);
+
   const [menuSelect, setmenuSelect] = useState("");
-  const [sideBarWidth, setSideBarWidth] = useState(300);
-  const [navbarSide, setnavbarSide] = useState("1225px");
 
   const handleMenuChange = (newMenu) => {
     setmenuSelect(newMenu);
   };
 
-  const handleSideBarWidth = (isMainLink = false) => {
-    if (isMainLink) {
-      setSideBarWidth(300);
-      setnavbarSide("1450px");
-    } else {
-      sideBarWidth == 300 ? setSideBarWidth(70) : setSideBarWidth(300);
-      navbarSide == "1225px"
-        ? setnavbarSide("1450px")
-        : setnavbarSide("1225px");
+  const getSideBarWidth = () => (isOpen ? 300 : 70);
+  const getNavBarWidth = () => (isOpen ? "1225px" : "1450px");
+
+  const handleIsOpenSideBar = () => {
+    if (!isOpen) {
+      setIsOpen(!isOpen);
     }
+  };
+  const handleIsOpenNavBar = () => {
+    setIsOpen(!isOpen);
   };
 
-  // burger toggle
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = (isMainLink = false) => {
-    if (isMainLink) {
-      if (isOpen) {
-        setIsOpen(false);
-        handleSideBarWidth(isMainLink);
-      }
-    } else {
-      setIsOpen(!isOpen);
-      handleSideBarWidth();
-    }
-  };
   const layoutStyles = {
     height: "100vh",
     overflow: "hidden",
@@ -48,14 +36,16 @@ const Layout = ({ children }) => {
     <Flex direction="row" gap={0} style={layoutStyles}>
       <MantineSidebar
         onPropChange={handleMenuChange}
-        sideBarWidth={sideBarWidth}
-        handleToggle={handleToggle}
+        sideBarWidth={getSideBarWidth}
+        handleIsOpen={handleIsOpenSideBar}
+        isOpen={isOpen}
       ></MantineSidebar>
       <Flex sx={{ width: "100%", "overflow-y": "scroll" }} direction="column">
         <HeaderMegaMenu
           menuSelect={menuSelect}
-          handleToggle={handleToggle}
-          navbarSide={navbarSide}
+          navbarSide={getNavBarWidth}
+          handleIsOpen={handleIsOpenNavBar}
+          isOpen={isOpen}
         ></HeaderMegaMenu>
         {children}
       </Flex>
