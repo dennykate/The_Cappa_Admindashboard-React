@@ -360,3 +360,13 @@ export const data = [
     id: 16,
   },
 ];
+
+export const facilitiesData = [
+  { value: "Free Wifi", label: "Free Wifi" },
+  { value: "breakfast", label: "Breakfast" },
+  { value: "Towels", label: "Towels" },
+  { value: "Swimming Pool", label: "Swimming Pool" },
+  { value: "Bath Hub", label: "Bath Hub" },
+  { value: "TV", label: "TV" },
+  { value: "Dinning", label: "Dinning" },
+];
