@@ -121,7 +121,7 @@ export function HeaderMegaMenu({
         style={{
           maxWidth: navbarSide(),
           margin: "0 0 0 auto",
-          transition: "all 0.5s",
+          // transition: "all 0.5s",
         }}
       >
         <Group position="apart" sx={{ height: "100%" }}>
