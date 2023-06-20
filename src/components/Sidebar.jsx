@@ -85,15 +85,13 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
           : theme.colors.gray[0],
+      color: "#AA8453",
     },
   },
   // "#AA8453"
   mainLinkActive: {
     "& , &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
+      backgroundColor: "rgb(170,132,83,0.1)",
       color: "#AA8453",
     },
   },
@@ -163,7 +161,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
           : theme.colors.gray[1],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color: "#AA8453",
     },
   },
 
@@ -180,7 +178,12 @@ const useStyles = createStyles((theme) => ({
       color: theme.white,
     },
   },
-
+  ControlActive: {
+    "& , &:hover": {
+      backgroundColor: "rgb(170,132,83,0.1)",
+      color: "#AA8453",
+    },
+  },
   //
 
   links: {
@@ -227,9 +230,9 @@ const mainLinksMockdata = [
   { icon: IconLayoutDashboard, label: "Dashboard" },
   { icon: IconCalendarStats, label: "List" },
   { icon: IconUsersGroup, label: "Department" },
-  { icon: IconUser, label: "Account" },
   { icon: IconBookmarkEdit, label: "Management" },
   { icon: IconWriting, label: "Blog and Review" },
+  // { icon: IconUser, label: "Account" },
 ];
 
 const mockdata_dashboard = [
@@ -237,9 +240,10 @@ const mockdata_dashboard = [
     label: "Dashboard",
     initiallyOpened: true,
     links: [
-      { label: "Overview", link: "/" },
-      { label: "Chart", link: "/" },
-      { label: "Calendar", link: "/" },
+   
+      { label: "Overview", link: "/overview" },
+      { label: "Chart", link: "/chart" },
+      { label: "Calendar", link: "/calendar" },
     ],
   },
 ];
@@ -249,104 +253,68 @@ const mockdata_list = [
     label: "List",
     initiallyOpened: true,
     links: [
-      { label: "Room List", link: "/" },
-      { label: "Guest List", link: "/" },
-      { label: "Concierge List", link: "/" },
-      { label: "Review", link: "/" },
+      { label: "Room List", link: "/room-list" },
+      { label: "Guest List", link: "/guest-list" },
+      { label: "Concierge List", link: "/concierge-list" },
+      { label: "Review", link: "/review-list" },
     ],
   },
 ];
 
 const mockdata_Department = [
   {
-    label: "Departments",
+    label: "Team",
     initiallyOpened: true,
     links: [
-      { label: "All Departments", link: "/" },
-      { label: "Add Departments", link: "/" },
-      { label: "Edit Departments", link: "/" },
-    ],
-  },
-  {
-    label: "Staff",
-    links: [
-      { label: "All Staff", link: "/" },
-      { label: "Add Staff", link: "/" },
-      { label: "Edit Staff", link: "/" },
-      { label: "About Staff", link: "/" },
-    ],
-  },
-  {
-    label: "Team",
-    links: [
-      { label: "All Team", link: "/" },
-      { label: "Add Team", link: "/" },
-      { label: "Edit Team", link: "/" },
-      { label: "About Team", link: "/" },
+      { label: "Team Leader", link: "/team-leader" },
+      { label: "Add Team Leader", link: "/add-teamleader" },
+      { label: "Edit Team", link: "/edit-teamleader" },
     ],
   },
 ];
 
-const mockdata_Account = [
-  {
-    label: "Apps",
-    initiallyOpened: true,
-    links: [
-      { label: "Profile", link: "/" },
-      { label: "Post Details", link: "/" },
-      { label: "Calendar", link: "/" },
-      // {
-      //   label: "Email",
-      //   links: [
-      //     { label: "Inbox", link: "/" },
-      //     { label: "Compose", link: "/" },
-      //     { label: "Read", link: "/" },
-      //   ],
-      // },
-    ],
-  },
-];
 const mockdata_Management = [
   {
     label: "Booking",
+    initiallyOpened: true,
     links: [
-      { label: "All Booking", link: "/" },
-      { label: "Add Booking", link: "/" },
-      { label: "Remove Booking", link: "/" },
+      { label: "All Booking", link: "/all-booking" },
+      { label: "Add Booking", link: "/add-booking" },
+      { label: "Edit Booking", link: "/edit-booking" },
     ],
   },
   {
-    label: "Rooms",
+    label: "Rooms & Suite",
     links: [
-      { label: "All Room", link: "/" },
-      { label: "Add Room", link: "/" },
-      { label: "Remove Room", link: "/" },
+      { label: "All Rooms & Suite", link: "/all-room-suite" },
+      { label: "Add Rooms & Suite", link: "/add-room-suite" },
+      { label: "Edit Rooms & Suite", link: "/edit-room-suite" },
     ],
   },
 
   {
     label: "Services",
     links: [
-      { label: "All Services", link: "/" },
-      { label: "Add Services", link: "/" },
-      { label: "Remove Services", link: "/" },
+      { label: "All Services", link: "/all-services" },
+      { label: "Add Services", link: "/add-services" },
+      { label: "Edit Services", link: "/edit-services" },
     ],
   },
   {
     label: "Facilities",
     links: [
-      { label: "All Facilities", link: "/" },
-      { label: "Add Facilities", link: "/" },
-      { label: "Remove Facilities", link: "/" },
+      { label: "All Facilities", link: "/all-facilities" },
+      { label: "Add Facilities", link: "/add-facilities" },
+      { label: "Edit Facilities", link: "/edit-facilities" },
     ],
   },
 
   {
     label: "Restaurant Menu",
     links: [
-      { label: "All Menu", link: "/" },
-      { label: "Add Menu", link: "/" },
-      { label: "Remove Menu", link: "/" },
+      { label: "All Menu", link: "/all-menu" },
+      { label: "Add Menu", link: "/add-menu" },
+      { label: "Edit Menu", link: "/edit-menu" },
     ],
   },
 ];
@@ -356,38 +324,30 @@ const mockdada_Article = [
     label: "News",
     initiallyOpened: true,
     links: [
-      { label: "All News", link: "/" },
-      { label: "Add News", link: "/" },
-      { label: "Remove News", link: "/" },
-    ],
-  },
-  {
-    label: "Blog",
-
-    links: [
-      { label: "All Blog", link: "/" },
-      { label: "Add Blog", link: "/" },
-      { label: "Remove Blog", link: "/" },
+      { label: "All News", link: "/all-news" },
+      { label: "Add News", link: "/add-news" },
+      { label: "Edit News", link: "/edit-news" },
     ],
   },
 
   {
     label: "Review",
     links: [
-      { label: "All Review", link: "/" },
-      { label: "Add Review", link: "/" },
-      { label: "Remove Review", link: "/" },
+      { label: "All Review", link: "/all-review" },
+      { label: "Add Review", link: "/add-review" },
+      { label: "Edit Review", link: "/edit-review" },
     ],
   },
 ];
+
 
 const mockdata = [
   mockdata_dashboard,
   mockdata_list,
   mockdata_Department,
-  mockdata_Account,
   mockdata_Management,
   mockdada_Article,
+ 
 ];
 const StyledPaper = styled(Paper)`
   // position: fixed;
@@ -531,7 +491,7 @@ export function MantineSidebar({
               />
             </Modal>
             {/* footer icons  */}
-            <Stack justify="center" spacing={250}>
+            <Stack justify="center" spacing={290}>
               <div className=""></div>
               <div className={classes}>
                 <NavbarLink icon={IconSearch} label="Search" onClick={open} />
@@ -566,9 +526,10 @@ export function MantineSidebar({
                       : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
                   }
                   style={{
-                    width: "65%",
+                    width: "80%",
                     height: "100%",
                     margin: "0 auto",
+                    // backgroundColor : "red"
                   }}
                 />
               </Title>

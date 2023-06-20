@@ -16,7 +16,7 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.dark[5],
     fontSize: theme.fontSizes.md,
 
     "&:hover": {
@@ -24,10 +24,16 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+          color:  "#AA8453",
     },
   },
 
+  ControlActive: {
+    "& , &:hover": {
+      backgroundColor: "rgb(170,132,83,0.1)",
+      color: "#AA8453",
+    },
+  },
   link: {
     fontWeight: 500,
     display: "block",
@@ -38,7 +44,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
+        ? theme.colors.dark[1]
         : theme.colors.gray[7],
     borderLeft: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
@@ -49,7 +55,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color:  "#AA8453",
     },
   },
 
@@ -70,6 +76,7 @@ export function LinksGroup({ label, initiallyOpened, links }) {
       className={classes.link}
       href={link.link}
       key={link.label}
+      // c="blue"
       onClick={(event) => event.preventDefault()}
     >
       {link.label}
@@ -111,6 +118,7 @@ export function NavbarLinksGroup() {
       sx={(theme) => ({
         minHeight: rem(220),
         padding: theme.spacing.md,
+        // color : "red",
         backgroundColor:
           theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
       })}

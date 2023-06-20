@@ -23,8 +23,8 @@ export function ActionToggle() {
 
           color:
             theme.colorScheme === "dark"
-              ? theme.colors.yellow[4]
-              : theme.colors.blue[6],
+              ? theme.colors.yellow[5]
+              : theme.colors.yellow[5],
         })}
       >
         {colorScheme === "dark" ? (
