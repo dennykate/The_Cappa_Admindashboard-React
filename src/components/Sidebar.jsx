@@ -49,8 +49,7 @@ const useStyles = createStyles((theme) => ({
 
   aside: {
     flex: `0 0 ${rem(60)}`,
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? "#1B1B1B" : theme.white,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -150,7 +149,7 @@ const useStyles = createStyles((theme) => ({
     borderBottomRightRadius: theme.radius.md,
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
+        ? "theme.colors.dark[0]"
         : theme.colors.gray[7],
     padding: `0 ${theme.spacing.md}`,
     fontSize: theme.fontSizes.sm,
@@ -511,6 +510,7 @@ export function MantineSidebar({
             component={ScrollArea}
             style={{ marginLeft: 0, marginRight: 0 }}
             h={"100vh"}
+            bg={colorScheme === "dark" ? "#1B1B1B" : "white"}
           >
             <div>
               <Title

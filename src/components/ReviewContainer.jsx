@@ -10,7 +10,7 @@ const ReviewContainer = ({ dark }) => {
       radius="md"
       className={`${
         dark ? "bg-[#1B1B1B] text-white" : "bg-white text-black"
-      } py-[30px] sm:px-[30px] px-[10px]`}
+      } pt-[20px] pb-[55px]  sm:px-[30px] px-[10px]`}
     >
       <Text className=" sm:text-xl text-lg  font-semibold mb-[20px]">
         Latest Review by Customers

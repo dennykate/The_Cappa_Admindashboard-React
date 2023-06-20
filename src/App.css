@@ -148,6 +148,8 @@ body {
   background: #aa8453 !important;
   color: white !important;
   font-weight: 500 !important;
+  position: relative !important;
+  overflow: auto !important;
 }
 
 .react-calendar__tile--now:enabled:hover,

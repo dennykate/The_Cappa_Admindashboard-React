@@ -4,13 +4,13 @@ import { BiLogIn, BiLogOut } from "react-icons/bi";
 export const cardData = [
   {
     Icon: IoBedOutline,
-    quantity: "8,461",
+    quantity: "969",
     title: "New Booking",
   },
   {
     Icon: IoBedOutline,
     quantity: "8,461",
-    title: "New Booking",
+    title: "Recent Booking",
   },
   {
     Icon: BiLogIn,

@@ -122,6 +122,7 @@ export function HeaderMegaMenu({
           maxWidth: navbarSide(),
           margin: "0 0 0 auto",
           // transition: "all 0.5s",
+          backgroundColor: colorScheme === "dark" ? "#1B1B1B" : "white",
         }}
       >
         <Group position="apart" sx={{ height: "100%" }}>
