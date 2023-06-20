@@ -11,9 +11,9 @@ import {
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
 
-import { Link } from "react-router-dom";
-import { useColorScheme, useFocusWithin } from "@mantine/hooks";
-import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useFocusWithin } from "@mantine/hooks";
+import { useEffect } from "react";
 import InputText from "../components/InputText";
 import InputPassword from "../components/InputPassword";
 import AuthDarkLightBtn from "../components/AuthDarkLightBtn";
@@ -23,23 +23,29 @@ import LogoDarkLight from "../components/LogoDarkLight";
 
 export default function Login() {
   const { ref, focused } = useFocusWithin();
+  const navigate = useNavigate();
   const form = useForm({
     initialValues: {
       // Specify your form fields and their initial values here
-     email: "",
+      email: "",
       password: "",
     },
 
     // functions will be used to validate values at corresponding key
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : 'Invalid email'),
-      password: (value) => (value.length > 8  ? 'password must be at least 8 characters long' : null),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      password: (value) =>
+        value.length < 8 ? "password must be at least 8 characters long" : null,
     },
   });
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
 
+  const onSubmitHandler = (e) => {
+    navigate("/");
+    console.log(e);
+  };
   useEffect(() => {
     console.log(colorScheme);
   }, [colorScheme]);
@@ -49,11 +55,11 @@ export default function Login() {
       align={"center"}
       justify={"center"}
       w={"100%"}
-      h={"100vh"}
+      mih={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
       className="relative"
     >
-      <div className="logo absolute  top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
+      <div className="logo top-5 absolute flex justify-between items-center w-full lg:px-48 sm:px-10 px-5">
         <LogoDarkLight dark={dark} />
 
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
@@ -81,23 +87,9 @@ export default function Login() {
         </Text>
 
         <Paper bg={"transparent"} p={30} radius="md" className="form-area">
-        <form onSubmit={form.onSubmit(console.log)}>
-            <InputText
-              dark={dark}
-              form={form}
-              // setForm={setForm}
-              // values={values}
-              // errors={errors}
-              // setErrors={setErrors}
-            />
-            <InputPassword
-              dark={dark}
-              form={form}
-              // setForm={setForm}
-              // values={values}
-              // errors={errors}
-              // setErrors={setErrors}
-            />
+          <form onSubmit={form.onSubmit(onSubmitHandler)}>
+            <InputText dark={dark} form={form} />
+            <InputPassword dark={dark} form={form} />
             <Group position="apart" mt="lg">
               <Checkbox
                 color="yellow"
@@ -132,7 +124,7 @@ export default function Login() {
               >
                 Don't have an account?
               </Text>
-              <Link to={"/register"} className="text-[#AA8453]">
+              <Link to={"/register"} className="text-[#AA8453] text-sm">
                 Sign Up
               </Link>
             </div>

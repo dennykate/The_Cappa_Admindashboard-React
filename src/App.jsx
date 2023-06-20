@@ -6,6 +6,7 @@ import { useHotkeys, useLocalStorage } from "@mantine/hooks";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AllBooking from "./pages/AllBooking";
 
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -24,11 +25,14 @@ const App = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <MantineProvider theme={{ colorScheme }}>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/all-booking" element={<AllBooking />} />
+        </Routes>
+      </MantineProvider>
     </ColorSchemeProvider>
   );
 };

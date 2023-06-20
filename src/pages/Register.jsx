@@ -26,13 +26,15 @@ import LogoDarkLight from "../components/LogoDarkLight";
 
 export default function Register() {
   const form = useForm({
-    initialValues: { email: "", password: "" },
+    initialValues: { email: "", password: "", password_confirmation: "" },
 
     // functions will be used to validate values at corresponding key
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       password: (value) =>
         value.length < 8 ? "Your password must be at least 8 characters" : null,
+      password_confirmation: (value, values) =>
+        value !== values.password ? "Passwords did not match" : null,
     },
   });
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -47,7 +49,7 @@ export default function Register() {
       className="relative overflow-x-auto"
     >
       <div className="logo absolute  top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
-        <LogoDarkLight dark={dark}/>
+        <LogoDarkLight dark={dark} />
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
       </div>
 
@@ -73,44 +75,55 @@ export default function Register() {
         </Text>
 
         <Paper bg={"transparent"} p={30} radius="md">
-          <InputText dark={dark} />
-          <InputPassword dark={dark} />
-          <InputPassword dark={dark} confirmation />
-          <Group mt="lg" className="gap-1">
-            <Checkbox
-              color="yellow"
-              label="I accept the"
-              sx={{
-                ["& .mantine-Checkbox-label"]: {
-                  color: "#F8F5F0",
-                  fontSize: "16px",
-                },
-              }}
+          <form onSubmit={form.onSubmit(console.log)}>
+            <InputText
+              dark={dark}
+              form={form}
+              placeholder={"eg. example@gmail.com"}
             />
-            <Anchor className="text-[#AA8453]">Terms of Service</Anchor>
-          </Group>
-          <Button
-            type="submit"
-            fullWidth
-            variant="filled"
-            className="mt-5 bg-[#AA8453] hover:bg-[#AA8453] h-12 text-base"
-          >
-            Sign Up
-          </Button>
-          <AuthHorizontalLine dark={dark} />
-          <SocialBtnGroup dark={dark} />
-          <div className="flex justify-between items-center mt-3">
-            <Text
-              className={`text-base ${
-                dark ? "text-[#F8F5F0]" : "text-gray-500"
-              }`}
+            <InputPassword dark={dark} form={form} placeholder={"••••••••"} />
+            <InputPassword
+              dark={dark}
+              confirmation
+              form={form}
+              placeholder={"••••••••"}
+            />
+            <Group mt="lg" className="gap-1">
+              <Checkbox
+                color="yellow"
+                label="I accept the"
+                sx={{
+                  ["& .mantine-Checkbox-label"]: {
+                    color: dark? "#F8F5F0":"gray",
+                    fontSize: "16px",
+                  },
+                }}
+              />
+              <Anchor className="text-[#AA8453]">Terms of Service</Anchor>
+            </Group>
+            <Button
+              type="submit"
+              fullWidth
+              variant="filled"
+              className="mt-5 bg-[#AA8453] hover:bg-[#AA8453] h-12 text-base"
             >
-              Already have an account?
-            </Text>
-            <Link to={"/login"} className="text-[#AA8453]">
-              Sign In
-            </Link>
-          </div>
+              Sign Up
+            </Button>
+            <AuthHorizontalLine dark={dark} />
+            <SocialBtnGroup dark={dark} />
+            <div className="flex justify-between items-center mt-3">
+              <Text
+                className={`text-base ${
+                  dark ? "text-[#F8F5F0]" : "text-gray-500"
+                }`}
+              >
+                Already have an account?
+              </Text>
+              <Link to={"/login"} className="text-[#AA8453] text-sm">
+                Sign In
+              </Link>
+            </div>
+          </form>
         </Paper>
       </Paper>
     </Flex>
