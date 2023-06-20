@@ -49,8 +49,7 @@ const useStyles = createStyles((theme) => ({
 
   aside: {
     flex: `0 0 ${rem(60)}`,
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+    backgroundColor: theme.colorScheme === "dark" ? "#1B1B1B" : theme.white,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -150,7 +149,7 @@ const useStyles = createStyles((theme) => ({
     borderBottomRightRadius: theme.radius.md,
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
+        ? "theme.colors.dark[0]"
         : theme.colors.gray[7],
     padding: `0 ${theme.spacing.md}`,
     fontSize: theme.fontSizes.sm,
@@ -402,6 +401,7 @@ export function MantineSidebar({
   handleIsOpen,
   isOpen,
 }) {
+  const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
   const [active, setActive] = useState("Dashboard");
@@ -474,20 +474,56 @@ export function MantineSidebar({
               // title="Authentication"
             >
               {/* Modal content */}
+              <Image
+                src={
+                  colorScheme === "dark"
+                    ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
+                    : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
+                }
+                style={{
+                  width: "55%",
+                  height: "100%",
+                  margin: "0 auto",
+                }}
+              />
               <Input
-                icon={<IconSearch size={20} />}
+                icon={
+                  <IconSearch
+                    size={20}
+                    color={
+                      colorScheme === "dark"
+                        ? defaultTheme.colors.dark[1]
+                        : defaultTheme.colors.dark[3]
+                    }
+                  />
+                }
                 placeholder="Search here"
+                sx={{
+                  input: {
+                    overflow: "auto",
+                    height: 30,
+                    borderColor:
+                      colorScheme === "dark"
+                        ? defaultTheme.colors.dark[5]
+                        : defaultTheme.colors.dark[3],
+                  },
+                  zIndex: 10,
+                  height: 100,
+                  display: "flex",
+                  alignItems: "center",
+                }}
                 radius="xs"
                 rightSection={
-                  <Tooltip
-                    label="Search by voice"
-                    transitionProps={{ transition: "slide-up", duration: 300 }}
-                    withArrow
-                  >
+                  <Tooltip label="Search by voice" position="top-end" withArrow>
                     <div>
                       <IconMicrophone
                         size="1rem"
-                        style={{ display: "block", opacity: 0.5 }}
+                        style={{ display: "block", opacity: 1 }}
+                        color={
+                          colorScheme === "dark"
+                            ? defaultTheme.colors.dark[1]
+                            : defaultTheme.colors.dark[3]
+                        }
                       />
                     </div>
                   </Tooltip>
@@ -511,13 +547,14 @@ export function MantineSidebar({
             component={ScrollArea}
             style={{ marginLeft: 0, marginRight: 0 }}
             h={"100vh"}
+            bg={colorScheme === "dark" ? "#1B1B1B" : "white"}
           >
             <div>
               <Title
                 style={{
                   position: "sticky",
                   top: 0,
-                  zIndex: 999,
+                  zIndex: 1,
                   backgroundColor: colorScheme === "dark" ? "#1A1B1E" : "white",
                   padding: "10px 0px",
                 }}

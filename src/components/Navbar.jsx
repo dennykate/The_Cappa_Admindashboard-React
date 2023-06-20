@@ -86,6 +86,13 @@ const useStyles = createStyles((theme) => ({
       color: "#AA8453",
     },
   },
+
+  title: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[0]
+        : theme.colors.dark[5],
+  },
 }));
 
 // const mockdata = [];
@@ -122,6 +129,7 @@ export function HeaderMegaMenu({
           maxWidth: navbarSide(),
           margin: "0 0 0 auto",
           // transition: "all 0.5s",
+          backgroundColor: colorScheme === "dark" ? "#1B1B1B" : "white",
         }}
       >
         <Group position="apart" sx={{ height: "100%" }}>

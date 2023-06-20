@@ -26,7 +26,7 @@ const TotalData = ({ dark }) => {
           </Grid.Col>
         ))}
       </Grid>
-      <Flex justify="space-between" align="center" mt={50}>
+      <Flex justify="space-between" align="center" gap={50} mt={50}>
         <Flex direction="column" gap={10}>
           <Text className="text-base font-semibold">
             Let Travl Generate Your Annualy Report Easily

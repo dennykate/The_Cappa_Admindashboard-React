@@ -18,7 +18,7 @@ const DataCard = ({ Icon, quantity, title }) => {
       <Card
         padding="lg"
         className={`group  flex items-center gap-[15px] p-[20px] rounded-[10px] group shadow-sm
-        hover:shadow-lg transition-all duration-300 ease-in-out ${
+        hover:shadow-lg  ${
           dark ? "bg-[#1B1B1B] text-gray-300" : "bg-white text-black"
         }`}
       >

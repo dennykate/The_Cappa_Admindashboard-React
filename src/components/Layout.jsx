@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 
-import { Box, Flex, Stack } from "@mantine/core";
+import { Box, Flex, Stack, useMantineColorScheme } from "@mantine/core";
 
 import { MantineSidebar } from "./Sidebar";
 import { HeaderMegaMenu } from "./Navbar";
 
 const Layout = ({ children }) => {
+  const { colorScheme } = useMantineColorScheme();
   // burger toggle
   const [isOpen, setIsOpen] = useState(true);
 
@@ -40,7 +41,14 @@ const Layout = ({ children }) => {
         handleIsOpen={handleIsOpenSideBar}
         isOpen={isOpen}
       ></MantineSidebar>
-      <Box sx={{ width: "100%", "overflow-y": "auto" }}>
+      <Box
+        sx={{
+          width: "100%",
+          "overflow-y": "auto",
+          minHeight: "100vh",
+          backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
+        }}
+      >
         <HeaderMegaMenu
           menuSelect={menuSelect}
           navbarSide={getNavBarWidth}

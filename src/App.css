@@ -152,6 +152,8 @@ body {
   background: #aa8453 !important;
   color: white !important;
   font-weight: 500 !important;
+  position: relative !important;
+  overflow: auto !important;
 }
 
 .react-calendar__tile--now:enabled:hover,
@@ -199,6 +201,11 @@ body {
 
 .calendar_dark_theme .react-calendar__month-view__days__day--weekend {
   color: #e35252d2;
+}
+
+.custom-password-input .mantine-PasswordInput-visibilityToggle:hover:focus {
+  background-color: transparent;
+  border-bottom: 1px solid #aa8453;
 }
 
 @tailwind base;
