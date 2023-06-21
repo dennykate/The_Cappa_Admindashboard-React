@@ -36,6 +36,7 @@ import { ActionToggle } from "./DarkandLightTheme";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Menu } from "@mantine/core";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 // import {
 //   IconSettings,
 //   IconSearch,
@@ -89,6 +90,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.gray[0]
         : theme.colors.dark[5],
+    textTransform: "capitalize",
   },
 }));
 
@@ -100,9 +102,16 @@ export function HeaderMegaMenu({
   handleIsOpen,
   isOpen,
 }) {
+  const { pathname } = useLocation();
   const { colorScheme } = useMantineTheme();
 
   const { classes, theme } = useStyles();
+
+  const pathToName = (path) => {
+    const pathArr = path.split("/");
+    const name = pathArr[pathArr.length - 1].replace("-", " ");
+    return name;
+  };
 
   return (
     <Box>
@@ -148,7 +157,7 @@ export function HeaderMegaMenu({
                 pt={2}
                 className={classes.title}
               >
-                {menuSelect}
+                {pathToName(pathname)}
               </Title>
             </div>
           </Flex>

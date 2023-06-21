@@ -40,6 +40,7 @@ import { useDisclosure } from "@mantine/hooks";
 import styled from "styled-components";
 import { Paper } from "@mantine/core";
 import { Input } from "@mantine/core";
+import { useLocation } from "react-router-dom";
 // import TheCappa from "src/assets/logo.png";
 
 const useStyles = createStyles((theme) => ({
@@ -227,10 +228,30 @@ NavbarLink.propTypes = {
 };
 
 const mainLinksMockdata = [
-  { icon: IconLayoutDashboard, label: "Dashboard" },
-  { icon: IconCalendarStats, label: "List" },
-  { icon: IconUsersGroup, label: "Department" },
-  { icon: IconBookmarkEdit, label: "Management" },
+  {
+    icon: IconLayoutDashboard,
+    label: "Dashboard",
+    subLinks: [
+      "/dashboard/overview",
+      "/dashboard/chart",
+      "/dashboard/calendar",
+    ],
+  },
+  {
+    icon: IconCalendarStats,
+    label: "List",
+    subLinks: ["/list/room-list", "/list/guest-list", "/list/concierge-list","/list/review-list"],
+  },
+  {
+    icon: IconUsersGroup,
+    label: "Department",
+    subLinks: ["/department/team-leader", "/department/add-teamleader", "/department/edit-teamleader"],
+  },
+  {
+    icon: IconBookmarkEdit,
+    label: "Management",
+    subLinks: ["/management/all-booking","/management/add-booking","/management/edit-booking","/management/all-room-suite","/management/add-room-suite","/management/edit-room-suite"],
+  },
   { icon: IconWriting, label: "Blog and Review" },
   // { icon: IconUser, label: "Account" },
 ];
@@ -349,6 +370,8 @@ export function MantineSidebar({
   handleIsOpen,
   isOpen,
 }) {
+  const { pathname } = useLocation();
+  console.log(pathname);
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
@@ -387,7 +410,11 @@ export function MantineSidebar({
           [classes.mainLinkActive]: link.label === active,
         })}
       >
-        <link.icon size="1.4rem" stroke={1.5} />
+        <link.icon
+          size="1.4rem"
+          stroke={1.5}
+          className={link.subLinks?.includes(pathname) ? "text-primary" : ""}
+        />
       </UnstyledButton>
     </Tooltip>
   ));

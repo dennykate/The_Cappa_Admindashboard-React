@@ -9,6 +9,7 @@ import {
   rem,
 } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -68,6 +69,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
+  const { pathname } = useLocation();
   const [active, setActive] = useState(
     localStorage.getItem("lastRoute") || "Overview"
   );
@@ -76,23 +78,18 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
-    <Text
-      component="a"
-      // order={2}
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-      style={{
-        color: active == link.label ? "#aa8453" : "white",
-      }}
-      // c="blue"
-      onClick={(event) => {
-        // event.preventDefault();
-        setActive(link.label);
-      }}
-    >
-      {link.label}
-    </Text>
+    <Link key={link.label} to={link.link}>
+      <Text
+        // order={2}
+        className={classes.link}
+        style={{
+          color: pathname == link.link ? "#aa8453" : "white",
+        }}
+        // c="blue"
+      >
+        {link.label}
+      </Text>
+    </Link>
   ));
   useEffect(() => {
     onPropChange(active);
