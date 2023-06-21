@@ -25,7 +25,7 @@ const DataCard = ({ Icon, quantity, title }) => {
         <Flex
           justify="center"
           align="center"
-          className="w-[60px] h-[60px] bg-primary group-hover:bg-opacity-100 bg-opacity-10 rounded-[10px] transition-all duration-300 ease-in-out"
+          className="w-[60px] h-[60px] bg-primary  group-hover:bg-opacity-100 bg-opacity-10 rounded-[10px] transition-all duration-300 ease-in-out"
         >
           <Icon
             size={32}

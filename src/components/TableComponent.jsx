@@ -289,7 +289,11 @@ export default function TableComponent({ dark }) {
               <IconSearch
                 size="1.2rem"
                 stroke={1.7}
-                className={dark? "text-[rgb(170,132,83)]":"text-[rgb(255,255,255,0.8)]"}
+                className={
+                  dark
+                    ? "text-[rgb(170,132,83)]"
+                    : "text-[rgb(255,255,255,0.8)]"
+                }
               />
             }
             value={search}
@@ -299,9 +303,7 @@ export default function TableComponent({ dark }) {
                 width: "400px",
                 height: "40px",
                 color: "gray",
-                borderColor: dark
-                  ? "rgb(170,132,83)"
-                  : "rgb(255,255,255,0.5)",
+                borderColor: dark ? "rgb(170,132,83)" : "rgb(255,255,255,0.5)",
                 backgroundColor: "transparent",
               },
               ["& .mantine-TextInput-input::placeholder"]: {
@@ -313,18 +315,32 @@ export default function TableComponent({ dark }) {
         </Group>
         <Group className="flex gap-3">
           <Tooltip label="ADD" color="dark" position="bottom-end" fz={"xs"}>
-            <button className="w-10 h-10 rounded-full bg-transparent active:bg-primary active:bg-opacity-70 text-white flex justify-center items-center">
+            <button
+              className={`w-[40px] h-[40px] ${
+                dark ? "bg-primary" : "bg-white"
+              } flex justify-center items-center group hover:bg-opacity-100 active:bg-opacity-70 bg-opacity-10 rounded-[10px] transition-all duration-300 ease-in-out`}
+            >
               {/* <HiPlus className="text-xl" /> */}
-              <IconPlus />
+              <IconPlus
+                className={
+                  dark ? "text-white" : "text-white group-hover:text-primary"
+                }
+              />
             </button>
           </Tooltip>
           <Tooltip label="REFRESH" color="dark" position="bottom-end" fz={"xs"}>
             <button
               onClick={() => setPage(1)}
-              className="w-10 h-10 rounded-full bg-primary active:bg-primary active:bg-opacity-70 text-white flex justify-center items-center"
+              className={`w-[40px] h-[40px] ${
+                dark ? "bg-primary" : "bg-white"
+              } flex justify-center items-center group hover:bg-opacity-100  active:bg-opacity-70 bg-opacity-10 rounded-[10px] transition-all duration-300 ease-in-out`}
             >
               {/* <MdOutlineRefresh className="text-xl" /> */}
-              <IconRefresh />
+              <IconRefresh
+                className={
+                  dark ? "text-white" : "text-white group-hover:text-primary"
+                }
+              />
             </button>
           </Tooltip>
           <Tooltip label="XLSX" color="dark" position="bottom-end" fz={"xs"}>

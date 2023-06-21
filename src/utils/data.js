@@ -360,3 +360,72 @@ export const data = [
     id: 16,
   },
 ];
+
+export const roomListData = [
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room4.jpg",
+    roomNumber: "A-91234",
+    bedType: "Double Bed",
+    roomType: "Junior Suite",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$145/night",
+    status: "active",
+  },
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room5.jpg",
+    roomNumber: "A-91234",
+    bedType: "Single Bed",
+    roomType: "Standard",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$100/night",
+    status: "booked",
+  },
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room6.jpg",
+    roomNumber: "A-91234",
+    bedType: "Family Bed",
+    roomType: "Double Room",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$145/night",
+    status: "active",
+  },
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room7.jpg",
+    roomNumber: "A-91234",
+    bedType: "Double Bed",
+    roomType: "Superior Room",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$145/night",
+    status: "booked",
+  },
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room6.jpg",
+    roomNumber: "A-91234",
+    bedType: "Single Bed",
+    roomType: "Standard",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$100/night",
+    status: "active",
+  },
+  {
+    image: "https://travl.dexignlab.com/xhtml/images/room/room7.jpg",
+    roomNumber: "A-91234",
+    bedType: "Family Bed",
+    roomType: "Delux Room",
+    floor: "Floor-A-1",
+    facilities:
+      "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
+    rate: "$145/night",
+    status: "booked",
+  },
+];
