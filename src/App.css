@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=Gilda+Display&display=swap");
 
-*{
-  font-family: "Barlow",sans-serif;
+* {
+  font-family: "Barlow, sans-serif";
 }
+
 body {
   padding: 0;
   margin: 0;
@@ -206,8 +207,6 @@ body {
   background-color: transparent;
   border-bottom: 1px solid #aa8453;
 }
-
-
 
 @tailwind base;
 @tailwind components;

@@ -25,7 +25,9 @@ const App = () => {
       colorScheme={colorScheme}
       toggleColorScheme={toggleColorScheme}
     >
-      <MantineProvider theme={{ colorScheme }}>
+      <MantineProvider
+        theme={{ colorScheme, fontFamily: "Barlow, sans-serif" }}
+      >
         <Routes>
           <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
