@@ -16,7 +16,7 @@ import {
 import { useForm } from "@mantine/form";
 import { FaTwitter, FaGoogle, FaFacebookF } from "react-icons/fa";
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import InputText from "../components/InputText";
 import InputPassword from "../components/InputPassword";
 import AuthDarkLightBtn from "../components/AuthDarkLightBtn";
@@ -25,11 +25,13 @@ import SocialBtnGroup from "../components/SocialBtnGroup";
 import LogoDarkLight from "../components/LogoDarkLight";
 
 export default function Register() {
+  const navigate = useNavigate();
   const form = useForm({
-    initialValues: { email: "", password: "", password_confirmation: "" },
+    initialValues: {name:"", email: "", password: "", password_confirmation: "" },
 
     // functions will be used to validate values at corresponding key
     validate: {
+      name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       password: (value) =>
         value.length < 8 ? "Your password must be at least 8 characters" : null,
@@ -39,6 +41,11 @@ export default function Register() {
   });
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+  const onSubmitHandler = (e) => {
+    // console.log(value);
+    // Cookies.set("isLogin", true);
+    navigate("/login");
+  };
   return (
     <Flex
       align={"center"}
@@ -75,7 +82,8 @@ export default function Register() {
         </Text>
 
         <Paper bg={"transparent"} p={30} radius="md">
-          <form onSubmit={form.onSubmit(console.log)}>
+          <form onSubmit={form.onSubmit(onSubmitHandler)}>
+            <InputText dark={dark} form={form} placeholder={"John Doe"} label={"Name*"} value={"name"}/>
             <InputText
               dark={dark}
               form={form}
@@ -105,7 +113,7 @@ export default function Register() {
               type="submit"
               fullWidth
               variant="filled"
-              className="mt-5 bg-[#AA8453] hover:bg-[#AA8453] h-12 text-base"
+              className="mt-5 bg-[#AA8453] bg-opacity-90  active:bg-opacity-80 hover:bg-[#AA8453] hover:bg-opacity-100 h-12 text-base transition-all ease-in-out duration-200"
             >
               Sign Up
             </Button>

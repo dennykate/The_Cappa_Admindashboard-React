@@ -12,7 +12,7 @@ import {
 import { useForm } from "@mantine/form";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useFocusWithin } from "@mantine/hooks";
+import { useFocusWithin, useLocalStorage } from "@mantine/hooks";
 import { useEffect } from "react";
 import InputText from "../components/InputText";
 import InputPassword from "../components/InputPassword";
@@ -20,6 +20,7 @@ import AuthDarkLightBtn from "../components/AuthDarkLightBtn";
 import AuthHorizontalLine from "../components/AuthHorizontalLine";
 import SocialBtnGroup from "../components/SocialBtnGroup";
 import LogoDarkLight from "../components/LogoDarkLight";
+import Cookies from "js-cookie";
 
 export default function Login() {
   const { ref, focused } = useFocusWithin();
@@ -43,8 +44,9 @@ export default function Login() {
   const dark = colorScheme === "dark";
 
   const onSubmitHandler = (e) => {
+    // console.log(value);
+    Cookies.set("isLogin", true);
     navigate("/");
-    console.log(e);
   };
   useEffect(() => {
     console.log(colorScheme);
@@ -110,7 +112,7 @@ export default function Login() {
               type="submit"
               fullWidth
               variant="filled"
-              className="mt-5 bg-[#AA8453] hover:bg-[#AA8453] h-12 text-base"
+              className="mt-5 bg-[#AA8453] active:bg-opacity-80 hover:bg-[#AA8453] h-12 text-base"
             >
               Sign In
             </Button>

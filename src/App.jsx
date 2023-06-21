@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import AllBooking from "./pages/AllBooking";
+import AuthGuard from "./components/AuthGuard";
 
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -30,8 +31,22 @@ const App = () => {
       >
         <Routes>
           <Route path="/" element={<Dashboard />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <AuthGuard>
+                <Login />
+              </AuthGuard>
+            }
+          />
+          <Route
+            path="/register"
+            element={
+              <AuthGuard>
+                <Register />
+              </AuthGuard>
+            }
+          />
           <Route path="/all-booking" element={<AllBooking />} />
         </Routes>
       </MantineProvider>

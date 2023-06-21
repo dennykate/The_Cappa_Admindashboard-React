@@ -20,7 +20,7 @@ const InputPassword = ({ dark, confirmation, form, placeholder }) => {
       >
       <PasswordInput
         ref={ref}
-        label={confirmation ? "Password Confirmation *" : "Password *"}
+        label={confirmation ? " Confirm Password *" : "Password *"}
         placeholder={placeholder ? placeholder : "Password"}
         required
         mt="md"

@@ -35,6 +35,8 @@ import { ActionToggle } from "./DarkandLightTheme";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { Menu } from "@mantine/core";
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
 // import {
 //   IconSettings,
 //   IconSearch,
@@ -107,6 +109,7 @@ export function HeaderMegaMenu({
   // const toggleTheme = () =>
   //   setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
+  const navigate = useNavigate();
 
   // const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
   //   useDisclosure(false);
@@ -214,7 +217,14 @@ export function HeaderMegaMenu({
                 <Menu.Item icon={<IconUserShare size={14} />}>
                   Manage Account
                 </Menu.Item>
-                <Menu.Item color="red" icon={<IconLogout size={14} />}>
+                <Menu.Item
+                  onClick={() => {
+                    Cookies.remove("isLogin");
+                    navigate("/login");
+                  }}
+                  color="red"
+                  icon={<IconLogout size={14} />}
+                >
                   Logout
                 </Menu.Item>
               </Menu.Dropdown>
