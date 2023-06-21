@@ -14,7 +14,7 @@ const AuthHorizontalLine = ({dark}) => {
             //     fontSize: "16px",
             //   },
           // }}
-            classNames={{label:`${dark?"#F8F5F0" : "grey"} sm:text-base text-sm`}}
+            classNames={{label:`${dark?"text-[#F8F5F0]" : "text-gray-500"} sm:text-base text-sm`}}
           />
   )
 }
