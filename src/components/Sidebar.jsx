@@ -240,10 +240,9 @@ const mockdata_dashboard = [
     label: "Dashboard",
     initiallyOpened: true,
     links: [
-   
-      { label: "Overview", link: "/overview" },
-      { label: "Chart", link: "/chart" },
-      { label: "Calendar", link: "/calendar" },
+      { label: "Overview", link: "/dashboard/overview" },
+      { label: "Chart", link: "/dashboard/chart" },
+      { label: "Calendar", link: "/dashboard/calendar" },
     ],
   },
 ];
@@ -253,10 +252,10 @@ const mockdata_list = [
     label: "List",
     initiallyOpened: true,
     links: [
-      { label: "Room List", link: "/room-list" },
-      { label: "Guest List", link: "/guest-list" },
-      { label: "Concierge List", link: "/concierge-list" },
-      { label: "Review", link: "/review-list" },
+      { label: "Room List", link: "/list/room-list" },
+      { label: "Guest List", link: "/list/guest-list" },
+      { label: "Concierge List", link: "/list/concierge-list" },
+      { label: "Review", link: "/list/review-list" },
     ],
   },
 ];
@@ -266,9 +265,9 @@ const mockdata_Department = [
     label: "Team",
     initiallyOpened: true,
     links: [
-      { label: "Team Leader", link: "/team-leader" },
-      { label: "Add Team Leader", link: "/add-teamleader" },
-      { label: "Edit Team", link: "/edit-teamleader" },
+      { label: "Team Leader", link: "/department/team-leader" },
+      { label: "Add Team Leader", link: "/department/add-teamleader" },
+      { label: "Edit Team Leader", link: "/department/edit-teamleader" },
     ],
   },
 ];
@@ -278,43 +277,43 @@ const mockdata_Management = [
     label: "Booking",
     initiallyOpened: true,
     links: [
-      { label: "All Booking", link: "/all-booking" },
-      { label: "Add Booking", link: "/add-booking" },
-      { label: "Edit Booking", link: "/edit-booking" },
+      { label: "All Booking", link: "/management/all-booking" },
+      { label: "Add Booking", link: "/management/add-booking" },
+      { label: "Edit Booking", link: "/management/edit-booking" },
     ],
   },
   {
     label: "Rooms & Suite",
     links: [
-      { label: "All Rooms & Suite", link: "/all-room-suite" },
-      { label: "Add Rooms & Suite", link: "/add-room-suite" },
-      { label: "Edit Rooms & Suite", link: "/edit-room-suite" },
+      { label: "All Rooms & Suite", link: "/management/all-room-suite" },
+      { label: "Add Rooms & Suite", link: "/management/add-room-suite" },
+      { label: "Edit Rooms & Suite", link: "/management/edit-room-suite" },
     ],
   },
 
   {
     label: "Services",
     links: [
-      { label: "All Services", link: "/all-services" },
-      { label: "Add Services", link: "/add-services" },
-      { label: "Edit Services", link: "/edit-services" },
+      { label: "All Services", link: "/management/all-services" },
+      { label: "Add Services", link: "/management/add-services" },
+      { label: "Edit Services", link: "/management/edit-services" },
     ],
   },
   {
     label: "Facilities",
     links: [
-      { label: "All Facilities", link: "/all-facilities" },
-      { label: "Add Facilities", link: "/add-facilities" },
-      { label: "Edit Facilities", link: "/edit-facilities" },
+      { label: "All Facilities", link: "/management/all-facilities" },
+      { label: "Add Facilities", link: "/management/add-facilities" },
+      { label: "Edit Facilities", link: "/management/edit-facilities" },
     ],
   },
 
   {
     label: "Restaurant Menu",
     links: [
-      { label: "All Menu", link: "/all-menu" },
-      { label: "Add Menu", link: "/add-menu" },
-      { label: "Edit Menu", link: "/edit-menu" },
+      { label: "All Menu", link: "/management/all-menu" },
+      { label: "Add Menu", link: "/management/add-menu" },
+      { label: "Edit Menu", link: "/management/edit-menu" },
     ],
   },
 ];
@@ -324,22 +323,12 @@ const mockdada_Article = [
     label: "News",
     initiallyOpened: true,
     links: [
-      { label: "All News", link: "/all-news" },
-      { label: "Add News", link: "/add-news" },
-      { label: "Edit News", link: "/edit-news" },
-    ],
-  },
-
-  {
-    label: "Review",
-    links: [
-      { label: "All Review", link: "/all-review" },
-      { label: "Add Review", link: "/add-review" },
-      { label: "Edit Review", link: "/edit-review" },
+      { label: "All News", link: "/news/all-news" },
+      { label: "Add News", link: "/news/add-news" },
+      { label: "Edit News", link: "/news/edit-news" },
     ],
   },
 ];
-
 
 const mockdata = [
   mockdata_dashboard,
@@ -347,7 +336,6 @@ const mockdata = [
   mockdata_Department,
   mockdata_Management,
   mockdada_Article,
- 
 ];
 const StyledPaper = styled(Paper)`
   // position: fixed;
@@ -364,16 +352,16 @@ export function MantineSidebar({
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState("Dashboard");
+  const [active, setActive] = useState(
+    localStorage.getItem("lastRoute") || "Overview"
+  );
   const [activeLink, setActiveLink] = useState("Settings");
 
-  const [menuSelect, setmenuSelect] = useState(0);
-  const handleMenuChange = (index) => {
-    const selectLabel = mainLinksMockdata[index];
-    onPropChange(selectLabel?.label);
-  };
+  const [menuSelect, setmenuSelect] = useState(
+    localStorage.getItem("lastMenuSelect") || 0
+  );
   const menuLinks = mockdata[menuSelect].map((item) => (
-    <LinksGroup {...item} key={item.label} />
+    <LinksGroup {...item} onPropChange={onPropChange} key={item.label} />
   ));
 
   const [theme, setTheme] = useState("light");
@@ -393,7 +381,6 @@ export function MantineSidebar({
         onClick={() => {
           setActive(link.label);
           setmenuSelect(index);
-          handleMenuChange(index);
           handleIsOpen();
         }}
         className={cx(classes.mainLink, {
@@ -406,8 +393,8 @@ export function MantineSidebar({
   ));
 
   useEffect(() => {
-    onPropChange(active);
-  }, [active]);
+    localStorage.setItem("lastMenuSelect", menuSelect);
+  }, [menuSelect]);
 
   return (
     <StyledPaper>

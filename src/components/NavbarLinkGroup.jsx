@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Group,
   Box,
@@ -16,7 +16,10 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.dark[5],
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.dark[5],
     fontSize: theme.fontSizes.md,
 
     "&:hover": {
@@ -24,7 +27,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-          color:  "#AA8453",
+      color: "#AA8453",
     },
   },
 
@@ -55,7 +58,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-      color:  "#AA8453",
+      color: "#AA8453",
     },
   },
 
@@ -64,7 +67,10 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function LinksGroup({ label, initiallyOpened, links }) {
+export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
+  const [active, setActive] = useState(
+    localStorage.getItem("lastRoute") || "Overview"
+  );
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
@@ -76,17 +82,29 @@ export function LinksGroup({ label, initiallyOpened, links }) {
       className={classes.link}
       href={link.link}
       key={link.label}
+      style={{
+        color: active == link.label ? "#aa8453" : "white",
+      }}
       // c="blue"
-      onClick={(event) => event.preventDefault()}
+      onClick={(event) => {
+        // event.preventDefault();
+        setActive(link.label);
+      }}
     >
       {link.label}
     </Text>
   ));
+  useEffect(() => {
+    onPropChange(active);
+    localStorage.setItem("lastRoute", active);
+  }, [active]);
 
   return (
     <>
       <UnstyledButton
-        onClick={() => setOpened((o) => !o)}
+        onClick={() => {
+          setOpened((o) => !o);
+        }}
         className={classes.control}
       >
         <Group position="apart" spacing={0}>
