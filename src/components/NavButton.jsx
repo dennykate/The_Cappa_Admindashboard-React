@@ -18,11 +18,14 @@ const NavButton = ({ showBtn }) => {
     >
       <div className="w-full h-full flex justify-center items-center relative ">
         <div
-          className={`absolute top-0 left-0 -z-[1] bg-primary rounded-full w-full h-full ${
+          className={`absolute top-0 left-0 z-[1] bg-starColor rounded-full w-full h-full ${
             show ? "scale-100" : "scale-0"
           } transition-all duration-300 ease-in-out`}
         >
-          <div className="w-[32px] h-[32px] bg-black rounded-full bg-opacity-20 absolute top-24 left-3 z-10 ">
+          <div
+            className="w-[32px] h-[32px] bg-black rounded-full bg-opacity-20 absolute top-24 left-3 z-10 
+          "
+          >
             <ActionToggle />
           </div>
 
@@ -47,7 +50,9 @@ const NavButton = ({ showBtn }) => {
 
         <button
           onClick={() => setShow(!show)}
-          className="w-[50px] h-[50px] rounded-full shadow-lg bg-starColor flex justify-center items-center"
+          className={`w-[50px] h-[50px] z-10 rounded-full shadow-lg ${
+            show ? "bg-[rgb(170,132,83)]" : "bg-starColor"
+          } flex justify-center items-center`}
         >
           {!show ? (
             <IoMenu className="text-xl text-white " />
