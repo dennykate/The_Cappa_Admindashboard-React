@@ -40,6 +40,7 @@ import { useDisclosure } from "@mantine/hooks";
 import styled from "styled-components";
 import { Paper } from "@mantine/core";
 import { Input } from "@mantine/core";
+import { useLocation } from "react-router-dom";
 // import TheCappa from "src/assets/logo.png";
 
 const useStyles = createStyles((theme) => ({
@@ -85,15 +86,13 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
           : theme.colors.gray[0],
+      color: "#AA8453",
     },
   },
   // "#AA8453"
   mainLinkActive: {
     "& , &:hover": {
-      backgroundColor: theme.fn.variant({
-        variant: "light",
-        color: theme.primaryColor,
-      }).background,
+      backgroundColor: "rgb(170,132,83,0.1)",
       color: "#AA8453",
     },
   },
@@ -163,7 +162,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
           : theme.colors.gray[1],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color: "#AA8453",
     },
   },
 
@@ -180,7 +179,12 @@ const useStyles = createStyles((theme) => ({
       color: theme.white,
     },
   },
-
+  ControlActive: {
+    "& , &:hover": {
+      backgroundColor: "rgb(170,132,83,0.1)",
+      color: "#AA8453",
+    },
+  },
   //
 
   links: {
@@ -224,12 +228,32 @@ NavbarLink.propTypes = {
 };
 
 const mainLinksMockdata = [
-  { icon: IconLayoutDashboard, label: "Dashboard" },
-  { icon: IconCalendarStats, label: "List" },
-  { icon: IconUsersGroup, label: "Department" },
-  { icon: IconUser, label: "Account" },
-  { icon: IconBookmarkEdit, label: "Management" },
+  {
+    icon: IconLayoutDashboard,
+    label: "Dashboard",
+    subLinks: [
+      "/dashboard/overview",
+      "/dashboard/chart",
+      "/dashboard/calendar",
+    ],
+  },
+  {
+    icon: IconCalendarStats,
+    label: "List",
+    subLinks: ["/list/room-list", "/list/guest-list", "/list/concierge-list","/list/review-list"],
+  },
+  {
+    icon: IconUsersGroup,
+    label: "Department",
+    subLinks: ["/department/team-leader", "/department/add-teamleader", "/department/edit-teamleader"],
+  },
+  {
+    icon: IconBookmarkEdit,
+    label: "Management",
+    subLinks: ["/management/all-booking","/management/add-booking","/management/edit-booking","/management/all-room-suite","/management/add-room-suite","/management/edit-room-suite"],
+  },
   { icon: IconWriting, label: "Blog and Review" },
+  // { icon: IconUser, label: "Account" },
 ];
 
 const mockdata_dashboard = [
@@ -237,9 +261,9 @@ const mockdata_dashboard = [
     label: "Dashboard",
     initiallyOpened: true,
     links: [
-      { label: "Overview", link: "/" },
-      { label: "Chart", link: "/" },
-      { label: "Calendar", link: "/" },
+      { label: "Overview", link: "/dashboard/overview" },
+      { label: "Chart", link: "/dashboard/chart" },
+      { label: "Calendar", link: "/dashboard/calendar" },
     ],
   },
 ];
@@ -249,104 +273,68 @@ const mockdata_list = [
     label: "List",
     initiallyOpened: true,
     links: [
-      { label: "Room List", link: "/" },
-      { label: "Guest List", link: "/" },
-      { label: "Concierge List", link: "/" },
-      { label: "Review", link: "/" },
+      { label: "Room List", link: "/list/room-list" },
+      { label: "Guest List", link: "/list/guest-list" },
+      { label: "Concierge List", link: "/list/concierge-list" },
+      { label: "Review", link: "/list/review-list" },
     ],
   },
 ];
 
 const mockdata_Department = [
   {
-    label: "Departments",
+    label: "Team",
     initiallyOpened: true,
     links: [
-      { label: "All Departments", link: "/" },
-      { label: "Add Departments", link: "/" },
-      { label: "Edit Departments", link: "/" },
-    ],
-  },
-  {
-    label: "Staff",
-    links: [
-      { label: "All Staff", link: "/" },
-      { label: "Add Staff", link: "/" },
-      { label: "Edit Staff", link: "/" },
-      { label: "About Staff", link: "/" },
-    ],
-  },
-  {
-    label: "Team",
-    links: [
-      { label: "All Team", link: "/" },
-      { label: "Add Team", link: "/" },
-      { label: "Edit Team", link: "/" },
-      { label: "About Team", link: "/" },
+      { label: "Team Leader", link: "/department/team-leader" },
+      { label: "Add Team Leader", link: "/department/add-teamleader" },
+      { label: "Edit Team Leader", link: "/department/edit-teamleader" },
     ],
   },
 ];
 
-const mockdata_Account = [
-  {
-    label: "Apps",
-    initiallyOpened: true,
-    links: [
-      { label: "Profile", link: "/" },
-      { label: "Post Details", link: "/" },
-      { label: "Calendar", link: "/" },
-      // {
-      //   label: "Email",
-      //   links: [
-      //     { label: "Inbox", link: "/" },
-      //     { label: "Compose", link: "/" },
-      //     { label: "Read", link: "/" },
-      //   ],
-      // },
-    ],
-  },
-];
 const mockdata_Management = [
   {
     label: "Booking",
+    initiallyOpened: true,
     links: [
-      { label: "All Booking", link: "/" },
-      { label: "Add Booking", link: "/" },
-      { label: "Remove Booking", link: "/" },
+      { label: "All Booking", link: "/management/all-booking" },
+      { label: "Add Booking", link: "/management/add-booking" },
+      { label: "Edit Booking", link: "/management/edit-booking" },
     ],
   },
   {
-    label: "Rooms",
+    label: "Rooms & Suite",
     links: [
-      { label: "All Room", link: "/" },
-      { label: "Add Room", link: "/" },
-      { label: "Remove Room", link: "/" },
+      { label: "All Rooms & Suite", link: "/management/all-room-suite" },
+      { label: "Add Rooms & Suite", link: "/management/add-room-suite" },
+      { label: "Edit Rooms & Suite", link: "/management/edit-room-suite" },
     ],
   },
 
   {
     label: "Services",
     links: [
-      { label: "All Services", link: "/" },
-      { label: "Add Services", link: "/" },
-      { label: "Remove Services", link: "/" },
+      { label: "All Services", link: "/management/all-services" },
+      { label: "Add Services", link: "/management/add-services" },
+      { label: "Edit Services", link: "/management/edit-services" },
     ],
   },
   {
     label: "Facilities",
     links: [
-      { label: "All Facilities", link: "/" },
-      { label: "Add Facilities", link: "/" },
-      { label: "Remove Facilities", link: "/" },
+      { label: "All Facilities", link: "/management/all-facilities" },
+      { label: "Add Facilities", link: "/management/add-facilities" },
+      { label: "Edit Facilities", link: "/management/edit-facilities" },
     ],
   },
 
   {
     label: "Restaurant Menu",
     links: [
-      { label: "All Menu", link: "/" },
-      { label: "Add Menu", link: "/" },
-      { label: "Remove Menu", link: "/" },
+      { label: "All Menu", link: "/management/all-menu" },
+      { label: "Add Menu", link: "/management/add-menu" },
+      { label: "Edit Menu", link: "/management/edit-menu" },
     ],
   },
 ];
@@ -356,27 +344,9 @@ const mockdada_Article = [
     label: "News",
     initiallyOpened: true,
     links: [
-      { label: "All News", link: "/" },
-      { label: "Add News", link: "/" },
-      { label: "Remove News", link: "/" },
-    ],
-  },
-  {
-    label: "Blog",
-
-    links: [
-      { label: "All Blog", link: "/" },
-      { label: "Add Blog", link: "/" },
-      { label: "Remove Blog", link: "/" },
-    ],
-  },
-
-  {
-    label: "Review",
-    links: [
-      { label: "All Review", link: "/" },
-      { label: "Add Review", link: "/" },
-      { label: "Remove Review", link: "/" },
+      { label: "All News", link: "/news/all-news" },
+      { label: "Add News", link: "/news/add-news" },
+      { label: "Edit News", link: "/news/edit-news" },
     ],
   },
 ];
@@ -385,7 +355,6 @@ const mockdata = [
   mockdata_dashboard,
   mockdata_list,
   mockdata_Department,
-  mockdata_Account,
   mockdata_Management,
   mockdada_Article,
 ];
@@ -401,19 +370,21 @@ export function MantineSidebar({
   handleIsOpen,
   isOpen,
 }) {
+  const { pathname } = useLocation();
+  console.log(pathname);
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState("Dashboard");
+  const [active, setActive] = useState(
+    localStorage.getItem("lastRoute") || "Overview"
+  );
   const [activeLink, setActiveLink] = useState("Settings");
 
-  const [menuSelect, setmenuSelect] = useState(0);
-  const handleMenuChange = (index) => {
-    const selectLabel = mainLinksMockdata[index];
-    onPropChange(selectLabel?.label);
-  };
+  const [menuSelect, setmenuSelect] = useState(
+    localStorage.getItem("lastMenuSelect") || 0
+  );
   const menuLinks = mockdata[menuSelect].map((item) => (
-    <LinksGroup {...item} key={item.label} />
+    <LinksGroup {...item} onPropChange={onPropChange} key={item.label} />
   ));
 
   const [theme, setTheme] = useState("light");
@@ -433,21 +404,24 @@ export function MantineSidebar({
         onClick={() => {
           setActive(link.label);
           setmenuSelect(index);
-          handleMenuChange(index);
           handleIsOpen();
         }}
         className={cx(classes.mainLink, {
           [classes.mainLinkActive]: link.label === active,
         })}
       >
-        <link.icon size="1.4rem" stroke={1.5} />
+        <link.icon
+          size="1.4rem"
+          stroke={1.5}
+          className={link.subLinks?.includes(pathname) ? "text-primary" : ""}
+        />
       </UnstyledButton>
     </Tooltip>
   ));
 
   useEffect(() => {
-    onPropChange(active);
-  }, [active]);
+    localStorage.setItem("lastMenuSelect", menuSelect);
+  }, [menuSelect]);
 
   return (
     <StyledPaper>
@@ -531,7 +505,7 @@ export function MantineSidebar({
               />
             </Modal>
             {/* footer icons  */}
-            <Stack justify="center" spacing={250}>
+            <Stack justify="center" spacing={290}>
               <div className=""></div>
               <div className={classes}>
                 <NavbarLink icon={IconSearch} label="Search" onClick={open} />
@@ -566,9 +540,10 @@ export function MantineSidebar({
                       : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
                   }
                   style={{
-                    width: "65%",
+                    width: "80%",
                     height: "100%",
                     margin: "0 auto",
+                    // backgroundColor : "red"
                   }}
                 />
               </Title>

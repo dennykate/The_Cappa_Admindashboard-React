@@ -6,10 +6,16 @@ import CalendarContainer from "../components/CalendarContainer";
 import GraphContainer from "../components/GraphContainer";
 import ReviewContainer from "../components/ReviewContainer";
 import Footer from "../components/Footer";
+import { useEffect } from "react";
 
 const Dashboard = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+
+  useEffect(() => {
+    localStorage.setItem("lastRoute", "Overview");
+    localStorage.setItem("lastMenuSelect", 0);
+  }, []);
 
   return (
     <Layout>

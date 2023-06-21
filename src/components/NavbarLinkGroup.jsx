@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Group,
   Box,
@@ -9,6 +9,7 @@ import {
   rem,
 } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
+import { Link, useLocation } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   control: {
@@ -16,7 +17,10 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     width: "100%",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.dark[5],
     fontSize: theme.fontSizes.md,
 
     "&:hover": {
@@ -24,10 +28,16 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color: "#AA8453",
     },
   },
 
+  ControlActive: {
+    "& , &:hover": {
+      backgroundColor: "rgb(170,132,83,0.1)",
+      color: "#AA8453",
+    },
+  },
   link: {
     fontWeight: 500,
     display: "block",
@@ -38,7 +48,7 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
     color:
       theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
+        ? theme.colors.dark[1]
         : theme.colors.gray[7],
     borderLeft: `${rem(1)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
@@ -49,7 +59,7 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[7]
           : theme.colors.gray[0],
-      color: theme.colorScheme === "dark" ? theme.white : theme.black,
+      color: "#AA8453",
     },
   },
 
@@ -58,28 +68,40 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export function LinksGroup({ label, initiallyOpened, links }) {
+export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
+  const { pathname } = useLocation();
+  const [active, setActive] = useState(
+    localStorage.getItem("lastRoute") || "Overview"
+  );
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
-    <Text
-      component="a"
-      // order={2}
-      className={classes.link}
-      href={link.link}
-      key={link.label}
-      onClick={(event) => event.preventDefault()}
-    >
-      {link.label}
-    </Text>
+    <Link key={link.label} to={link.link}>
+      <Text
+        // order={2}
+        className={classes.link}
+        style={{
+          color: pathname == link.link ? "#aa8453" : "white",
+        }}
+        // c="blue"
+      >
+        {link.label}
+      </Text>
+    </Link>
   ));
+  useEffect(() => {
+    onPropChange(active);
+    localStorage.setItem("lastRoute", active);
+  }, [active]);
 
   return (
     <>
       <UnstyledButton
-        onClick={() => setOpened((o) => !o)}
+        onClick={() => {
+          setOpened((o) => !o);
+        }}
         className={classes.control}
       >
         <Group position="apart" spacing={0}>
@@ -111,6 +133,7 @@ export function NavbarLinksGroup() {
       sx={(theme) => ({
         minHeight: rem(220),
         padding: theme.spacing.md,
+        // color : "red",
         backgroundColor:
           theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.white,
       })}

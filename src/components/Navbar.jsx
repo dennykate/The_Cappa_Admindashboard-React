@@ -11,6 +11,7 @@ import {
   useMantineTheme,
   Title,
   Flex,
+  Tooltip,
 } from "@mantine/core";
 // import { useDisclosure } from "@mantine/hooks";
 
@@ -37,6 +38,7 @@ import { Menu } from "@mantine/core";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
+import { useLocation } from "react-router-dom";
 // import {
 //   IconSettings,
 //   IconSearch,
@@ -80,11 +82,7 @@ const useStyles = createStyles((theme) => ({
   },
   // "#AA8453"
   naviconLinkActive: {
-    "&,&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[5]
-          : theme.colors.gray[0],
+    "&:hover": {
       color: "#AA8453",
     },
   },
@@ -94,6 +92,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.gray[0]
         : theme.colors.dark[5],
+    textTransform: "capitalize",
   },
 }));
 
@@ -105,23 +104,17 @@ export function HeaderMegaMenu({
   handleIsOpen,
   isOpen,
 }) {
-  // const [themecolor, setTheme] = useState("light");
-  // const toggleTheme = () =>
-  //   setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  const { pathname } = useLocation();
   const { colorScheme } = useMantineTheme();
   const navigate = useNavigate();
 
-  // const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
-  //   useDisclosure(false);
-  // const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const { classes, theme } = useStyles();
 
-  // const links = mockdata.map((item) => (
-  //   <UnstyledButton
-  //     className={classes.subLink}
-  //     key={item.title}
-  //   ></UnstyledButton>
-  // ));
+  const pathToName = (path) => {
+    const pathArr = path.split("/");
+    const name = pathArr[pathArr.length - 1].replace("-", " ");
+    return name;
+  };
 
   return (
     <Box>
@@ -150,39 +143,47 @@ export function HeaderMegaMenu({
             {isOpen ? (
               <Burger
                 size={25}
-                color={colorScheme === "dark" ? "#aa8453" : "#222222"}
+                color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
               />
             ) : (
               <MdKeyboardArrowRight
                 size={35}
-                color={colorScheme === "dark" ? "#aa8453" : "#222222"}
+                color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
               />
             )}
 
             <div>
-              <Title order={4} fw={500} pl={3} pt={2} className={classes.title}>
-                {menuSelect}
+              <Title
+                order={4}
+                fw={400}
+                pl={10}
+                pt={2}
+                className={classes.title}
+              >
+                {pathToName(pathname)}
               </Title>
             </div>
           </Flex>
 
           <Group className={classes.hiddenMobile} mr="xl">
-            <Group className={classes.naviconLink}>
-              <IconBell
-                size={24}
-                strokeWidth={1}
-                color={colorScheme === "dark" ? "#ffffff" : "black"}
-              />
-            </Group>
-
-            <Group className={classes.naviconLink}>
-              <IconMessage
-                // className={classes.naviconLinkActive}
-                size={24}
-                strokeWidth={1}
-                color={colorScheme === "dark" ? "#ffffff" : "black"}
-              />
-            </Group>
+            <Tooltip label="notification">
+              <Group className={classes.naviconLink}>
+                <IconBell
+                  size={24}
+                  strokeWidth={1.5}
+                  className={classes.naviconLinkActive}
+                />
+              </Group>
+            </Tooltip>
+            <Tooltip label="chat">
+              <Group className={classes.naviconLink}>
+                <IconMessage
+                  className={classes.naviconLinkActive}
+                  size={24}
+                  strokeWidth={1.5}
+                />
+              </Group>
+            </Tooltip>
 
             <ActionToggle />
             {/* Profile  */}
