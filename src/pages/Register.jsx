@@ -53,14 +53,14 @@ export default function Register() {
       w={"100%"}
       h={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
-      className="relative overflow-x-auto"
+      className="relative overflow-y-auto"
     >
       <div className="logo absolute  top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
         <LogoDarkLight dark={dark} />
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
       </div>
 
-      <Paper sx={{ width: 420 }} bg={"transparent"}>
+      <Paper sx={{ width: 420 }} bg={"transparent"} className="mt-20">
         <Title
           align="center"
           sx={(theme) => ({

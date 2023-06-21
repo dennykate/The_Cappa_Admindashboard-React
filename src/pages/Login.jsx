@@ -92,22 +92,22 @@ export default function Login() {
           <form onSubmit={form.onSubmit(onSubmitHandler)}>
             <InputText dark={dark} form={form} />
             <InputPassword dark={dark} form={form} />
-            <Group position="apart" mt="lg">
+            <Flex className="justify-between" mt="lg">
               <Checkbox
                 color="yellow"
                 label="Trust this device for 60 days"
-                sx={{
-                  ["& .mantine-Checkbox-label"]: {
-                    color: dark ? "#F8F5F0" : "grey",
-                    fontSize: "16px",
-                  },
+                classNames={{
+                  label: `sm:text-base text-sm ${
+                    dark ? "text-[#F8F5F0]" : "text-gray-500"
+                  }`,
+                  input: "bg-bgLight border-primary",
                 }}
               />
 
-              <Anchor component="button" size="sm" color="#AA8453">
+              <Anchor component="button"  color="#AA8453" className="text-xs sm:text-sm">
                 Forgot password?
               </Anchor>
-            </Group>
+            </Flex>
             <Button
               type="submit"
               fullWidth
@@ -120,13 +120,13 @@ export default function Login() {
             <SocialBtnGroup />
             <div className="flex justify-between items-center mt-3">
               <Text
-                className={`text-base ${
+                className={`sm:text-base text-sm ${
                   dark ? "text-[#F8F5F0]" : "text-gray-500"
                 }`}
               >
                 Don't have an account?
               </Text>
-              <Link to={"/register"} className="text-[#AA8453] text-sm">
+              <Link to={"/register"} className="text-[#AA8453] sm:text-sm text-xs">
                 Sign Up
               </Link>
             </div>

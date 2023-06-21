@@ -8,12 +8,13 @@ const AuthHorizontalLine = ({dark}) => {
             labelPosition="center"
             mt="lg"
             className="text-base text-white"
-            sx={{
-              ["& .mantine-Divider-label"]: {
-                color: dark ? "#F8F5F0" : "grey",
-                fontSize: "16px",
-              },
-            }}
+            // sx={{
+            //   ["& .mantine-Divider-label"]: {
+            //     color: dark ? "#F8F5F0" : "grey",
+            //     fontSize: "16px",
+            //   },
+          // }}
+            classNames={{label:`${dark?"#F8F5F0" : "grey"} sm:text-base text-sm`}}
           />
   )
 }

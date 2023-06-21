@@ -9,7 +9,7 @@ const LogoDarkLight = ({dark}) => {
         : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
     }
     alt=""
-    className="md:w-[150px] w-[100px]"
+    className="sm:w-[150px] w-[120px]"
   />
   )
 }

@@ -53,7 +53,17 @@ const App = () => {
       toggleColorScheme={toggleColorScheme}
     >
       <MantineProvider
-        theme={{ colorScheme, fontFamily: "Barlow, sans-serif" }}
+        theme={{
+          colorScheme,
+          fontFamily: "Barlow, sans-serif",
+          // breakpoints: {
+          //   xs: "30em",
+          //   sm: "48em",
+          //   md: "64em",
+          //   lg: "74em",
+          //   xl: "90em",
+          // },
+        }}
       >
         <Routes>
           <Route path="/" element={<Navigate to={"/dashboard/overview"} />} />

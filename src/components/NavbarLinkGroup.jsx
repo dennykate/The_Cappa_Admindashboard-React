@@ -7,6 +7,7 @@ import {
   UnstyledButton,
   createStyles,
   rem,
+  useMantineColorScheme,
 } from "@mantine/core";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { Link, useLocation } from "react-router-dom";
@@ -69,6 +70,7 @@ const useStyles = createStyles((theme) => ({
 }));
 
 export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
+  const { colorScheme } = useMantineColorScheme();
   const { pathname } = useLocation();
   const [active, setActive] = useState(
     localStorage.getItem("lastRoute") || "Overview"
