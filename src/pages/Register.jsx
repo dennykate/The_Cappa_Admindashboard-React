@@ -27,11 +27,17 @@ import LogoDarkLight from "../components/LogoDarkLight";
 export default function Register() {
   const navigate = useNavigate();
   const form = useForm({
-    initialValues: {name:"", email: "", password: "", password_confirmation: "" },
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+    },
 
     // functions will be used to validate values at corresponding key
     validate: {
-      name: (value) => (value.length < 2 ? 'Name must have at least 2 letters' : null),
+      name: (value) =>
+        value.length < 2 ? "Name must have at least 2 letters" : null,
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
       password: (value) =>
         value.length < 8 ? "Your password must be at least 8 characters" : null,
@@ -53,9 +59,9 @@ export default function Register() {
       w={"100%"}
       minh={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
-      className="relative my-[50px]"
+      className="relative py-[50px]"
     >
-      <div className="logo absolute top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
+      <div className="logo absolute top-5  w-full flex justify-between items-center lg:px-48 sm:px-10 px-5">
         <LogoDarkLight dark={dark} />
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
       </div>
@@ -83,7 +89,13 @@ export default function Register() {
 
         <Paper bg={"transparent"} p={30} radius="md">
           <form onSubmit={form.onSubmit(onSubmitHandler)}>
-            <InputText dark={dark} form={form} placeholder={"John Doe"} label={"Name*"} value={"name"}/>
+            <InputText
+              dark={dark}
+              form={form}
+              placeholder={"John Doe"}
+              label={"Name*"}
+              value={"name"}
+            />
             <InputText
               dark={dark}
               form={form}
@@ -107,7 +119,9 @@ export default function Register() {
                   input: "bg-bgLight border-primary",
                 }}
               />
-              <Anchor className="text-[#AA8453] sm:text-base text-sm">Terms of Service</Anchor>
+              <Anchor className="text-[#AA8453] sm:text-base text-sm">
+                Terms of Service
+              </Anchor>
             </Group>
             <Button
               type="submit"
