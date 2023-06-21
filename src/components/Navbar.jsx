@@ -188,7 +188,7 @@ export function HeaderMegaMenu({
             <ActionToggle />
             {/* Profile  */}
             <Menu shadow="xl" width={180}>
-              <Menu.Target>
+              <Menu.Target className="cursor-pointer">
                 <Avatar
                   radius="lg"
                   size="sm"

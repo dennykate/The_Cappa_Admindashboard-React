@@ -31,7 +31,7 @@ import Teamleader from "./components/Department/Teamleader";
 import EditTeamLeader from "./components/Department/EditTeamLeader";
 import EditFacilities from "./components/Management/EditFacilities";
 import AddFacilities from "./components/Management/AddFacilities";
-import AddBooking from "./components/Management/AddBooking";
+import AddBooking from "./pages/AddBooking";
 import EditBooking from "./components/Management/EditBooking";
 import AllBooking from "./components/Management/AllBooking";
 

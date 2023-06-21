@@ -19,11 +19,7 @@ const Dashboard = () => {
 
   return (
     <Layout>
-      <div
-        className={` ${
-          dark ? "bg-bgDark" : "bg-bgLight"
-        } min-h-screen overflow-x-hidden pt-10 sm:px-5 px-1`}
-      >
+      <div className={`  pt-10 sm:px-5 px-1`}>
         <CardContainer dark={dark} />
         <Grid mt={10} gutter={20}>
           <CalendarContainer dark={dark} />

@@ -429,3 +429,66 @@ export const roomListData = [
     status: "booked",
   },
 ];
+export const facilitiesData = [
+  { value: "Free Wifi", label: "Free Wifi" },
+  { value: "breakfast", label: "Breakfast" },
+  { value: "Towels", label: "Towels" },
+  { value: "Swimming Pool", label: "Swimming Pool" },
+  { value: "Bath Hub", label: "Bath Hub" },
+  { value: "TV", label: "TV" },
+  { value: "Dinning", label: "Dinning" },
+];
+
+export const roomsData = [
+  {
+    id: 1,
+    name: "Junior Suite",
+    price: 150,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/1.jpg",
+  },
+  {
+    id: 2,
+    name: "Family Room",
+    price: 200,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/2.jpg",
+  },
+  {
+    id: 3,
+    name: "Double Room",
+    price: 250,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/3.jpg",
+  },
+  {
+    id: 4,
+    name: "Deluxe Room",
+    price: 300,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/6.jpg",
+  },
+  {
+    id: 5,
+    name: "Superior Room",
+    price: 150,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/8.jpg",
+  },
+  {
+    id: 6,
+    name: "Wellness Room",
+    price: 400,
+    time: "night",
+    img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/5.jpg",
+  },
+];
+
+export const roomsTypeData = [
+  { value: "Junior Suite", label: "Junior Suite" },
+  { value: "Family Room", label: "Family Room" },
+  { value: "Double Room", label: "Double Room" },
+  { value: "Deluxe Room", label: "Deluxe Room" },
+  { value: "Superior Room", label: "Superior Room" },
+  { value: "Wellness Room", label: "Wellness Room" },
+];
