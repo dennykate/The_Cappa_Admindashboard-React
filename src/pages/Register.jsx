@@ -51,16 +51,16 @@ export default function Register() {
       align={"center"}
       justify={"center"}
       w={"100%"}
-      h={"100vh"}
+      minh={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
-      className="relative overflow-y-auto"
+      className="relative py-[50px]"
     >
       <div className="logo absolute  top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
         <LogoDarkLight dark={dark} />
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
       </div>
 
-      <Paper sx={{ width: 420 }} bg={"transparent"} className="mt-20">
+      <Paper sx={{ width: 420 }} bg={"transparent"} className="mt-10">
         <Title
           align="center"
           sx={(theme) => ({
@@ -100,14 +100,14 @@ export default function Register() {
               <Checkbox
                 color="yellow"
                 label="I accept the"
-                sx={{
-                  ["& .mantine-Checkbox-label"]: {
-                    color: dark? "#F8F5F0":"gray",
-                    fontSize: "16px",
-                  },
+                classNames={{
+                  label: `sm:text-base text-sm ${
+                    dark ? "text-[#F8F5F0]" : "text-gray-500"
+                  }`,
+                  input: "bg-bgLight border-primary",
                 }}
               />
-              <Anchor className="text-[#AA8453]">Terms of Service</Anchor>
+              <Anchor className="text-[#AA8453] sm:text-base text-sm">Terms of Service</Anchor>
             </Group>
             <Button
               type="submit"
@@ -121,13 +121,13 @@ export default function Register() {
             <SocialBtnGroup dark={dark} />
             <div className="flex justify-between items-center mt-3">
               <Text
-                className={`text-base ${
+                className={`sm:text-base text-sm ${
                   dark ? "text-[#F8F5F0]" : "text-gray-500"
                 }`}
               >
                 Already have an account?
               </Text>
-              <Link to={"/login"} className="text-[#AA8453] text-sm">
+              <Link to={"/login"} className="text-[#AA8453] sm:text-sm text-xs">
                 Sign In
               </Link>
             </div>
