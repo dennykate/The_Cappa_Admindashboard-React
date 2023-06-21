@@ -53,9 +53,9 @@ export default function Register() {
       w={"100%"}
       minh={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
-      className="relative py-[50px]"
+      className="relative my-[50px]"
     >
-      <div className="logo absolute  top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
+      <div className="logo absolute top-5  w-full flex justify-between lg:px-48 sm:px-10 px-5">
         <LogoDarkLight dark={dark} />
         <AuthDarkLightBtn toggleColorScheme={toggleColorScheme} dark={dark} />
       </div>
