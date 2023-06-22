@@ -39,15 +39,7 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
-// import {
-//   IconSettings,
-//   IconSearch,
-//   IconPhoto,
-//   IconMessageCircle,
-//   IconTrash,
-//   IconArrowsLeftRight,
-// } from "@tabler/icons-react";
-// import { useState } from "react";
+
 
 const useStyles = createStyles((theme) => ({
   hiddenMobile: {
@@ -103,6 +95,7 @@ export function HeaderMegaMenu({
   navbarSide,
   handleIsOpen,
   isOpen,
+  profile
 }) {
   const { pathname } = useLocation();
   const { colorScheme } = useMantineTheme();
@@ -124,7 +117,7 @@ export function HeaderMegaMenu({
         style={{
           maxWidth: navbarSide(),
           margin: "0 0 0 auto",
-          // transition: "all 0.5s",
+          transition: "width 1.5s",
           backgroundColor: colorScheme === "dark" ? "#1B1B1B" : "white",
         }}
       >
@@ -208,7 +201,7 @@ export function HeaderMegaMenu({
                       radius="lg"
                       size="sm"
                       color="dark"
-                      src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+                      src={profile}
                     />
                     <Text pl={15}> Profile</Text>
                   </Flex>

@@ -40,7 +40,7 @@ import { useDisclosure } from "@mantine/hooks";
 import styled from "styled-components";
 import { Paper } from "@mantine/core";
 import { Input } from "@mantine/core";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 // import TheCappa from "src/assets/logo.png";
 
 const useStyles = createStyles((theme) => ({
@@ -240,19 +240,48 @@ const mainLinksMockdata = [
   {
     icon: IconCalendarStats,
     label: "List",
-    subLinks: ["/list/room-list", "/list/guest-list", "/list/concierge-list","/list/review-list"],
+    subLinks: [
+      "/list/room-list",
+      "/list/guest-list",
+      "/list/concierge-list",
+      "/list/review-list",
+    ],
   },
   {
     icon: IconUsersGroup,
     label: "Department",
-    subLinks: ["/department/team-leader", "/department/add-teamleader", "/department/edit-teamleader"],
+    subLinks: [
+      "/department/team-leader",
+      "/department/add-teamleader",
+      "/department/edit-teamleader",
+    ],
   },
   {
     icon: IconBookmarkEdit,
     label: "Management",
-    subLinks: ["/management/all-booking","/management/add-booking","/management/edit-booking","/management/all-room-suite","/management/add-room-suite","/management/edit-room-suite"],
+    subLinks: [
+      "/management/all-booking",
+      "/management/add-booking",
+      "/management/edit-booking",
+      "/management/all-room-and-suite",
+      "/management/add-room-and-suite",
+      "/management/edit-room-suite",
+      "/management/all-services",
+      "/management/add-services",
+      "/management/edit-services",
+      "/management/all-facilities",
+      "/management/add-facilities",
+      "/management/edit-facilities",
+      "/management/all-menu",
+      "/management/add-menu",
+      "/management/edit-menu",
+    ],
   },
-  { icon: IconWriting, label: "Blog and Review" },
+  {
+    icon: IconWriting,
+    label: "Blog and Review",
+    subLinks: ["/news/all-news", "/news/add-news", "/news/edit-news"],
+  },
   // { icon: IconUser, label: "Account" },
 ];
 
@@ -306,7 +335,7 @@ const mockdata_Management = [
   {
     label: "Rooms & Suite",
     links: [
-      { label: "All Rooms & Suite", link: "/management/all-room-suite" },
+      { label: "All Rooms & Suite", link: "/management/all-room-and-suite" },
       { label: "Add Rooms & Suite", link: "/management/add-room-suite" },
       { label: "Edit Rooms & Suite", link: "/management/edit-room-suite" },
     ],
@@ -358,10 +387,10 @@ const mockdata = [
   mockdata_Management,
   mockdada_Article,
 ];
+
 const StyledPaper = styled(Paper)`
-  // position: fixed;
-  // top: 0px;
-  // left: 0px;
+  width: 100%;
+  transition: width 0.5s;
 `;
 
 export function MantineSidebar({
@@ -430,7 +459,6 @@ export function MantineSidebar({
         width={{ sm: sideBarWidth() }}
         style={{
           transition: "width 0.5s",
-          minWidth: 0,
         }}
       >
         <Navbar.Section grow className={classes.wrapper}>
@@ -504,12 +532,18 @@ export function MantineSidebar({
                 }
               />
             </Modal>
+
             {/* footer icons  */}
             <Stack justify="center" spacing={290}>
               <div className=""></div>
               <div className={classes}>
                 <NavbarLink icon={IconSearch} label="Search" onClick={open} />
-                <NavbarLink icon={IconSettings} label="Setting" />
+                <NavbarLink
+                  icon={IconSettings}
+                  label="Setting"
+                  component={Link}
+                  to="/setting"
+                />
                 <NavbarLink icon={IconLogout} label="Logout" />
               </div>
             </Stack>

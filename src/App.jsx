@@ -34,6 +34,7 @@ import AddFacilities from "./components/Management/AddFacilities";
 import AddBooking from "./pages/AddBooking";
 import EditBooking from "./components/Management/EditBooking";
 import AllBooking from "./components/Management/AllBooking";
+import SettingProfile from "./pages/SettingProfile";
 
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
@@ -69,6 +70,7 @@ const App = () => {
           <Route path="/" element={<Navigate to={"/dashboard/overview"} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/setting" element={<SettingProfile />} />
           {/* Dashboard  */}
           <Route path="/dashboard/overview" element={<Dashboard />} />
           <Route path="/dashboard/chart" element={<Chart />} />
@@ -91,7 +93,7 @@ const App = () => {
           <Route path="/management/add-booking" element={<AddBooking />} />
           <Route path="/management/edit-booking" element={<EditBooking />} />
           {/* Room & Suite  */}
-          <Route path="/management/all-room-suite" element={<AllRoom />} />
+          <Route path="/management/all-room-and-suite" element={<AllRoom />} />
           <Route path="/management/add-room-suite" element={<AddRoom />} />
           <Route path="/management/edit-room-suite" element={<EditRoom />} />
           {/* Services  */}

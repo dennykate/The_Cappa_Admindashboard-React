@@ -21,6 +21,9 @@ const Layout = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   const [menuSelect, setmenuSelect] = useState("");
+  const [profile, setProfile] = useState(
+    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+  );
 
   useEffect(() => {
     console.log(scroll);
@@ -35,8 +38,8 @@ const Layout = ({ children }) => {
     setmenuSelect(newMenu);
   };
 
-  const getSideBarWidth = () => (isOpen ? 300 : 70);
-  const getNavBarWidth = () => (isOpen ? "1225px" : "1450px");
+  const getSideBarWidth = () => (isOpen ? "100%" : "0%");
+  const getNavBarWidth = () => (isOpen ? "100%" : "150%");
 
   const handleIsOpenSideBar = () => {
     if (!isOpen) {
@@ -53,43 +56,46 @@ const Layout = ({ children }) => {
 
   if (!isLogin) return <Navigate to={"/login"} />;
   else
-    
-  return (
-    <Flex
-      direction="row"
-      justify="center"
-      align="start"
-      gap={0}
-      style={layoutStyles}
-    >
-      <Box className=" sticky top-0">
-        <MantineSidebar
-          onPropChange={handleMenuChange}
-          sideBarWidth={getSideBarWidth}
-          handleIsOpen={handleIsOpenSideBar}
-          isOpen={isOpen}
-        ></MantineSidebar>
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          minHeight: "100vh",
-          backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
-        }}
+    return (
+      <Flex
+        direction="row"
+        justify="center"
+        align="start"
+        gap={0}
+        style={layoutStyles}
       >
-        <HeaderMegaMenu
-          menuSelect={menuSelect}
-          navbarSide={getNavBarWidth}
-          handleIsOpen={handleIsOpenNavBar}
-          isOpen={isOpen}
-        ></HeaderMegaMenu>
-        {children}
-      </Box>
+        <Box
+          className="sticky top-0"
+          style={{ width: isOpen ? "25vw" : "4.5vw", transition: "width 0.5s" }}
+        >
+          <MantineSidebar
+            onPropChange={handleMenuChange}
+            sideBarWidth={getSideBarWidth}
+            handleIsOpen={handleIsOpenSideBar}
+            isOpen={isOpen}
+          ></MantineSidebar>
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            minHeight: "100vh",
+            backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
+          }}
+        >
+          <HeaderMegaMenu
+            profile={profile}
+            menuSelect={menuSelect}
+            navbarSide={getNavBarWidth}
+            handleIsOpen={handleIsOpenNavBar}
+            isOpen={isOpen}
+          ></HeaderMegaMenu>
+          {children}
+        </Box>
 
-      <NavButton showBtn={showBtn} />
-      <MessageBtn />
-    </Flex>
-  );
+        <NavButton showBtn={showBtn} />
+        <MessageBtn />
+      </Flex>
+    );
 };
 
 export default Layout;

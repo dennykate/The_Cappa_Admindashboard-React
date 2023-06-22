@@ -85,7 +85,7 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
         // order={2}
         className={classes.link}
         style={{
-          color: pathname == link.link ? "#aa8453" : "white",
+          color: pathname == link.link ? "#aa8453" : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
         }}
         // c="blue"
       >
