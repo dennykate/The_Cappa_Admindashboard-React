@@ -75,12 +75,15 @@ const UserInfoAction = (props) => {
                 <IconBrandFacebook
                   size={24}
                   strokeWidth={1}
+                  color="#aa8453"
                   className={classes.naviconLinkActive}
                 />
               </Group>
               <Group className={classes.naviconLink}>
                 <IconBrandTwitter
                   size={24}
+                  color="#aa8453"
+
                   strokeWidth={1}
                   className={classes.naviconLinkActive}
                 />
@@ -88,6 +91,8 @@ const UserInfoAction = (props) => {
               <Group className={classes.naviconLink} >
                 <IconBrandInstagram
                   size={24}
+                  color="#aa8453"
+
                   strokeWidth={1}
                   className={classes.naviconLinkActive}
                 />

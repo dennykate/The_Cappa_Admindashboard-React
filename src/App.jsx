@@ -84,9 +84,9 @@ const App = () => {
           <Route path="/department/team-leader" element={<Teamleader />} />
           <Route
             path="/department/add-teamleader"
-            element={<EditTeamLeader />}
+            element={<AddTeamLeader />}
           />
-          <Route path="/department/edit-teamleader" element={<AllBooking />} />
+          <Route path="/department/edit-teamleader" element={<EditTeamLeader />} />
           {/* Management  */}
           {/* Booking  */}
           <Route path="/management/all-booking" element={<AllBooking />} />

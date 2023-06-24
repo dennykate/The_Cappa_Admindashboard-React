@@ -12,6 +12,7 @@ import {
   Image,
   useMantineTheme,
   ScrollArea,
+  Flex,
 } from "@mantine/core";
 import {
   IconCalendarStats,
@@ -41,7 +42,6 @@ import styled from "styled-components";
 import { Paper } from "@mantine/core";
 import { Input } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
-// import TheCappa from "src/assets/logo.png";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -115,11 +115,12 @@ const useStyles = createStyles((theme) => ({
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
           : theme.colors.gray[0],
+      color: "#AA8453",
     },
   },
   // "#AA8453"
   lowerLinkActive: {
-    " &:hover": {
+    "&": {
       backgroundColor:
         theme.colorScheme === "dark"
           ? theme.colors.dark[5]
@@ -198,34 +199,6 @@ const useStyles = createStyles((theme) => ({
     paddingRight: theme.spacing.xl,
   },
 }));
-
-function NavbarLink({ icon: Icon, label, active, onClick }) {
-  const { classes, cx } = useStyles();
-  return (
-    <Tooltip
-      label={label}
-      position="right"
-      transitionProps={{ duration: 0 }}
-      withArrow
-    >
-      <UnstyledButton
-        onClick={onClick}
-        className={cx(classes.lowerLink, {
-          [classes.lowerLinkActive]: NavbarLink.label === active,
-        })}
-      >
-        <Icon size="1.2rem" stroke={1.5} />
-      </UnstyledButton>
-    </Tooltip>
-  );
-}
-
-NavbarLink.propTypes = {
-  icon: PropTypes.elementType.isRequired,
-  label: PropTypes.string.isRequired,
-  active: PropTypes.bool,
-  onClick: PropTypes.func,
-};
 
 const mainLinksMockdata = [
   {
@@ -393,6 +366,36 @@ const StyledPaper = styled(Paper)`
   transition: width 0.5s;
 `;
 
+function NavbarLink({ icon: Icon, label, active, onClick, iconColor = null }) {
+  const { classes, cx } = useStyles();
+  return (
+    <Tooltip
+      label={label}
+      position="right"
+      transitionProps={{ duration: 0 }}
+      withArrow
+    >
+      <UnstyledButton
+        onClick={onClick}
+        className={cx(classes.lowerLink, {
+          [classes]: NavbarLink.label === active,
+        })}
+        style={{
+          color: iconColor ?? "",
+        }}
+      >
+        <Icon size="1.2rem" stroke={1.5} />
+      </UnstyledButton>
+    </Tooltip>
+  );
+}
+
+NavbarLink.propTypes = {
+  icon: PropTypes.elementType.isRequired,
+  label: PropTypes.string.isRequired,
+  active: PropTypes.bool,
+  onClick: PropTypes.func,
+};
 export function MantineSidebar({
   onPropChange,
   sideBarWidth,
@@ -421,6 +424,7 @@ export function MantineSidebar({
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
 
+  console.log(pathname);
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
       label={link.label}
@@ -466,87 +470,94 @@ export function MantineSidebar({
             {/* Logo  */}
             <div className={classes.logo}></div>
 
-            {/* side bar icons  */}
-            {mainLinks}
+            <div className="">
+              {/* side bar icons  */}
+              {mainLinks}
 
-            <Modal
-              opened={opened}
-              onClose={close}
-              centered
-              // title="Authentication"
-            >
-              {/* Modal content */}
-              <Image
-                src={
-                  colorScheme === "dark"
-                    ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
-                    : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
-                }
-                style={{
-                  width: "55%",
-                  height: "100%",
-                  margin: "0 auto",
-                }}
-              />
-              <Input
-                icon={
-                  <IconSearch
-                    size={20}
-                    color={
-                      colorScheme === "dark"
-                        ? defaultTheme.colors.dark[1]
-                        : defaultTheme.colors.dark[3]
-                    }
-                  />
-                }
-                placeholder="Search here"
-                sx={{
-                  input: {
-                    overflow: "auto",
-                    height: 30,
-                    borderColor:
-                      colorScheme === "dark"
-                        ? defaultTheme.colors.dark[5]
-                        : defaultTheme.colors.dark[3],
-                  },
-                  zIndex: 10,
-                  height: 100,
-                  display: "flex",
-                  alignItems: "center",
-                }}
-                radius="xs"
-                rightSection={
-                  <Tooltip label="Search by voice" position="top-end" withArrow>
-                    <div>
-                      <IconMicrophone
-                        size="1rem"
-                        style={{ display: "block", opacity: 1 }}
-                        color={
-                          colorScheme === "dark"
-                            ? defaultTheme.colors.dark[1]
-                            : defaultTheme.colors.dark[3]
-                        }
-                      />
-                    </div>
-                  </Tooltip>
-                }
-              />
-            </Modal>
-
-            {/* footer icons  */}
-            <Stack justify="center" spacing={290}>
-              <div className=""></div>
-              <div className={classes}>
-                <NavbarLink icon={IconSearch} label="Search" onClick={open} />
-                <NavbarLink
-                  icon={IconSettings}
-                  label="Setting"
-                  component={Link}
-                  to="/setting"
+              <Modal
+                opened={opened}
+                onClose={close}
+                centered
+                // title="Authentication"
+              >
+                {/* Modal content */}
+                <Image
+                  src={
+                    colorScheme === "dark"
+                      ? "https://duruthemes.com/demo/html/cappa/demo2-dark/img/logo.png"
+                      : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
+                  }
+                  style={{
+                    width: "55%",
+                    height: "100%",
+                    margin: "0 auto",
+                  }}
                 />
-                <NavbarLink icon={IconLogout} label="Logout" />
-              </div>
-            </Stack>
+                <Input
+                  icon={
+                    <IconSearch
+                      size={20}
+                      color={
+                        colorScheme === "dark"
+                          ? defaultTheme.colors.dark[1]
+                          : defaultTheme.colors.dark[3]
+                      }
+                    />
+                  }
+                  placeholder="Search here"
+                  sx={{
+                    input: {
+                      overflow: "auto",
+                      height: 30,
+                      borderColor:
+                        colorScheme === "dark"
+                          ? defaultTheme.colors.dark[5]
+                          : defaultTheme.colors.dark[3],
+                    },
+                    zIndex: 10,
+                    height: 100,
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  radius="xs"
+                  rightSection={
+                    <Tooltip
+                      label="Search by voice"
+                      position="top-end"
+                      withArrow
+                    >
+                      <div>
+                        <IconMicrophone
+                          size="1rem"
+                          style={{ display: "block", opacity: 1 }}
+                          color={
+                            colorScheme === "dark"
+                              ? defaultTheme.colors.dark[1]
+                              : defaultTheme.colors.dark[3]
+                          }
+                        />
+                      </div>
+                    </Tooltip>
+                  }
+                />
+              </Modal>
+
+              {/* footer icons  */}
+              <Stack justify="center" mt="650%">
+                <div className=""></div>
+                <div className={classes}>
+                  <NavbarLink icon={IconSearch} label="search" onClick={open} />
+                  <Link to="/setting">
+                    <NavbarLink
+                      icon={IconSettings}
+                      label="setting"
+                      iconColor={pathname === "/setting" ? "#aa8453" : ""}
+                    />
+                  </Link>
+                  <NavbarLink icon={IconLogout} label="logout" />
+                </div>
+              </Stack>
+            </div>
           </div>
 
           <Navbar.Section

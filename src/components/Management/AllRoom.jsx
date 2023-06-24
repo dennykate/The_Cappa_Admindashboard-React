@@ -1,8 +1,36 @@
 import { useMantineColorScheme } from "@mantine/styles";
 import React from "react";
 import Layout from "../Layout";
-import { Container, Flex, Paper, SimpleGrid } from "@mantine/core";
+import { Link } from "react-router-dom";
+import { IconPlus } from "@tabler/icons-react";
+import {
+  Card,
+  Text,
+  Group,
+  createStyles,
+  SimpleGrid,
+  Container,
+  Flex,
+  Center,
+
+} from "@mantine/core";
 import BadgeCard from "./CardforRoom";
+
+const useStyles = createStyles((theme) => ({
+  card: {
+    backgroundColor: theme.colorScheme === "dark" ? "#1b1b1b" : "white",
+  },
+
+  section: {
+    backgroundColor: theme.colorScheme === "dark" ? "#1b1b1b" : "white",
+    paddingLeft: theme.spacing.md,
+    paddingRight: theme.spacing.md,
+    paddingTop: theme.spacing.md,
+    paddingBottom: theme.spacing.md,
+  },
+
+ 
+}));
 
 const AllRoom = () => {
   const Rooms = [
@@ -14,23 +42,16 @@ const AllRoom = () => {
   ];
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+  const { classes, theme } = useStyles();
   return (
     <>
      <Layout>
-     <div className="py-10 sm:px-5 px-1 ">
-     {/* <Paper
-          radius={"md"}
-          shadow="md"
-          className="p-[20px]"
-          bg={dark ? "#1B1B1B" : "#F8F5F0"}
-        > */}
-          <Flex>
+     <div className=" ">
+    
 
-          </Flex>
-<Flex>
-
+    
     <Container size="100%" p="xl" className="cursor-pointer">
-    <SimpleGrid cols={3} 
+    <SimpleGrid cols={4} 
       spacing=""
       breakpoints={[
         { maxWidth: '62rem', cols: 3, spacing: 'md' },
@@ -42,14 +63,41 @@ const AllRoom = () => {
     <BadgeCard {...room} key={index}/>
      )
 })}
+ <Card withBorder radius="md" className={classes.card}>
+                  <Card.Section className={classes.section} mt="md">
+                  <Link to="/management/add-room">
+                      <Center maw={200} h={270} mx="auto" style={{display : "-webkit-flex"}} >
+                        <div className="flex flex-col justify-center items-center">
+                          {" "}
+                          <IconPlus
+                            size={50}
+                            color={
+                              theme.colorScheme === "dark" ? "#aa8453" : "gray"
+                            }
+                          />
+                          <Text
+                            fz={20}
+                            fw={500}
+                            color={
+                              theme.colorScheme === "dark" ? "#aa8453" : "gray"
+                            }
+                          >
+                            {" "}
+                            Create New
+                          </Text>
+                        </div>
+                      </Center>
+                      </Link>
+                  </Card.Section>
+                </Card>
    </SimpleGrid>
     </Container>
    
  
  
-</Flex>
 
-        {/* </Paper> */}
+
+    
 </div>
      </Layout>
       

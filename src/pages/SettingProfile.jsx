@@ -9,7 +9,7 @@ const SettingProfile = () => {
   return (
     <>
       <Layout>
-      <div className="py-10 sm:px-5 px-1 ">
+      <div className=" ">
         
         
         <Paper
