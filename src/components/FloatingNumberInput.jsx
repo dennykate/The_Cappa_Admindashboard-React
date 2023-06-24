@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TextInput, createStyles, rem } from "@mantine/core";
+import { NumberInput, TextInput, createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme, { floating }) => ({
   root: {
@@ -44,7 +44,7 @@ const useStyles = createStyles((theme, { floating }) => ({
   },
 }));
 
-export function FloatingInput({ label, placeholder, dark, form }) {
+export function FloatingNumberInput({ label, placeholder, dark }) {
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
   const { classes } = useStyles({
@@ -52,7 +52,7 @@ export function FloatingInput({ label, placeholder, dark, form }) {
   });
 
   return (
-    <TextInput
+    <NumberInput
       label={label}
       placeholder={placeholder}
       required
@@ -68,7 +68,6 @@ export function FloatingInput({ label, placeholder, dark, form }) {
           background: dark ? "#222222" : "transparent",
         },
       }}
-      {...form.getInputProps(label.toLowerCase())}
     />
   );
 }

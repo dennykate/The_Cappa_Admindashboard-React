@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
   const [menuSelect, setmenuSelect] = useState("");
 
   useEffect(() => {
-    console.log(scroll);
     if (scroll.y > 50) {
       setShowBtn(true);
     } else {
@@ -53,43 +52,43 @@ const Layout = ({ children }) => {
 
   if (!isLogin) return <Navigate to={"/login"} />;
   else
-    
-  return (
-    <Flex
-      direction="row"
-      justify="center"
-      align="start"
-      gap={0}
-      style={layoutStyles}
-    >
-      <Box className=" sticky top-0">
-        <MantineSidebar
-          onPropChange={handleMenuChange}
-          sideBarWidth={getSideBarWidth}
-          handleIsOpen={handleIsOpenSideBar}
-          isOpen={isOpen}
-        ></MantineSidebar>
-      </Box>
-      <Box
-        sx={{
-          width: "100%",
-          minHeight: "100vh",
-          backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
-        }}
+    return (
+      <Flex
+        direction="row"
+        justify="center"
+        align="start"
+        gap={0}
+        style={layoutStyles}
+        bg={colorScheme === "dark" ? "#222222" : "#F8F5F0"}
       >
-        <HeaderMegaMenu
-          menuSelect={menuSelect}
-          navbarSide={getNavBarWidth}
-          handleIsOpen={handleIsOpenNavBar}
-          isOpen={isOpen}
-        ></HeaderMegaMenu>
-        {children}
-      </Box>
+        <Box className=" sticky top-0">
+          <MantineSidebar
+            onPropChange={handleMenuChange}
+            sideBarWidth={getSideBarWidth}
+            handleIsOpen={handleIsOpenSideBar}
+            isOpen={isOpen}
+          ></MantineSidebar>
+        </Box>
+        <Box
+          sx={{
+            width: "100%",
+            minHeight: "100vh",
+            backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
+          }}
+        >
+          <HeaderMegaMenu
+            menuSelect={menuSelect}
+            navbarSide={getNavBarWidth}
+            handleIsOpen={handleIsOpenNavBar}
+            isOpen={isOpen}
+          ></HeaderMegaMenu>
+          {children}
+        </Box>
 
-      <NavButton showBtn={showBtn} />
-      <MessageBtn />
-    </Flex>
-  );
+        <NavButton showBtn={showBtn} />
+        <MessageBtn />
+      </Flex>
+    );
 };
 
 export default Layout;

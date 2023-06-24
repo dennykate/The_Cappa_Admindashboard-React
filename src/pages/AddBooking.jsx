@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Layout from "../components/Layout";
 import {
   Box,
@@ -16,13 +16,21 @@ import { FloatingInput } from "../components/FloatingInput";
 import { facilitiesData, roomsData, roomsTypeData } from "../utils/data";
 import HotelCard from "../components/HotelCard";
 import { HiArrowLeft, HiArrowRight } from "react-icons/hi2";
-import { DateInput } from "@mantine/dates";
+import { DateInput, DatePickerInput } from "@mantine/dates";
+import { FloatingNumberInput } from "../components/FloatingNumberInput";
+import { Tooltip } from "chart.js";
+import { IconAlertCircle, IconCalendar } from "@tabler/icons-react";
 
 const AddBooking = () => {
-  const autoplay = useRef(Autoplay({ delay: 1000 }));
+  // const autoplay = useRef(Autoplay({ delay: 1000 }));
+  const [checkInOut, setCheckInOut] = useState([]);
 
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
+
+  useEffect(() => {
+    console.log(checkInOut);
+  }, [checkInOut]);
 
   return (
     <Layout>
@@ -33,57 +41,64 @@ const AddBooking = () => {
           className="p-[20px]"
           bg={dark ? "#1B1B1B" : "white"}
         >
-          <Flex justify="space-between" align="start">
+          <Flex justify="space-between" align="start" className=" flex-grow">
             <Flex
-              className="w-[60%] "
+              className="w-[100%]"
               align="start"
               direction="column"
               gap={16}
             >
               <FloatingInput dark={dark} label="Name" placeholder="Your Name" />
-              <FloatingInput
+              <FloatingNumberInput
                 dark={dark}
-                label="Gender"
-                placeholder="Your Gender"
+                label="Guests Count"
+                placeholder="Adults - Children"
               />
               <FloatingInput
                 dark={dark}
                 label="Mobile"
-                placeholder="Your Mobile Number"
+                placeholder="Mobile Number"
               />
               <FloatingInput
                 dark={dark}
                 label="Email"
-                placeholder="Your Email"
+                placeholder="Email"
               />
-              <DateInput
+              <DatePickerInput
+                type="range"
                 valueFormat="YYYY MMM DD"
-                placeholder="Arrive"
+                placeholder="Check In - Check Out"
                 className="mt-[14px] w-full"
                 sx={{
-                  input: {
+                  ["& .mantine-Input-wrapper"]: {
                     background: dark ? "#222222" : "transparent",
                   },
                 }}
-              />
-              <DateInput
-                valueFormat="YYYY MMM DD"
-                placeholder="Depart"
-                className="mt-[14px] w-full"
-                sx={{
-                  input: {
-                    background: dark ? "#222222" : "transparent",
-                  },
-                }}
+                rightSection={
+                  <div>
+                    <IconCalendar
+                      size="1rem"
+                      style={{ display: "block", opacity: 0.8 }}
+                      className="text-primary"
+                    />
+                  </div>
+                }
+                value={checkInOut}
+                onChange={setCheckInOut}
               />
               <MultiSelect
-                className="mt-[14px] w-full"
+                searchable
+                className={{ input: "border border-red-600" }}
                 data={roomsTypeData}
                 placeholder="Room Type"
+                nothingFound="Nothing found"
                 sx={{
                   "& .mantine-MultiSelect-input": {
                     background: dark ? "#222222" : "transparent",
                   },
+
+                  marginTop: 14,
+                  width: "100%",
                 }}
               />
               <Textarea
@@ -104,7 +119,7 @@ const AddBooking = () => {
                 Book Now
               </Button>
             </Flex>
-            <Box
+            {/* <Box
               className={`w-[38%] border border-dotted p-[10px] rounded-md mt-[15px] ${
                 dark ? "border-white" : "border-black"
               }`}
@@ -134,7 +149,7 @@ const AddBooking = () => {
                   </Carousel.Slide>
                 ))}
               </Carousel>
-            </Box>
+            </Box> */}
           </Flex>
         </Paper>
       </div>
