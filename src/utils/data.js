@@ -158,10 +158,10 @@ export const data = [
       "https://www.einfosoft.com/templates/admin/spiceangular/source/light/assets/images/user/user1.jpg",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/25/2018",
-    depart: " 02/28/2018",
+    checkIn: " 02/25/2018",
+    checkOut: " 02/28/2018",
     roomType: " Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 1,
   },
   {
@@ -171,10 +171,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/12/2018",
-    depart: " 02/15/2018",
+    checkIn: " 02/12/2018",
+    checkOut: " 02/15/2018",
     roomType: " Super Delux",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 2,
   },
   {
@@ -184,10 +184,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/25/2018",
-    depart: " 02/18/2018",
+    checkIn: " 02/25/2018",
+    checkOut: " 02/18/2018",
     roomType: " Super Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 3,
   },
   {
@@ -197,10 +197,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/21/2018",
-    depart: " 02/25/2018",
+    checkIn: " 02/21/2018",
+    checkOut: " 02/25/2018",
     roomType: " Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 4,
   },
   {
@@ -210,10 +210,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/16/2018",
-    depart: " 02/20/2018",
+    checkIn: " 02/16/2018",
+    checkOut: " 02/20/2018",
     roomType: " Vila",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 5,
   },
   {
@@ -223,10 +223,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/11/2018",
-    depart: " 02/15/2018",
+    checkIn: " 02/11/2018",
+    checkOut: " 02/15/2018",
     roomType: " Double",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 6,
   },
   {
@@ -236,10 +236,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/27/2018",
-    depart: " 02/28/2018",
+    checkIn: " 02/27/2018",
+    checkOut: " 02/28/2018",
     roomType: " Single",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 7,
   },
   {
@@ -249,10 +249,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/17/2018",
-    depart: " 02/20/2018",
+    checkIn: " 02/17/2018",
+    checkOut: " 02/20/2018",
     roomType: " Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 8,
   },
   {
@@ -262,10 +262,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/07/2018",
-    depart: " 02/10/2018",
+    checkIn: " 02/07/2018",
+    checkOut: " 02/10/2018",
     roomType: " Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 9,
   },
   {
@@ -275,10 +275,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/09/2018",
-    depart: " 02/15/2018",
+    checkIn: " 02/09/2018",
+    checkOut: " 02/15/2018",
     roomType: " Super Delux",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 10,
   },
   {
@@ -288,10 +288,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/12/2018",
-    depart: " 02/15/2018",
+    checkIn: " 02/12/2018",
+    checkOut: " 02/15/2018",
     roomType: " Super Delux",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 11,
   },
   {
@@ -301,10 +301,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/14/2018",
-    depart: " 02/18/2018",
+    checkIn: " 02/14/2018",
+    checkOut: " 02/18/2018",
     roomType: " Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 12,
   },
   {
@@ -314,10 +314,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/21/2018",
-    depart: " 02/25/2018",
+    checkIn: " 02/21/2018",
+    checkOut: " 02/25/2018",
     roomType: " Delux",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 13,
   },
   {
@@ -327,10 +327,10 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/19/2018",
-    depart: " 02/22/2018",
+    checkIn: " 02/19/2018",
+    checkOut: " 02/22/2018",
     roomType: " Vila",
-    payment: "Paid",
+    payment: "paid",
     id: 14,
   },
   {
@@ -340,10 +340,10 @@ export const data = [
     gender: "female",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/20/2018",
-    depart: " 02/21/2018",
+    checkIn: " 02/20/2018",
+    checkOut: " 02/21/2018",
     roomType: " Single",
-    payment: "Unpaid",
+    payment: "unpaid",
     id: 15,
   },
   {
@@ -353,11 +353,131 @@ export const data = [
     gender: "male",
     mobile: "1234567890 ",
     email: " test@email.com ",
-    arrive: " 02/11/2018",
-    depart: " 02/16/2018",
+    checkIn: " 02/11/2018",
+    checkOut: " 02/16/2018",
     roomType: " Super Delux",
-    payment: "Paid",
+    payment: "paid",
     id: 16,
+  },
+];
+
+export const bookingHeads = [
+  {
+    name: "Image",
+    sortType: null,
+  },
+  {
+    name: "Name",
+    sortType: "name",
+  },
+  {
+    name: "Gender",
+    sortType: "gender",
+  },
+  {
+    name: "Mobile",
+    sortType: "mobile",
+  },
+  {
+    name: "Email",
+    sortType: "email",
+  },
+  {
+    name: "Check In",
+    sortType: "checkIn",
+  },
+  {
+    name: "Check Out",
+    sortType: "checkOut",
+  },
+  {
+    name: "Room Type",
+    sortType: "roomType",
+  },
+  {
+    name: "Payment",
+    sortType: "payment",
+  },
+  {
+    name: "Action",
+    sortType: null,
+  },
+];
+
+export const roomListHeads = [
+  {
+    name: "Image",
+    sortType: null,
+  },
+  {
+    name: "Room Name",
+    sortType: "roomNumber",
+  },
+  {
+    name: "Bed Type",
+    sortType: "bedType",
+  },
+  {
+    name: "Room Type",
+    sortType: "roomType",
+  },
+  {
+    name: "Room Floor",
+    sortType: "floor",
+  },
+  {
+    name: "Facilities",
+    sortType: "facilities",
+  },
+  {
+    name: "Rate",
+    sortType: "rate",
+  },
+  {
+    name: "Status",
+    sortType: "status",
+  },
+  {
+    name: "Actions",
+    sortType: null,
+  },
+];
+export const guestListHeads = [
+  {
+    name: "Guest Name",
+    sortType: "name",
+  },
+  {
+    name: "Guest Id",
+    sortType: "guestId",
+  },
+  {
+    name: "Order Date",
+    sortType: "dateOrder",
+  },
+  {
+    name: "Check In",
+    sortType: "checkIn",
+  },
+  {
+    name: "Check Out",
+    sortType: "checkOur",
+  },
+  {
+    name: "Special Request",
+    sortType: "specialRequest",
+  },
+  {
+    name: "Room Type",
+    sortType: "roomType",
+  },
+  {
+    name: "Status",
+    sortType: "status",
+  },
+  {
+    name: "Action",
+    sortType: null,
   },
 ];
 
@@ -372,6 +492,7 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$145/night",
     status: "active",
+    id: 1,
   },
   {
     image: "https://travl.dexignlab.com/xhtml/images/room/room5.jpg",
@@ -383,6 +504,7 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$100/night",
     status: "booked",
+    id: 2,
   },
   {
     image: "https://travl.dexignlab.com/xhtml/images/room/room6.jpg",
@@ -394,6 +516,7 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$145/night",
     status: "active",
+    id: 3,
   },
   {
     image: "https://travl.dexignlab.com/xhtml/images/room/room7.jpg",
@@ -405,6 +528,7 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$145/night",
     status: "booked",
+    id: 4,
   },
   {
     image: "https://travl.dexignlab.com/xhtml/images/room/room6.jpg",
@@ -416,6 +540,7 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$100/night",
     status: "active",
+    id: 5,
   },
   {
     image: "https://travl.dexignlab.com/xhtml/images/room/room7.jpg",
@@ -427,8 +552,34 @@ export const roomListData = [
       "AC, Shower, Double Bed, Towel, Bathup, Coffee Set, LED TV, Wifi",
     rate: "$145/night",
     status: "booked",
+    id: 6,
   },
 ];
+export const roomListTabs = [
+  { name: "All Rooms" },
+  { name: "Active" },
+  { name: "Booked" },
+];
+export const allBookingTabs = [
+  { name: "All Booking" },
+  { name: "Paid" },
+  { name: "Unpaid" },
+];
+export const guestListTabs = [
+  { name: "All Guest" },
+  { name: "Booked" },
+  { name: "Canceled" },
+  { name: "Refund" },
+];
+export const dateRange = [
+  { name: "Today", dateFormat: [null, null] },
+  { name: "Yesterday", dateFormat: [-1, -1] },
+  { name: "Last 7 Days", dateFormat: [-7, null] },
+  { name: "Last 30 Days", dateFormat: [-30, null] },
+  { name: "This Month", dateFormat: ["first", "last"] },
+  { name: "Last Month" },
+];
+
 export const facilitiesData = [
   { value: "Free Wifi", label: "Free Wifi" },
   { value: "breakfast", label: "Breakfast" },

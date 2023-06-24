@@ -36,8 +36,7 @@ const PaginationPart = ({
         className="w-20 "
         onChange={(value) => {
           setLimit(value);
-
-          if (value > limit) {
+          if (parseInt(value) > parseInt(limit)) {
             setPage(Math.ceil(page / (value / limit)));
           } else {
             setPage(1);

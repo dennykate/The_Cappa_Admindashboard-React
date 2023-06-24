@@ -240,17 +240,33 @@ const mainLinksMockdata = [
   {
     icon: IconCalendarStats,
     label: "List",
-    subLinks: ["/list/room-list", "/list/guest-list", "/list/concierge-list","/list/review-list"],
+    subLinks: [
+      "/list/room-list",
+      "/list/guest-list",
+      "/list/concierge-list",
+      "/list/review-list",
+    ],
   },
   {
     icon: IconUsersGroup,
     label: "Department",
-    subLinks: ["/department/team-leader", "/department/add-teamleader", "/department/edit-teamleader"],
+    subLinks: [
+      "/department/team-leader",
+      "/department/add-teamleader",
+      "/department/edit-teamleader",
+    ],
   },
   {
     icon: IconBookmarkEdit,
     label: "Management",
-    subLinks: ["/management/all-booking","/management/add-booking","/management/edit-booking","/management/all-room-suite","/management/add-room-suite","/management/edit-room-suite"],
+    subLinks: [
+      "/management/all-booking",
+      "/management/add-booking",
+      "/management/edit-booking",
+      "/management/all-room-suite",
+      "/management/add-room-suite",
+      "/management/edit-room-suite",
+    ],
   },
   { icon: IconWriting, label: "Blog and Review" },
   // { icon: IconUser, label: "Account" },
@@ -371,7 +387,6 @@ export function MantineSidebar({
   isOpen,
 }) {
   const { pathname } = useLocation();
-  console.log(pathname);
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();

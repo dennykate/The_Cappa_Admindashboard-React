@@ -23,7 +23,6 @@ const Layout = ({ children }) => {
   const [menuSelect, setmenuSelect] = useState("");
 
   useEffect(() => {
-    console.log(scroll);
     if (scroll.y > 50) {
       setShowBtn(true);
     } else {
@@ -51,9 +50,9 @@ const Layout = ({ children }) => {
     minHeight: "100vh",
   };
 
-  if (!isLogin) return <Navigate to={"/login"} />;
-  else
-    
+  // if (!isLogin) return <Navigate to={"/login"} />;
+  // else
+
   return (
     <Flex
       direction="row"
@@ -74,6 +73,7 @@ const Layout = ({ children }) => {
         sx={{
           width: "100%",
           minHeight: "100vh",
+          overflowX: "hidden",
           backgroundColor: colorScheme === "dark" ? "#222222" : "#F8F5F0",
         }}
       >

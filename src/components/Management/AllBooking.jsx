@@ -8,7 +8,7 @@ const AllBooking = () => {
   const dark = colorScheme === "dark";
   return (
     <Layout>
-      <Flex className={`justify-center flex-col  p-14 `}>
+      <Flex className={`justify-center flex-col  p-14`}>
         <TableComponent dark={dark} />
       </Flex>
     </Layout>

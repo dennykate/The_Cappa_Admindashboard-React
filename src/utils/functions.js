@@ -1,10 +1,15 @@
 import * as ExcelJS from "exceljs";
 import { data } from "./data";
+import { keys } from "@mantine/utils";
 
 export const exportExcel = () => {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet("My Sheet");
   sheet.properties.defaultRowHeight = 30;
+
+  keys(data[0]).some((key) => console.log(key));
+
+  return;
 
   sheet.columns = [
     {
@@ -73,4 +78,9 @@ export const exportExcel = () => {
     anchor.click();
     window.URL.revokeObjectURL(url);
   });
+};
+
+export const filterStatus = (data, activeTab, all, type) => {
+  if (activeTab == all) return data;
+  return data[type] == activeTab.toLowerCase();
 };
