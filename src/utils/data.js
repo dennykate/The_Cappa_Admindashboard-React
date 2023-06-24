@@ -429,6 +429,7 @@ export const roomListData = [
     status: "booked",
   },
 ];
+
 export const facilitiesData = [
   { value: "Free Wifi", label: "Free Wifi" },
   { value: "breakfast", label: "Breakfast" },
