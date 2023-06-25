@@ -217,63 +217,65 @@ const CustomTable = ({
         </Group>
       </Flex>
 
-      <Table
-        horizontalSpacing="md"
-        verticalSpacing="xs"
-        miw={700}
-        // sx={{ tableLayout: "fixed" }}
-      >
-        <thead>
-          <tr>
-            <th style={{ width: rem(40) }}>
-              <Checkbox
-                onChange={toggleAll}
-                checked={selection.length === data.length}
-                indeterminate={
-                  selection.length > 0 && selection.length !== data.length
-                }
-                transitionDuration={0}
-              />
-            </th>
-            {heads?.map(({ name, sortType }, index) => {
-              return (
-                <>
-                  {sortType ? (
-                    <Th
-                      key={index}
-                      sorted={sortBy === sortType}
-                      reversed={reverseSortDirection}
-                      onSort={() => setSorting(sortType)}
-                    >
-                      {name}
-                    </Th>
-                  ) : (
-                    <th key={index}>
-                      <Text fz="sm" fw={500} c="#AA8453">
-                        {name}
-                      </Text>
-                    </th>
-                  )}
-                </>
-              );
-            })}
-          </tr>
-        </thead>
-        <tbody>
-          {rows?.length > 0 ? (
-            rows
-          ) : (
-            <tr>
-              <td colSpan={Object.keys(data[0]).length}>
-                <Text weight={500} align="center">
-                  Nothing found
-                </Text>
-              </td>
-            </tr>
-          )}
-        </tbody>
-      </Table>
+      <Box className="overflow-x-auto customScrollbar">
+        <Table
+          horizontalSpacing="md"
+          verticalSpacing="xs"
+          miw={700}
 
+          // sx={{ tableLayout: "fixed" }}
+        >
+          <thead>
+            <tr>
+              <th style={{ width: rem(40) }}>
+                <Checkbox
+                  onChange={toggleAll}
+                  checked={selection.length === data.length}
+                  indeterminate={
+                    selection.length > 0 && selection.length !== data.length
+                  }
+                  transitionDuration={0}
+                />
+              </th>
+              {heads?.map(({ name, sortType }, index) => {
+                return (
+                  <>
+                    {sortType ? (
+                      <Th
+                        key={index}
+                        sorted={sortBy === sortType}
+                        reversed={reverseSortDirection}
+                        onSort={() => setSorting(sortType)}
+                      >
+                        {name}
+                      </Th>
+                    ) : (
+                      <th key={index}>
+                        <Text fz="sm" fw={500} c="#AA8453">
+                          {name}
+                        </Text>
+                      </th>
+                    )}
+                  </>
+                );
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {rows?.length > 0 ? (
+              rows
+            ) : (
+              <tr>
+                <td colSpan={Object.keys(data[0]).length}>
+                  <Text weight={500} align="center">
+                    Nothing found
+                  </Text>
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </Table>
+      </Box>
       <PaginationPart
         limit={limit}
         setLimit={setLimit}

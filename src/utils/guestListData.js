@@ -8,7 +8,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/q7sTmCBP/download-2.jpg",
@@ -19,7 +19,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -30,7 +30,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/8P7g2YPB/download-4.jpg",
@@ -41,7 +41,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Refund",
+    status: "refund",
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -52,7 +52,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/xjFW3Pyk/download-6.jpg",
@@ -63,7 +63,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Refund",
+    status: "refund",
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -74,7 +74,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -85,7 +85,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -96,7 +96,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -107,7 +107,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -118,7 +118,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -129,7 +129,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/X7qnVJx5/download-1.jpg",
@@ -140,7 +140,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -151,7 +151,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: " Canceled",
+    status: "canceled",
   },
   {
     avatar: "https://i.postimg.cc/8P7g2YPB/download-4.jpg",
@@ -162,7 +162,7 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
   {
     avatar: "https://i.postimg.cc/xjFW3Pyk/download-6.jpg",
@@ -173,6 +173,6 @@ export const guestListData = [
     checkOut: "Nov 2th, 2022 | 6.12 PM",
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
-    status: "Booked",
+    status: "booked",
   },
 ];

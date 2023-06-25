@@ -577,7 +577,7 @@ export const dateRange = [
   { name: "Last 7 Days", dateFormat: [-7, null] },
   { name: "Last 30 Days", dateFormat: [-30, null] },
   { name: "This Month", dateFormat: ["first", "last"] },
-  { name: "Last Month" },
+  { name: "Last Month",dateFormat: ["firstofLastM", "lastofLastM"] },
 ];
 
 export const facilitiesData = [

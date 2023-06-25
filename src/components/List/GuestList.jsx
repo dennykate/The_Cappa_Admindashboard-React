@@ -17,7 +17,13 @@ import {
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
 import ListHeaderTabs from "../ListHeaderTabs";
-import { IconChevronDown, IconDots, IconEdit, IconPencil, IconTrash } from "@tabler/icons-react";
+import {
+  IconChevronDown,
+  IconDots,
+  IconEdit,
+  IconPencil,
+  IconTrash,
+} from "@tabler/icons-react";
 import * as dayjs from "dayjs";
 import "dayjs/locale/en";
 
@@ -40,6 +46,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
+const statusColors = {
+  booked: "bg-blue-500 bg-opacity-30 text-blue-500",
+  canceled: "bg-starColor bg-opacity-30 text-starColor",
+  refund: "bg-red-500 bg-opacity-30 text-red-500",
+};
+
 const GuestList = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -53,7 +65,7 @@ const GuestList = () => {
   console.log(activeTab);
 
   useEffect(() => {
-    setFullDate([formatDateFunc(-7), formatDateFunc(null)]);
+    setFullDate([formatDateFunc(-30), formatDateFunc(null)]);
   }, []);
 
   const formatDateFunc = (set) => {
@@ -62,6 +74,10 @@ const GuestList = () => {
       date = date.startOf("month");
     } else if (set == "last") {
       date = date.endOf("month");
+    } else if (set == "firstofLastM") {
+      date = date.subtract(1, 'month').startOf('month');
+    } else if (set == "lastofLastM") {
+      date = date.subtract(1, 'month').endOf('month');
     } else if (set) {
       date = date.set("D", new Date().getDate() + set);
     }
@@ -85,23 +101,23 @@ const GuestList = () => {
               transitionDuration={0}
             />
           </td>
-          <td className="flex items-center justify-center bg-red-400">
-            <Flex className="gap-3">
-            <Image  src={item.avatar} />
-            <Text fz="sm" fw={500} c={dark ? "AA8453" : "#1B1B1B"}>
-              {item.name}
-            </Text>
+          <td>
+            <Flex className="gap-3" justify={"center"} align={"center"}>
+              <Avatar src={item.avatar} size={50} />
+              <Text fz="sm" fw={500} c={dark ? "AA8453" : "#1B1B1B"}>
+                {item.name}
+              </Text>
             </Flex>
           </td>
 
           <td>
-            <Badge
-              size="md"
-              radius={"sm"}
-              // className={genderColors[item.gender.toLowerCase()]}
+            <Text
+              fz="sm"
+              c="dimmed"
+              className="text-xs whitespace-nowrap text-red-500"
             >
               {item.guestId}
-            </Badge>
+            </Text>
           </td>
           <td className="whitespace-nowrap">
             <Text fz="sm" c="dimmed">
@@ -120,7 +136,16 @@ const GuestList = () => {
           </td>
           <td>
             <Text fz="sm" c="dimmed">
-              {item.specialRequest}
+              <Button
+                c={"dimmed"}
+                className={`${
+                  dark
+                    ? "bg-gray-700 hover:bg-gray-700"
+                    : "bg-gray-300 hover:bg-gray-300"
+                } hover:bg-opacity-80`}
+              >
+                {item.specialRequest}
+              </Button>
             </Text>
           </td>
           <td>
@@ -130,9 +155,9 @@ const GuestList = () => {
           </td>
           <td>
             <Badge
-              size="md"
-              radius={"sm"}
-              // className={paymentColors[item.payment.toLowerCase()]}
+              size="lg"
+              radius={"xs"}
+              className={statusColors[item.status.toLowerCase()]}
             >
               {item.status}
             </Badge>
