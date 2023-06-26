@@ -101,7 +101,7 @@ function BadgeCard({ id, name, position, img, email , onDelete }) {
 
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
-      <Card.Section  className="relative  group">
+      <Card.Section  className="relative select-none group">
         <Image src={img} height={200} />
         <div  className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
         <Link to={`/edit-team/${id}`}>
@@ -142,6 +142,7 @@ function BadgeCard({ id, name, position, img, email , onDelete }) {
             fz="xl"
             fw={500}
             color={theme.colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+            className="select-none"
           >
             {name}
           </Text>
@@ -152,6 +153,7 @@ function BadgeCard({ id, name, position, img, email , onDelete }) {
           className={classes.cardTitle}
           mt="md"
           color={theme.colorScheme === "dark" ? "#" : "gray"}
+          
         >
           {position}
         </Text>
@@ -159,6 +161,8 @@ function BadgeCard({ id, name, position, img, email , onDelete }) {
           fz="sm"
           mt="xs"
           color={theme.colorScheme === "dark" ? "#" : "gray"}
+          className="select-none"
+
         >
           {email}
         </Text>

@@ -117,7 +117,7 @@ const Allnews = () => {
               })}
               <Card withBorder radius="md" className={classes.card}>
                 <Card.Section className={classes.section} mt="md">
-                  <Link to="/management/add-services">
+                  <Link to="/management/add-news">
                     <Center maw={200} h={250} mx="auto">
                       <div className="flex flex-col justify-center items-center">
                         {" "}

@@ -97,13 +97,14 @@ function BadgeCard({
       <Card.Section className="relative  group">
         <Image src={img}  height={200} />
         <div  className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-          <Link to="/edit-rooms">
+          <Link to={`/edit-rooms/${id}`}>
           <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
                 className={classes.naviconLinkActive}
                 size={24}
                 strokeWidth={1.5}
+                
               />
             </Group>
           </Tooltip>
@@ -131,12 +132,14 @@ function BadgeCard({
 
       <Card.Section className={classes.section} mt="md">
         <Group position="apart">
-          <Text fz="lg" fw={500} color={theme.colorScheme === "dark" ? "#aa8453" : "gray"} >
+            
+          <Text fz="lg" fw={500} color={theme.colorScheme === "dark" ? "#aa8453" : "gray"} className="select-none" >
             {name}
           </Text>
           <Badge
             size="sm"
-            color={theme.colorScheme === "dark" ? "#aa8453" : "yellow"}
+            color={theme.colorScheme === "dark" ? "#aa8453" : "yellow" }
+            className="select-none"
           >
             {price} / {time}
           </Badge>
@@ -146,12 +149,12 @@ function BadgeCard({
         </Text> */}
       </Card.Section>
       <Flex>
-        <div className="icongroup flex gap-3 items-center  ">
-          <i className="flaticon-bed text-[18px] hover:text-primary"></i>
+        <div className="icongroup flex gap-3 items-center  select-none ">
+          <i className="flaticon-bed text-[18px] select-none hover:text-primary"></i>
 
-          <i className="flaticon-bath text-[18px] hover:text-primary"></i>
-          <i className="flaticon-breakfast text-[18px] hover:text-primary"></i>
-          <i className="flaticon-towel text-[18px] hover:text-primary"></i>
+          <i className="flaticon-bath text-[18px] select-none hover:text-primary"></i>
+          <i className="flaticon-breakfast text-[18px] select-none hover:text-primary"></i>
+          <i className="flaticon-towel text-[18px] select-none hover:text-primary"></i>
         </div>
       
       </Flex>

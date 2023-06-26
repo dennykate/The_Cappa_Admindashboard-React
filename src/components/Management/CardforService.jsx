@@ -86,10 +86,10 @@ function BadgeCard({ image, title, price, per ,  id ,onDelete }) {
 
   return (
     <Card withBorder radius="md" p="md" className={classes.card}>
-      <Card.Section className="relative group">
+      <Card.Section className="relative select-none group">
         <Image src={image}  height={200} />
         <div  className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-       <Link to="/edit-services">
+       <Link to={`/edit-services/${id}`}>
        <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
@@ -123,39 +123,32 @@ function BadgeCard({ image, title, price, per ,  id ,onDelete }) {
 
       <Card.Section className={classes.section} mt="md">
         <Group position="apart">
-          <Text fz="lg" fw={500}  color={theme.colorScheme === "dark" ? "#aa8453" : "#222222"}>
+          <Text fz="lg" fw={500}  color={theme.colorScheme === "dark" ? "#aa8453" : "#222222"} className="select-none">
             {title}
           </Text>
           <Badge
             size="sm"
             color={theme.colorScheme === "dark" ? "#aa8453" : "yellow"}
+            className="select-none"
           >
             {price} / {per}
           </Badge>
         </Group>
-        <Text fz="sm" mt="xs" color={theme.colorScheme === "dark" ? "dimmed" : "gray"} >
+        <Text fz="sm" mt="xs" color={theme.colorScheme === "dark" ? "dimmed" : "gray"} className="select-none" >
           <ul class="list-unstyled list">
             <li>
-              <i className={`ti-check `} ></i> Hotel ut nisan the duru
+              <i className={`ti-check select-none `} ></i> Hotel ut nisan the duru
             </li>
             <li>
-              <i className={`ti-check `}></i> Orci miss natoque vasa ince
+              <i className={`ti-check select-none `}></i> Orci miss natoque vasa ince
             </li>
             <li>
-              <i className={`ti-close unavailable `}></i>Clean sorem ipsum morbin
+              <i className={`ti-close unavailable select-none `}></i>Clean sorem ipsum morbin
             </li>
           </ul>
         </Text>
       </Card.Section>
-      {/* <Flex>
-        <div className="icongroup flex gap-3 items-center  ">
-          <i className="flaticon-bed text-[18px] hover:text-primary"></i>
-
-          <i className="flaticon-bath text-[18px] hover:text-primary"></i>
-          <i className="flaticon-breakfast text-[18px] hover:text-primary"></i>
-          <i className="flaticon-towel text-[18px] hover:text-primary"></i>
-        </div>
-      </Flex> */}
+    
     </Card>
   );
 }

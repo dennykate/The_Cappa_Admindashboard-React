@@ -82,7 +82,7 @@ function BadgeCard({ id, icon , title , description ,onDelete }) {
       <Card.Section className="pl-3 pt-8  ">
       <span className={`${icon} text-[45px] text-primary `}></span>
       <div className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-      <Link to="/edit-facilities">
+      <Link to={`/edit-facilities/${id}`}>
       <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
@@ -116,12 +116,12 @@ function BadgeCard({ id, icon , title , description ,onDelete }) {
 
       <Card.Section className={classes.section} mt="md">
         <Group position="apart">
-          <Text fz="lg" fw={500}  color={theme.colorScheme === "dark" ? "#" : "#222222"}>
+          <Text fz="lg" fw={500}  color={theme.colorScheme === "dark" ? "#" : "#222222"} className="select-none">
             {title}
           </Text>
          
         </Group>
-        <Text fz="sm" mt="xs" color="dimmed">
+        <Text fz="sm" mt="xs" color="dimmed" className="select-none">
           {description}
         </Text>
       </Card.Section>

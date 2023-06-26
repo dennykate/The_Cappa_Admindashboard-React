@@ -128,6 +128,7 @@ const AllFacilities = () => {
                           color={
                             theme.colorScheme === "dark" ? "#aa8453" : "gray"
                           }
+                          className="select-none"
                         />
                         <Text
                           fz={20}
@@ -135,6 +136,7 @@ const AllFacilities = () => {
                           color={
                             theme.colorScheme === "dark" ? "#aa8453" : "gray"
                           }
+                          className="select-none"
                         >
                           {" "}
                           Create New

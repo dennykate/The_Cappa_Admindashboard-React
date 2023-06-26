@@ -80,10 +80,10 @@ function BadgeCard({id , name, month, day, category, image , onDelete}) {
       }}
       className=""
     >
-      <Card.Section className="relative  group">
+      <Card.Section className="relative select-none  group">
         <Image src={image} height={200} />
         <div className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-         <Link to="/edit-news">
+         <Link to={`/edit-news/${id}`}>
          <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
@@ -117,20 +117,22 @@ function BadgeCard({id , name, month, day, category, image , onDelete}) {
       <Card.Section className={classes.section} mt="md">
         <Group position="apart">
           <Text
-            fz="lg"
+            fz="md"
             fw={500}
             color={theme.colorScheme === "dark" ? "#aa8453" : "gray"}
+            className="select-none"
           >
-            {name.substring(0, 15)}...
+            {name.substring(0, 20)}...
           </Text>
           <Badge
             size="sm"
             color={theme.colorScheme === "dark" ? "#aa8453" : "gray"}
+            className="select-none"
           >
             {day} / {month}
           </Badge>
         </Group>
-        <Text fz="md" mt="xs">
+        <Text fz="md" mt="xs" className="select-none">
           {category}
         </Text>
       </Card.Section>
