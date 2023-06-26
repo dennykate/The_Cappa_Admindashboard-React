@@ -1,5 +1,5 @@
 import { useMantineColorScheme } from "@mantine/styles";
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../Layout";
 import { Link } from "react-router-dom";
 import { IconPlus } from "@tabler/icons-react";
@@ -33,16 +33,21 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const AllRoom = () => {
-  const Rooms = [
+  const [Rooms,setRooms] = useState([
     { id: 1, name: "Junior Suite", price: 150, time: "night","img" : "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/1.jpg" },
     { id: 2, name: "Family Room", price: 200, time: "night","img" : "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/2.jpg" },
     { id: 3, name: "Double Room", price: 250, time: "night","img" : "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/3.jpg" },
     { id: 4, name: "Deluxe Room", price: 300, time: "night" ,"img" : "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/4.jpg"},
     { id: 5, name: "Superior Room", price: 150, time: "night","img" : "https://duruthemes.com/demo/html/cappa/demo2-dark/img/rooms/7.jpg" },
-  ];
+  ]);
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const { classes, theme } = useStyles();
+  const handleDelete = (id) => {
+    setRooms(
+      Rooms?.filter((room) => room?.id !== id)
+    );
+  };
   return (
     <>
      <Layout>
@@ -60,7 +65,9 @@ const AllRoom = () => {
       ]}>
     {Rooms?.map((room,index)=>{
   return (
-    <BadgeCard {...room} key={index}/>
+    <BadgeCard id={room?.id} name={room?.name} price={room?.price} time={room?.time} img={room?.img} key={index} onDelete={() => {
+      handleDelete(room?.id);
+    }} />
      )
 })}
  <Card withBorder radius="md" className={classes.card}>

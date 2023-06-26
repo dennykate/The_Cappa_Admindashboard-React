@@ -93,9 +93,9 @@ const App = () => {
           <Route path="/management/add-booking" element={<AddBooking />} />
           <Route path="/management/edit-booking" element={<EditBooking />} />
           {/* Room & Suite  */}
-          <Route path="/management/all-room-and-suite" element={<AllRoom />} />
-          <Route path="/management/add-room-suite" element={<AddRoom />} />
-          <Route path="/management/edit-room-suite" element={<EditRoom />} />
+          <Route path="/management/all-rooms" element={<AllRoom />} />
+          <Route path="/management/add-rooms" element={<AddRoom />} />
+          <Route path="/management/edit-rooms" element={<EditRoom />} />
           {/* Services  */}
           <Route path="/management/all-services" element={<AllServices />} />
           <Route path="/management/add-services" element={<AddServices />} />

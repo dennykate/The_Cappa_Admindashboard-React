@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../Layout";
 
 import BadgeCard from "./CardforService";
@@ -45,8 +45,9 @@ const useStyles = createStyles((theme) => ({
   // },
 }));
 const AllServices = () => {
-  const pricingCardData = [
+  const [pricingCardData,setpricingCardData] =useState( [
     {
+      id : 1,
       image:
         "https://duruthemes.com/demo/html/cappa/demo2-dark/img/pricing/1.jpg",
       title: "Room Cleaning",
@@ -54,6 +55,7 @@ const AllServices = () => {
       per: "monthly",
     },
     {
+      id : 2,
       image:
         "https://duruthemes.com/demo/html/cappa/demo2-dark/img/pricing/2.jpg",
       title: "Drinks Included",
@@ -61,6 +63,7 @@ const AllServices = () => {
       per: "daily",
     },
     {
+      id : 3,
       image:
         "https://duruthemes.com/demo/html/cappa/demo2-dark/img/pricing/3.jpg",
       title: "Room Breakfast",
@@ -68,16 +71,23 @@ const AllServices = () => {
       per: "daily",
     },
     {
+      id : 4,
       image:
         "https://duruthemes.com/demo/html/cappa/demo2-dark/img/pricing/4.jpg",
       title: "Safe & Secure",
       price: "$15",
       per: "daily",
     },
-  ];
+  ]);
   const { colorScheme } = useMantineColorScheme();
   const { classes, theme } = useStyles();
   const dark = colorScheme === "dark";
+
+  const handleDelete = (id) => {
+    setpricingCardData(
+      pricingCardData?.filter((service) => service?.id !== id)
+    );
+  };
   return (
     <>
       <Layout>
@@ -94,7 +104,9 @@ const AllServices = () => {
                 ]}
               >
                 {pricingCardData?.map((service, index) => {
-                  return <BadgeCard {...service} key={index} />;
+                  return <BadgeCard image={service?.image} id={service?.id} title={service?.title} price={service?.price} per={service?.per}  key={index}  onDelete={() => {
+                    handleDelete(service?.id);
+                  }} />;
                 })}
                 <Card withBorder radius="md" className={classes.card}>
                  

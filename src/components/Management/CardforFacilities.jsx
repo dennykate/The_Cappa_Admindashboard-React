@@ -3,6 +3,7 @@ import {
   IconBed,
   IconDetails,
   IconEdit,
+  IconEye,
   IconHeart,
   IconListDetails,
   IconTrash,
@@ -23,6 +24,7 @@ import {
   Tooltip,
   Stack,
 } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   naviconLink: {
@@ -71,7 +73,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function BadgeCard({ icon , title , description }) {
+function BadgeCard({ id, icon , title , description ,onDelete }) {
   const { classes, theme } = useStyles();
 
   return (
@@ -80,6 +82,7 @@ function BadgeCard({ icon , title , description }) {
       <Card.Section className="pl-3 pt-8  ">
       <span className={`${icon} text-[45px] text-primary `}></span>
       <div className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
+      <Link to="/edit-facilities">
       <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
@@ -89,10 +92,12 @@ function BadgeCard({ icon , title , description }) {
               />
             </Group>
           </Tooltip>
+      </Link>
 
-          <Tooltip label="detail">
+       <Link to="">
+       <Tooltip label="detail">
             <Group className={classes.naviconLink}>
-              <IconListDetails
+              <IconEye
                 className={classes.naviconLinkActive}
                 size={24}
                 strokeWidth={1.5}
@@ -100,9 +105,10 @@ function BadgeCard({ icon , title , description }) {
             </Group>
           </Tooltip>
 
+       </Link>
           <Tooltip label="delete">
             <Group className={classes.naviconLink}>
-              <IconTrash className="text-red-500" size={24} strokeWidth={1.5} />
+              <IconTrash onClick={() => onDelete(id)} className="text-red-500" size={24} strokeWidth={1.5} />
             </Group>
           </Tooltip>
       </div>

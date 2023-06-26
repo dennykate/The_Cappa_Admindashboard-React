@@ -236,9 +236,9 @@ const mainLinksMockdata = [
       "/management/all-booking",
       "/management/add-booking",
       "/management/edit-booking",
-      "/management/all-room-and-suite",
-      "/management/add-room-and-suite",
-      "/management/edit-room-suite",
+      "/management/all-rooms",
+      "/management/add-rooms",
+      "/management/edit-rooms",
       "/management/all-services",
       "/management/add-services",
       "/management/edit-services",
@@ -298,7 +298,6 @@ const mockdata_Department = [
 const mockdata_Management = [
   {
     label: "Booking",
-    initiallyOpened: true,
     links: [
       { label: "All Booking", link: "/management/all-booking" },
       { label: "Add Booking", link: "/management/add-booking" },
@@ -306,11 +305,11 @@ const mockdata_Management = [
     ],
   },
   {
-    label: "Rooms & Suite",
+    label: "Rooms",
     links: [
-      { label: "All Rooms & Suite", link: "/management/all-room-and-suite" },
-      { label: "Add Rooms & Suite", link: "/management/add-room-suite" },
-      { label: "Edit Rooms & Suite", link: "/management/edit-room-suite" },
+      { label: "All Rooms", link: "/management/all-rooms" },
+      { label: "Add Rooms", link: "/management/add-rooms" },
+      { label: "Edit Rooms", link: "/management/edit-room-suite" },
     ],
   },
 

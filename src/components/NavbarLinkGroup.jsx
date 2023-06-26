@@ -77,7 +77,23 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
   );
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
-  const [opened, setOpened] = useState(initiallyOpened || false);
+  console.log(pathname);
+  const [opened, setOpened] = useState(() => {
+    let foundItem = null;
+    for (let i = 0; i < links.length; i++) {
+      if (links[i].link === pathname) {
+        foundItem = links[i];
+        break;
+      }
+    }
+    if (foundItem) {
+      return true;
+    }
+    if (initiallyOpened) {
+      return true;
+    }
+    return false;
+  });
   const ChevronIcon = theme.dir === "ltr" ? IconChevronRight : IconChevronLeft;
   const items = (hasLinks ? links : []).map((link) => (
     <Link key={link.label} to={link.link}>
@@ -85,7 +101,10 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
         // order={2}
         className={classes.link}
         style={{
-          color: pathname == link.link ? "#aa8453" : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
+          color:
+            pathname == link.link
+              ? "#aa8453"
+              : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
         }}
         // c="blue"
       >
@@ -93,6 +112,9 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
       </Text>
     </Link>
   ));
+  // const OpenFun =(default : false)=>{
+  //   setOpened(!opened)
+  // }
   useEffect(() => {
     onPropChange(active);
     localStorage.setItem("lastRoute", active);

@@ -3,6 +3,7 @@ import {
   IconBed,
   IconDetails,
   IconEdit,
+  IconEye,
   IconHeart,
   IconListDetails,
   IconTrash,
@@ -22,6 +23,7 @@ import {
   Flex,
   Tooltip,
 } from "@mantine/core";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   naviconLink: {
@@ -79,7 +81,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function BadgeCard({ image, title, price, per }) {
+function BadgeCard({ image, title, price, per ,  id ,onDelete }) {
   const { classes, theme } = useStyles();
 
   return (
@@ -87,7 +89,8 @@ function BadgeCard({ image, title, price, per }) {
       <Card.Section className="relative group">
         <Image src={image}  height={200} />
         <div  className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-          <Tooltip label="edit">
+       <Link to="/edit-services">
+       <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
                 className={classes.naviconLinkActive}
@@ -97,19 +100,22 @@ function BadgeCard({ image, title, price, per }) {
             </Group>
           </Tooltip>
 
+       </Link>
+          <Link to="">
           <Tooltip label="detail">
             <Group className={classes.naviconLink}>
-              <IconListDetails
+              <IconEye
                 className={classes.naviconLinkActive}
                 size={24}
                 strokeWidth={1.5}
               />
             </Group>
           </Tooltip>
+          </Link>
 
           <Tooltip label="delete">
             <Group className={classes.naviconLink}>
-              <IconTrash className="text-red-500" size={24} strokeWidth={1.5} />
+              <IconTrash onClick={() => onDelete(id)} className="text-red-500" size={24} strokeWidth={1.5} />
             </Group>
           </Tooltip>
         </div>

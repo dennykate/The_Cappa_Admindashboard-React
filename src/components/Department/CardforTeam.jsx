@@ -4,6 +4,7 @@ import {
   IconDetails,
   IconEdit,
   IconExternalLink,
+  IconEye,
   IconHeart,
   IconListDetails,
   IconTrash,
@@ -28,6 +29,7 @@ import {
 } from "@mantine/core";
 import { MdOutlineMoreVert } from "react-icons/md";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme) => ({
   naviconLink: {
@@ -87,10 +89,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-function BadgeCard({ name, position, img, email }) {
-  const { classes, theme } = useStyles();
+function BadgeCard({ id, name, position, img, email , onDelete }) {
+  // const [members,setmembers] = useState({id,name,position,img,email});
+  const {classes, theme} = useStyles();
   const [open, setOpen] = useState("false");
 
+  
   const Moreiconhandler = () => {
     setOpen(!open);
   };
@@ -100,7 +104,8 @@ function BadgeCard({ name, position, img, email }) {
       <Card.Section  className="relative  group">
         <Image src={img} height={200} />
         <div  className="absolute -right-24 top-2 group-hover:right-2 duration-700 ease-in-out ">
-          <Tooltip label="edit">
+        <Link to={`/edit-team/${id}`}>
+        <Tooltip label="edit">
             <Group className={classes.naviconLink}>
               <IconEdit
                 className={classes.naviconLinkActive}
@@ -109,20 +114,23 @@ function BadgeCard({ name, position, img, email }) {
               />
             </Group>
           </Tooltip>
+        </Link>
 
-          <Tooltip label="detail">
+        <Link to="">
+        <Tooltip label="detail">
             <Group className={classes.naviconLink}>
-              <IconListDetails
+              <IconEye
                 className={classes.naviconLinkActive}
                 size={24}
                 strokeWidth={1.5}
               />
             </Group>
           </Tooltip>
+        </Link>
 
           <Tooltip label="delete">
             <Group className={classes.naviconLink}>
-              <IconTrash className="text-red-500" size={24} strokeWidth={1.5} />
+              <IconTrash onClick={() => onDelete(id)} className="text-red-500" size={24} strokeWidth={1.5} />
             </Group>
           </Tooltip>
         </div>

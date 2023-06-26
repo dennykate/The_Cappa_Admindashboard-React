@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Layout from "../Layout";
 import { useMantineColorScheme } from "@mantine/styles";
 import {
@@ -28,47 +28,58 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 const Teamleader = () => {
-  const teamMembers = [
+  const [teamMembers, setteamMembers] = useState([
     {
+      id: 1,
       name: "Valentina Karla",
       position: "General Manager",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/4.jpg",
       email: "valentina@hotel.com",
     },
     {
+      id: 2,
       name: "Micheal White",
       position: "Guest Service Department",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/1.jpg",
       email: "micheal@hotel.com",
     },
     {
+      id: 3,
       name: "Olivia Martin",
       position: "Reservations Manager",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/2.jpg",
       email: "olivia@hotel.com",
     },
     {
+      id: 4,
       name: "mariana Dana",
       position: "F&B Manager",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/5.jpg",
       email: "mariana@hotel.com",
     },
     {
+      id: 5,
       name: "Enrico Brown",
       position: "Head Chef",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/3.jpg",
       email: "enrico@hotel.com",
     },
     {
+      id: 6,
       name: "Victoria Dan",
       position: "Meetings and Events Manager",
       img: "https://duruthemes.com/demo/html/cappa/demo2-dark/img/team/6.jpg",
       email: "victoria@hotel.com",
     },
-  ];
+  ]);
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const { classes, theme } = useStyles();
+
+  const handleDelete = (id) => {
+    console.log(`ID is ${id}`);
+    setteamMembers(teamMembers?.filter((member) => member?.id !== id));
+  };
   return (
     <>
       <Layout>
@@ -84,32 +95,49 @@ const Teamleader = () => {
               ]}
             >
               {teamMembers?.map((member, index) => {
-                return <BadgeCard {...member} key={index} />;
+                return (
+                  <BadgeCard
+                    id={member?.id}
+                    name={member?.name}
+                    position={member?.position}
+                    img={member?.img}
+                    email={member?.email}
+                    onDelete={() => {
+                      handleDelete(member?.id);
+                    }}
+                    key={index}
+                  />
+                );
               })}
               <Card withBorder radius="md" className={classes.card}>
-              <Link to="/department/teamleader">
-                  <Center maw={200} h={300} mx="auto" style={{display : "-webkit-flex"}} >
-                        <div className="flex flex-col justify-center items-center">
-                          {" "}
-                          <IconPlus
-                            size={50}
-                            color={
-                              theme.colorScheme === "dark" ? "#aa8453" : "gray"
-                            }
-                          />
-                          <Text
-                            fz={20}
-                            fw={500}
-                            color={
-                              theme.colorScheme === "dark" ? "#aa8453" : "gray"
-                            }
-                          >
-                            {" "}
-                            Create New
-                          </Text>
-                        </div>
-                      </Center>
-                  </Link>
+                <Link to="/department/teamleader">
+                  <Center
+                    maw={200}
+                    h={300}
+                    mx="auto"
+                    style={{ display: "-webkit-flex" }}
+                  >
+                    <div className="flex flex-col justify-center items-center">
+                      {" "}
+                      <IconPlus
+                        size={50}
+                        color={
+                          theme.colorScheme === "dark" ? "#aa8453" : "gray"
+                        }
+                      />
+                      <Text
+                        fz={20}
+                        fw={500}
+                        color={
+                          theme.colorScheme === "dark" ? "#aa8453" : "gray"
+                        }
+                      >
+                        {" "}
+                        Create New
+                      </Text>
+                    </div>
+                  </Center>
+                </Link>
               </Card>
             </SimpleGrid>
           </Container>
