@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { TextInput, createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme, { floating }) => ({
@@ -44,7 +44,8 @@ const useStyles = createStyles((theme, { floating }) => ({
   },
 }));
 
-export function FloatingInput({ label, placeholder, dark, form }) {
+export function FloatingInput({ label, placeholder, dark, form, cusRef }) {
+  const imageRef = useRef();
   const [focused, setFocused] = useState(false);
   const [value, setValue] = useState("");
   const { classes } = useStyles({
@@ -53,12 +54,16 @@ export function FloatingInput({ label, placeholder, dark, form }) {
 
   return (
     <TextInput
+      ref={cusRef ? cusRef : imageRef}
       label={label}
       placeholder={placeholder}
       required
       classNames={classes}
       value={value}
-      onChange={(event) => setValue(event.currentTarget.value)}
+      onChange={(event) => {
+        setValue(event.currentTarget.value);
+        form.setFieldValue(label.toLowerCase(), event.currentTarget.value);
+      }}
       onFocus={() => setFocused(true)}
       onBlur={() => setFocused(false)}
       mt="md"
@@ -68,7 +73,6 @@ export function FloatingInput({ label, placeholder, dark, form }) {
           background: dark ? "#222222" : "transparent",
         },
       }}
-      {...form.getInputProps(label.toLowerCase())}
     />
   );
 }

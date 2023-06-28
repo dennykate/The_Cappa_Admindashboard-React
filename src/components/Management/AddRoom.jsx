@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Layout from "../Layout";
 import {
   Box,
@@ -6,17 +6,17 @@ import {
   Flex,
   MultiSelect,
   Paper,
+  Text,
   Textarea,
   useMantineColorScheme,
 } from "@mantine/core";
-import Lottie from "lottie-react";
 
 import { FloatingInput } from "../FloatingInput";
 import { facilitiesData } from "../../utils/data";
-import roomsAnimation from "../../assets/rooms-animation.json";
 import { useForm } from "@mantine/form";
 
 const AddRoom = () => {
+  const imageRef = useRef();
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
 
@@ -39,7 +39,8 @@ const AddRoom = () => {
         >
           <Flex justify="space-between">
             <Box
-              className={`w-[38%] h-[400px] border border-dashed p-[10px] rounded-md mt-[15px]  ${
+              className={`w-[38%] h-[375px] border border-opacity-10  border-gray-400 p-[15px] rounded-md mt-[15px]
+              shadow-md shadow-[#0000008a]   ${
                 dark ? "border-white" : "border-black"
               }`}
             >
@@ -50,12 +51,26 @@ const AddRoom = () => {
                   className="w-full h-full object-cover rounded-md"
                 />
               ) : (
-                <div className="w-full h-full rounded-md flex justify-center items-center">
-                  <Lottie
-                    animationData={roomsAnimation}
-                    loop
-                    className="w-[200px]"
-                  />
+                <div
+                  className={`w-full h-full rounded-md flex justify-center items-center flex-col gap-[6px] relative
+                 border-opacity-20  ${dark ? "bg-[#222222]" : "bg-[#f5f5f5]"}`}
+                >
+                  <Text className="text-[28px] " fw="bold">
+                    768 x 800
+                  </Text>
+                  <Text color="dimmed" fz="xs" className=" text-center">
+                    Please choose image according <br /> to the aspected ratio
+                  </Text>
+
+                  <button
+                    onClick={() => imageRef.current.focus()}
+                    className={`w-[35px] h-[35px] rounded absolute top-3 right-3  flex justify-center
+                   items-center shadow-md shadow-[#0000008a] ${
+                     dark ? "bg-[#363636]" : "bg-[#f5f5f5]"
+                   }`}
+                  >
+                    <span class="fi fi-rr-pencil text-primary translate-y-[3px]"></span>
+                  </button>
                 </div>
               )}
             </Box>
@@ -72,6 +87,7 @@ const AddRoom = () => {
                 placeholder="Add room name"
               />
               <FloatingInput
+                cusRef={imageRef}
                 form={form}
                 dark={dark}
                 label="Image"

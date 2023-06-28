@@ -31,7 +31,7 @@ import Teamleader from "./components/Department/Teamleader";
 import EditTeamLeader from "./components/Department/EditTeamLeader";
 import EditFacilities from "./components/Management/EditFacilities";
 import AddFacilities from "./components/Management/AddFacilities";
-import AddBooking from "./pages/AddBooking";
+import AddBooking from "./components/Management/AddBooking";
 import EditBooking from "./components/Management/EditBooking";
 import AllBooking from "./components/Management/AllBooking";
 
@@ -82,9 +82,12 @@ const App = () => {
           <Route path="/department/team-leader" element={<Teamleader />} />
           <Route
             path="/department/add-teamleader"
+            element={<AddTeamLeader />}
+          />
+          <Route
+            path="/department/edit-teamleader"
             element={<EditTeamLeader />}
           />
-          <Route path="/department/edit-teamleader" element={<AllBooking />} />
           {/* Management  */}
           {/* Booking  */}
           <Route path="/management/all-booking" element={<AllBooking />} />
