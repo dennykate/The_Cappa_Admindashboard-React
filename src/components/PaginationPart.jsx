@@ -33,6 +33,19 @@ const PaginationPart = ({
           { value: "25", label: "25" },
           { value: "100", label: "100" },
         ]}
+        styles={{
+          item: {
+            // applies styles to selected item
+            "&[data-selected]": {
+              "&, &:hover": {
+                backgroundColor: "#AA8453",
+              },
+            },
+          },
+        }}
+        classNames={{
+          input:"focus:border-primary"
+        }}
         className="w-20 "
         onChange={(value) => {
           setLimit(value);

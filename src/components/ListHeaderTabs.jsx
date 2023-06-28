@@ -20,6 +20,7 @@ const ListHeaderTabs = ({
   path,
   children,
   isGuestList,
+  isReviewList,
 }) => {
   const navigate = useNavigate();
   const { colorScheme } = useMantineColorScheme();
@@ -27,7 +28,7 @@ const ListHeaderTabs = ({
 
   const dark = colorScheme === "dark";
   return (
-    <Flex className="pb-5 justify-between">
+    <Flex className="pb-5 sm:flex-row flex-col sm:justify-between">
       <Group className="gap-0">
         {Tabs.map(({ name }, index) => (
           <Text
@@ -46,18 +47,19 @@ const ListHeaderTabs = ({
         ))}
       </Group>
       <Group position="apart">
-        {isGuestList ? (
-          children
-        ) : (
-          <Button
-            c={"dimmed"}
-            onClick={() => navigate(path)}
-            leftIcon={<IconPlus />}
-            className="border-primary  hover:bg-transparent hover:border-opacity-80 h-[40px]"
-          >
-            Add New
-          </Button>
-        )}
+        {isGuestList
+          ? children
+          : !isReviewList && (
+              <Button
+                c={"dimmed"}
+                onClick={() => navigate(path)}
+                leftIcon={<IconPlus />}
+                className="border-primary  hover:bg-transparent hover:border-opacity-80 h-[40px]"
+              >
+                Add New
+              </Button>
+            )}
+
         <Select
           defaultValue="Newest"
           data={[

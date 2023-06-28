@@ -58,7 +58,6 @@ const RoomList = () => {
   console.log(activeTab);
 
   const rows = sortedData
-    .filter((data) => filterStatus(data, activeTab, "All Rooms", "status"))
     .slice(initialValue, valuesPerPage)
     .map((item, index) => {
       const selected = selection.includes(item.id);
@@ -76,7 +75,7 @@ const RoomList = () => {
             <Image src={item.image} width={120} radius={5} />
           </td>
           <td>
-            <Text fz="sm" fw={500} c={dark ? "AA8453" : "#1B1B1B"}>
+            <Text fz="sm" fw={500} c={dark ? "#AA8453" : "#1B1B1B"}>
               {item.roomNumber}
             </Text>
           </td>
@@ -178,6 +177,7 @@ const RoomList = () => {
           setSelection={setSelection}
           setInitialValue={setInitialValue}
           setValuesPerPage={setValuesPerPage}
+          tab={{ activeTab, all: "All Rooms", type: "status" }}
         />
       </Box>
     </Layout>

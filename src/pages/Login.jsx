@@ -35,8 +35,7 @@ export default function Login() {
     // functions will be used to validate values at corresponding key
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      password: (value) =>
-        value.length < 8 ? "password must be at least 8 characters long" : null,
+      password: (value) => value.length<8 ?"Password must contain at least 8 characters": null
     },
   });
 

@@ -9,6 +9,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:1
   },
   {
     avatar: "https://i.postimg.cc/q7sTmCBP/download-2.jpg",
@@ -20,6 +21,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:2
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -31,6 +33,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:3
   },
   {
     avatar: "https://i.postimg.cc/8P7g2YPB/download-4.jpg",
@@ -42,6 +45,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "refund",
+    id:4
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -53,6 +57,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:5
   },
   {
     avatar: "https://i.postimg.cc/xjFW3Pyk/download-6.jpg",
@@ -64,6 +69,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "refund",
+    id:6
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -75,6 +81,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:7
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -86,6 +93,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:8
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -97,6 +105,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:9
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -108,6 +117,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:10
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -119,6 +129,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:11
   },
   {
     avatar: "https://i.postimg.cc/50sDGBhR/download-5.jpg",
@@ -130,6 +141,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:12
   },
   {
     avatar: "https://i.postimg.cc/X7qnVJx5/download-1.jpg",
@@ -141,6 +153,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:13
   },
   {
     avatar: "https://i.postimg.cc/D0Z3yjQh/download-3.jpg",
@@ -152,6 +165,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "canceled",
+    id:14
   },
   {
     avatar: "https://i.postimg.cc/8P7g2YPB/download-4.jpg",
@@ -163,6 +177,7 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:15
   },
   {
     avatar: "https://i.postimg.cc/xjFW3Pyk/download-6.jpg",
@@ -174,5 +189,6 @@ export const guestListData = [
     specialRequest: "View Notes",
     roomType: "Deluxe A - 02",
     status: "booked",
+    id:16
   },
 ];

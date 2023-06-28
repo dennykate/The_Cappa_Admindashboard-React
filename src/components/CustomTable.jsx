@@ -22,9 +22,9 @@ import {
   IconSearch,
   IconSelector,
 } from "@tabler/icons-react";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PaginationPart from "./PaginationPart";
-import { exportExcel } from "../utils/functions";
+import { exportExcel, filterStatus } from "../utils/functions";
 
 function filterData(data, search) {
   const query = search.toLowerCase().trim();
@@ -39,20 +39,25 @@ function filterData(data, search) {
 }
 
 function sortData(data, payload) {
-  const { sortBy } = payload;
+  const { sortBy, tab } = payload;
 
   if (!sortBy) {
-    return filterData(data, payload.search);
+    return filterData(
+      data.filter((data) => filterStatus(data, tab)),
+      payload.search
+    );
   }
 
-  return filterData(
-    [...data].sort((a, b) => {
-      if (payload.reversed) {
-        return b[sortBy].localeCompare(a[sortBy]);
-      }
+  const sortByData = [...data].sort((a, b) => {
+    if (payload.reversed) {
+      return b[sortBy].localeCompare(a[sortBy]);
+    }
 
-      return a[sortBy].localeCompare(b[sortBy]);
-    }),
+    return a[sortBy].localeCompare(b[sortBy]);
+  });
+
+  return filterData(
+    sortByData.filter((data) => filterStatus(data, tab)),
     payload.search
   );
 }
@@ -67,6 +72,7 @@ const CustomTable = ({
   setSelection,
   setInitialValue,
   setValuesPerPage,
+  tab,
 }) => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -100,15 +106,30 @@ const CustomTable = ({
     setValuesPerPage(valuesPerPage);
   }, [initialValue, valuesPerPage]);
 
-  // useEffect(() => {setSortedData(
-  //   sortData(data, { sortBy, reversed: reverseSortDirection, search: value })
-  // );},[search])
+  useEffect(() => {
+    setSortedData(
+      sortData(data, { sortBy, reversed: reverseSortDirection, search, tab })
+    );
+
+    if (sortedData.slice(initialValue, valuesPerPage).length == 0) setPage(1);
+  }, [tab.activeTab]);
+
+  useEffect(() => {
+    setSortedData(
+      sortData(data, { sortBy, reversed: reverseSortDirection, search, tab })
+    );
+  }, [data]);
 
   const handleSearchChange = (event) => {
     const { value } = event.currentTarget;
     setSearch(value);
     setSortedData(
-      sortData(data, { sortBy, reversed: reverseSortDirection, search: value })
+      sortData(data, {
+        sortBy,
+        reversed: reverseSortDirection,
+        search: value,
+        tab,
+      })
     );
   };
 
@@ -121,7 +142,7 @@ const CustomTable = ({
     const reversed = field === sortBy ? !reverseSortDirection : false;
     setReverseSortDirection(reversed);
     setSortBy(field);
-    setSortedData(sortData(data, { sortBy: field, reversed, search }));
+    setSortedData(sortData(data, { sortBy: field, reversed, search, tab }));
   };
 
   return (

@@ -75,9 +75,9 @@ const GuestList = () => {
     } else if (set == "last") {
       date = date.endOf("month");
     } else if (set == "firstofLastM") {
-      date = date.subtract(1, 'month').startOf('month');
+      date = date.subtract(1, "month").startOf("month");
     } else if (set == "lastofLastM") {
-      date = date.subtract(1, 'month').endOf('month');
+      date = date.subtract(1, "month").endOf("month");
     } else if (set) {
       date = date.set("D", new Date().getDate() + set);
     }
@@ -87,7 +87,6 @@ const GuestList = () => {
   };
 
   const rows = sortedData
-    .filter((data) => filterStatus(data, activeTab, "All Guest", "status"))
     .slice(initialValue, valuesPerPage)
     .map((item, index) => {
       const selected = selection.includes(item.id);
@@ -102,23 +101,22 @@ const GuestList = () => {
             />
           </td>
           <td>
-            <Flex className="gap-3" justify={"center"} align={"center"}>
+            <Flex className="gap-3" justify={"start"} align={"center"}>
               <Avatar src={item.avatar} size={50} />
-              <Text fz="sm" fw={500} c={dark ? "AA8453" : "#1B1B1B"}>
-                {item.name}
-              </Text>
+              <Flex direction={"column"} gap={0}>
+                <Text fz="sm" fw={500} c={dark ? "#AA8453" : "#1B1B1B"}>
+                  {item.name}
+                </Text>
+                <Text
+                  c="dimmed"
+                  className="text-xs whitespace-nowrap text-red-500"
+                >
+                  {item.guestId}
+                </Text>
+              </Flex>
             </Flex>
           </td>
 
-          <td>
-            <Text
-              fz="sm"
-              c="dimmed"
-              className="text-xs whitespace-nowrap text-red-500"
-            >
-              {item.guestId}
-            </Text>
-          </td>
           <td className="whitespace-nowrap">
             <Text fz="sm" c="dimmed">
               {item.dateOrder}
@@ -249,7 +247,6 @@ const GuestList = () => {
           </Menu>
         </ListHeaderTabs>
         <CustomTable
-          // search={search}
           data={guestListData}
           heads={guestListHeads}
           rows={rows}
@@ -259,6 +256,7 @@ const GuestList = () => {
           setSelection={setSelection}
           setInitialValue={setInitialValue}
           setValuesPerPage={setValuesPerPage}
+          tab={{ activeTab, all: "All Guest", type: "status" }}
         >
           {rows}
         </CustomTable>

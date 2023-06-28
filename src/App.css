@@ -216,7 +216,7 @@ body {
   background-color: transparent;
 }
 
-.customScrollbar:hover::-webkit-scrollbar-thumb {
+.customScrollbar::-webkit-scrollbar-thumb {
   background-color: rgba(228, 168, 83, 0.7);
   border-radius: 2px;
 }

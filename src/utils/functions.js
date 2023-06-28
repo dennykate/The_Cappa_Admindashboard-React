@@ -80,7 +80,8 @@ export const exportExcel = () => {
   });
 };
 
-export const filterStatus = (data, activeTab, all, type) => {
+export const filterStatus = (data, tab) => {
+  const { activeTab, all, type } = tab;
   if (activeTab == all) return data;
-  return data[type] == activeTab.toLowerCase();
+  return data[type].toLowerCase() == activeTab.toLowerCase();
 };

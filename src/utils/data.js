@@ -447,10 +447,7 @@ export const guestListHeads = [
     name: "Guest Name",
     sortType: "name",
   },
-  {
-    name: "Guest Id",
-    sortType: "guestId",
-  },
+
   {
     name: "Order Date",
     sortType: "dateOrder",
@@ -461,7 +458,7 @@ export const guestListHeads = [
   },
   {
     name: "Check Out",
-    sortType: "checkOur",
+    sortType: "checkOut",
   },
   {
     name: "Special Request",
@@ -571,13 +568,18 @@ export const guestListTabs = [
   { name: "Canceled" },
   { name: "Refund" },
 ];
+export const conciergeListTabs = [
+  { name: "All Employee" },
+  { name: "Active" },
+  { name: "Inactive" },
+];
 export const dateRange = [
   { name: "Today", dateFormat: [null, null] },
   { name: "Yesterday", dateFormat: [-1, -1] },
   { name: "Last 7 Days", dateFormat: [-7, null] },
   { name: "Last 30 Days", dateFormat: [-30, null] },
   { name: "This Month", dateFormat: ["first", "last"] },
-  { name: "Last Month",dateFormat: ["firstofLastM", "lastofLastM"] },
+  { name: "Last Month", dateFormat: ["firstofLastM", "lastofLastM"] },
 ];
 
 export const facilitiesData = [

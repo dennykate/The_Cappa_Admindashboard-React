@@ -39,9 +39,6 @@ const InputPassword = ({ dark, confirmation, form, placeholder }) => {
           } custom-password-input`}
           variant="unstyled"
           labelProps={{ style: { color: "#AA8453" } }}
-          // {...form.getInputProps(
-          //   confirmation ? "password_confirmation" : "password"
-          // )}
           value={value}
           onChange={(event) => {
             setValue(event.currentTarget.value);

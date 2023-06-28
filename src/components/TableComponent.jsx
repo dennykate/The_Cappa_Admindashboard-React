@@ -56,7 +56,6 @@ export default function TableComponent({ dark }) {
   const [valuesPerPage, setValuesPerPage] = useState(null);
 
   const rows = sortedData
-    .filter((data) => filterStatus(data, activeTab, "All Booking", "payment"))
     .slice(initialValue, valuesPerPage)
     .map((item, index) => {
       const selected = selection.includes(item.id);
@@ -74,7 +73,7 @@ export default function TableComponent({ dark }) {
             <Avatar size={30} src={item.avatar} radius={26} />
           </td>
           <td>
-            <Text fz="sm" fw={500} c={dark ? "AA8453" : "#1B1B1B"}>
+            <Text fz="sm" fw={500} c={dark ? "#AA8453" : "#1B1B1B"} >
               {item.name}
             </Text>
           </td>
@@ -168,6 +167,7 @@ export default function TableComponent({ dark }) {
         setSelection={setSelection}
         setInitialValue={setInitialValue}
         setValuesPerPage={setValuesPerPage}
+        tab={{ activeTab, all: "All Booking", type: "payment" }}
       >
         {rows}
       </CustomTable>
