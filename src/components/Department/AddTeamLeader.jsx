@@ -9,11 +9,19 @@ import {
   Text,
   Textarea,
   useMantineColorScheme,
+  Grid,
+  Input,
 } from "@mantine/core";
 
 import { FloatingInput } from "../FloatingInput";
 import { facilitiesData } from "../../utils/data";
 import { useForm } from "@mantine/form";
+import {
+  IconBrandFacebook,
+  IconBrandInstagram,
+  IconBrandPinterest,
+  IconBrandTwitter,
+} from "@tabler/icons-react";
 
 const AddTeamLeader = () => {
   const imageRef = useRef();
@@ -30,7 +38,7 @@ const AddTeamLeader = () => {
 
   return (
     <Layout>
-      <div className="py-10 sm:px-5 px-1 ">
+      <div className="py-10 sm:px-10 px-1 ">
         <Paper
           radius={"md"}
           shadow="md"
@@ -78,7 +86,7 @@ const AddTeamLeader = () => {
               className="w-[60%] "
               align="start"
               direction="column"
-              gap={16}
+              gap={14}
             >
               <FloatingInput
                 form={form}
@@ -99,33 +107,77 @@ const AddTeamLeader = () => {
                 label="Department"
                 placeholder="Leader's department"
               />
-              <MultiSelect
-                className="mt-[14px] w-full"
-                data={facilitiesData}
-                placeholder="Facilities"
-                sx={{
-                  "& .mantine-MultiSelect-input": {
-                    background: dark ? "#222222" : "transparent",
-                  },
-                }}
+              <FloatingInput
+                form={form}
+                dark={dark}
+                label="Email"
+                placeholder="Leader's emai"
               />
-
-              <Textarea
-                placeholder="Description"
-                className="mt-[14px] w-full"
-                sx={{
-                  textarea: {
-                    "&:focus": {
-                      border: "1px solid #AA8453",
-                    },
-                    background: dark ? "#222222" : "transparent",
-                  },
-                }}
-                minRows={4}
-                maxRows={4}
-              />
-              <Button className="bg-primary  hover:bg-[#755e42] ml-auto">
-                Add Room
+              <Box className="w-full">
+                <Text className="text-sm">
+                  Social Accounts <span className="text-red-500">*</span>
+                </Text>
+                <Grid className="w-full mt-1 pl-[10px]">
+                  <Grid.Col md={6} p={0} pb={8}>
+                    <Input
+                      sx={{
+                        input: {
+                          background: dark ? "#222222" : "transparent",
+                        },
+                      }}
+                      icon={<IconBrandInstagram size="1rem" />}
+                      placeholder="Instagram"
+                      classNames={{
+                        input: "focus:border-primary",
+                      }}
+                    />
+                  </Grid.Col>
+                  <Grid.Col md={6} p={0} pb={8} pl={8}>
+                    <Input
+                      sx={{
+                        input: {
+                          background: dark ? "#222222" : "transparent",
+                        },
+                      }}
+                      icon={<IconBrandTwitter size="1rem" />}
+                      placeholder="Twitter"
+                      classNames={{
+                        input: "focus:border-primary",
+                      }}
+                    />
+                  </Grid.Col>
+                  <Grid.Col md={6} p={0}>
+                    <Input
+                      sx={{
+                        input: {
+                          background: dark ? "#222222" : "transparent",
+                        },
+                      }}
+                      icon={<IconBrandFacebook size="1rem" />}
+                      placeholder="Facebook"
+                      classNames={{
+                        input: "focus:border-primary",
+                      }}
+                    />
+                  </Grid.Col>
+                  <Grid.Col md={6} p={0} pl={8}>
+                    <Input
+                      sx={{
+                        input: {
+                          background: dark ? "#222222" : "transparent",
+                        },
+                      }}
+                      icon={<IconBrandPinterest size="1rem" />}
+                      placeholder="Pinterest"
+                      classNames={{
+                        input: "focus:border-primary",
+                      }}
+                    />
+                  </Grid.Col>
+                </Grid>
+              </Box>
+              <Button className="bg-primary  hover:bg-[#755e42] ml-auto mt-[10px]">
+                Add Team Leader
               </Button>
             </Flex>
           </Flex>
