@@ -36,7 +36,8 @@ const InputPassword = ({ dark, confirmation, form, placeholder }) => {
               : dark
               ? "  border-[#F8F5F0]"
               : "  border-gray-300"
-          } custom-password-input`}
+          } `}
+          classNames={{visibilityToggle:"hover:bg-transparent"}}
           variant="unstyled"
           labelProps={{ style: { color: "#AA8453" } }}
           value={value}

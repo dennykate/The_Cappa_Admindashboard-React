@@ -35,6 +35,7 @@ import AddBooking from "./pages/AddBooking";
 import EditBooking from "./components/Management/EditBooking";
 import AllBooking from "./components/Management/AllBooking";
 
+
 const App = () => {
   const [colorScheme, setColorScheme] = useLocalStorage({
     key: "mantine-color-scheme",
@@ -119,6 +120,8 @@ const App = () => {
           <Route path="/news/all-news" element={<Allnews />} />
           <Route path="/news/add-news" element={<Addnews />} />
           <Route path="/news/edit-news" element={<AllBooking />} />
+          {/* changePassword */}
+          {/* <Route path="/change-password" element={<ChangePassword/>}></Route> */}
         </Routes>
       </MantineProvider>
     </ColorSchemeProvider>

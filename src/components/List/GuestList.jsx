@@ -9,10 +9,8 @@ import {
   Checkbox,
   Badge,
   useMantineColorScheme,
-  Anchor,
   ActionIcon,
   Flex,
-  Image,
 } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import Layout from "../Layout";
@@ -21,7 +19,6 @@ import {
   IconChevronDown,
   IconDots,
   IconEdit,
-  IconPencil,
   IconTrash,
 } from "@tabler/icons-react";
 import * as dayjs from "dayjs";
@@ -30,7 +27,8 @@ import "dayjs/locale/en";
 import { dateRange, guestListHeads, guestListTabs } from "../../utils/data";
 import { guestListData } from "../../utils/guestListData";
 import CustomTable from "../CustomTable";
-import { filterStatus } from "../../utils/functions";
+
+import { DatePicker } from "@mantine/dates";
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -56,20 +54,28 @@ const GuestList = () => {
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const { classes, cx } = useStyles();
+  const [showMenuDropdown, setShowMenuDropdown] = useState(false);
+  const [showCalendar, setShowCalendar] = useState(false);
+  const [customRange, setCustomRange] = useState([]);
   const [fullDate, setFullDate] = useState([]);
   const [activeTab, setActiveTab] = useState(guestListTabs[0].name);
   const [selection, setSelection] = useState(["1"]);
   const [sortedData, setSortedData] = useState(guestListData);
   const [initialValue, setInitialValue] = useState(null);
   const [valuesPerPage, setValuesPerPage] = useState(null);
+
   console.log(activeTab);
 
   useEffect(() => {
     setFullDate([formatDateFunc(-30), formatDateFunc(null)]);
   }, []);
 
-  const formatDateFunc = (set) => {
-    let date = dayjs();
+  useEffect(() => {
+    setCustomRange([dayjs(fullDate[0]).toDate(), dayjs(fullDate[1]).toDate()]);
+  }, [fullDate]);
+
+  const formatDateFunc = (set, cusDate = new Date()) => {
+    let date = dayjs(cusDate);
     if (set == "first") {
       date = date.startOf("month");
     } else if (set == "last") {
@@ -198,6 +204,33 @@ const GuestList = () => {
         : [...current, id]
     );
 
+  const formatCustomRange = () => {
+    const formattedDate = customRange
+      .map((date) => {
+        if (date === null) {
+          return dayjs(customRange[0]).format("MM/D/YYYY");
+        }
+        return dayjs(date).format("MM/D/YYYY");
+      })
+      .join(" - ");
+
+    return formattedDate;
+  };
+
+  const checkIsActive = (date) => {
+    const dateArr = [formatDateFunc(date[0]), formatDateFunc(date[1])];
+    const customRangeArr = [
+      formatDateFunc(null, customRange[0]),
+      formatDateFunc(null, customRange[1]),
+    ];
+
+    if (JSON.stringify(dateArr) == JSON.stringify(customRangeArr)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   return (
     <Layout>
       <Box className="p-10">
@@ -209,13 +242,15 @@ const GuestList = () => {
           isGuestList
         >
           <Menu
-            transitionProps={{ transition: "pop" }}
+            onChange={(e) => setShowMenuDropdown(e)}
+            opened={showMenuDropdown}
+            transitionProps={{ duration: 0, transition: "pop" }}
             withArrow
             position="bottom-end"
             withinPortal
             classNames={{ item: "w-[120px]" }}
           >
-            <Menu.Target>
+            <Menu.Target onClick={() => setShowMenuDropdown(true)}>
               <Button
                 rightIcon={
                   <IconChevronDown size="1rem" className="text-white" />
@@ -227,22 +262,95 @@ const GuestList = () => {
               </Button>
             </Menu.Target>
             <Menu.Dropdown>
-              {dateRange.map(({ name, dateFormat }, index) => (
-                <Menu.Item
-                  key={index}
-                  onClick={() =>
-                    setFullDate([
-                      formatDateFunc(dateFormat[0]),
-                      formatDateFunc(dateFormat[1]),
-                    ])
-                  }
-                  className={`w-[150px] ${
-                    dark ? "text-white" : "text-gray-400"
-                  } `}
-                >
-                  {name}
-                </Menu.Item>
-              ))}
+              <div className="flex justify-center items-start">
+                <div className="">
+                  {dateRange.map(({ name, dateFormat }, index) => (
+                    <Menu.Item
+                      key={index}
+                      onClick={() => {
+                        setFullDate([
+                          formatDateFunc(dateFormat[0]),
+                          formatDateFunc(dateFormat[1]),
+                        ]);
+                        setShowMenuDropdown(false);
+                      }}
+                      className={`w-[150px] ${
+                        checkIsActive(dateFormat) &&
+                        "bg-primary hover:bg-primary"
+                      } ${dark ? "text-white" : "text-gray-400"} `}
+                    >
+                      {name}
+                    </Menu.Item>
+                  ))}
+                  {/* <div
+                    onClick={() => setShowCalendar(true)}
+                    className={`w-full py-[10px] px-3 text-sm text-start rounded relative cursor-pointer ${
+                      dark
+                        ? "text-white hover:bg-[#383A40]"
+                        : "text-gray-400 hover:bg-[#F1F3F5]"
+                    }`}
+                  >
+                    Custom Range
+                  </div> */}
+                  <Menu.Item
+                    onClick={() => setShowCalendar(true)}
+                    className={`w-[150px] ${
+                      dark ? "text-white" : "text-gray-400"
+                    } `}
+                    closeMenuOnClick={false}
+                  >
+                    Custom Range
+                  </Menu.Item>
+                </div>
+                {showCalendar && (
+                  <div className=" border-l border-gray-600 border-opacity-20 p-3 flex justify-center h-full">
+                    <DatePicker
+                      allowSingleDateInRange
+                      value={customRange}
+                      onChange={setCustomRange}
+                      type="range"
+                    />
+                  </div>
+                )}
+              </div>
+              {showCalendar && (
+                <div className="w-full border-t border-gray-600 border-opacity-20 p-2 flex justify-end items-center gap-3">
+                  <div
+                    className={`text-sm ${
+                      dark ? "text-white" : "text-gray-400"
+                    }`}
+                  >
+                    {formatCustomRange()}
+                  </div>
+                  <button
+                    onClick={() => {
+                      setShowCalendar(false);
+                      setShowMenuDropdown(false);
+                    }}
+                    className={`text-sm ${
+                      dark ? "text-white" : "text-gray-400"
+                    }`}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    disabled={customRange[1] == null}
+                    onClick={() => {
+                      setFullDate([
+                        formatDateFunc(null, customRange[0]),
+                        formatDateFunc(null, customRange[1]),
+                      ]);
+                      setShowCalendar(false);
+                      setShowMenuDropdown(false);
+                    }}
+                    className={`bg-primary px-2 py-1 text-sm rounded  text-white ${
+                      customRange[1] == null && "bg-opacity-60"
+                    }`}
+                  >
+                    Apply
+                  </button>
+                </div>
+              )}
             </Menu.Dropdown>
           </Menu>
         </ListHeaderTabs>
