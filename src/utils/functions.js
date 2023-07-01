@@ -1,65 +1,35 @@
 import * as ExcelJS from "exceljs";
-import { data } from "./data";
+import { keys } from "@mantine/utils";
 
-export const exportExcel = () => {
+// for except rows
+const exceptData = ["id", "image", "avatar"];
+
+// data is an array for export excel file
+// name is file name
+export const exportExcel = (data, name) => {
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet("My Sheet");
   sheet.properties.defaultRowHeight = 30;
 
-  sheet.columns = [
-    {
-      header: "Name",
-      key: "name",
-      width: 10,
-    },
-    {
-      header: "Gender",
-      key: "gender",
-      width: 10,
-    },
-    {
-      header: "Mobile",
-      key: "mobile",
-      width: 15,
-    },
-    {
-      header: "Email",
-      key: "email",
-      width: 15,
-    },
-    {
-      header: "Arrive",
-      key: "arrive",
-      width: 15,
-    },
-    {
-      header: "Depart",
-      key: "depart",
-      width: 15,
-    },
-    {
-      header: "Room Type",
-      key: "roomType",
-      width: 15,
-    },
-    {
-      header: "Payment",
-      key: "payment",
-      width: 15,
-    },
-  ];
+  let columns = [];
+  keys(data[0]).some((dt) => {
+    if (!exceptData.includes(dt)) {
+      columns.push({
+        header: dt.charAt(0).toUpperCase() + dt.slice(1),
+        key: dt,
+        width: 15,
+      });
+    }
+  });
+
+  sheet.columns = columns;
+
+  sheet.getRow(1).font = {
+    bold: true,
+  };
 
   data?.map((dt) => {
-    sheet.addRow({
-      name: dt.name,
-      gender: dt.gender,
-      mobile: dt.mobile,
-      email: dt.email,
-      arrive: dt.arrive,
-      depart: dt.depart,
-      roomType: dt.roomType,
-      payment: dt.payment,
-    });
+    sheet.addRow(dt);
   });
 
   workbook.xlsx.writeBuffer().then((data) => {
@@ -69,8 +39,14 @@ export const exportExcel = () => {
     const url = window.URL.createObjectURL(blob);
     const anchor = document.createElement("a");
     anchor.href = url;
-    anchor.download = "booking-data.xlsx";
+    anchor.download = `${name}.xlsx`;
     anchor.click();
     window.URL.revokeObjectURL(url);
   });
+};
+
+export const filterStatus = (data, tab) => {
+  const { activeTab, all, type } = tab;
+  if (activeTab == all) return data;
+  return data[type].toLowerCase() == activeTab.toLowerCase();
 };

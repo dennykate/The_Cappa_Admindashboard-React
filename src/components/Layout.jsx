@@ -32,7 +32,6 @@ const Layout = ({ children }) => {
   );
 
   useEffect(() => {
-    console.log(scroll);
     if (scroll.y > 50) {
       setShowBtn(true);
     } else {

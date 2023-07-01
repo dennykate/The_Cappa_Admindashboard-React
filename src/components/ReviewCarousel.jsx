@@ -36,8 +36,12 @@ const ReviewCarousel = ({ dark }) => {
         <Carousel.Slide key={index}>
           <Box
             className={`h-full flex flex-col gap-[20px] justify-between cursor-pointer hover:shadow-lg border
-              border-opacity-10 rounded-lg transition-all duration-300 ease-in-out bg-transparent sm:p-[28px] p-[10px]
-      ${dark ? " border-gray-300" : " border-black"}`}
+              border-opacity-10 rounded-lg transition-all duration-300 ease-in-out  sm:p-[28px] p-[10px]
+      ${
+        dark
+          ? " border-gray-300 text-white bg-[#1B1B1B]"
+          : " border-black text-gray-500 bg-white"
+      } `}
           >
             <Text className="text-base font-normal " opacity={70}>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi,

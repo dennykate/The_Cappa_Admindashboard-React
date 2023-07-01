@@ -409,7 +409,6 @@ export function MantineSidebar({
   isOpen,
 }) {
   const { pathname } = useLocation();
-  console.log(pathname);
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
   const { classes, cx } = useStyles();

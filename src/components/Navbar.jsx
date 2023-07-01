@@ -12,6 +12,7 @@ import {
   Title,
   Flex,
   Tooltip,
+  Modal,
 } from "@mantine/core";
 // import { useDisclosure } from "@mantine/hooks";
 
@@ -30,6 +31,7 @@ import {
   // IconBookUpload,
   IconUserShare,
   IconLogout,
+  IconLock,
   // IconChevronDown,
 } from "@tabler/icons-react";
 import { ActionToggle } from "./DarkandLightTheme";
@@ -39,6 +41,8 @@ import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
+import { useDisclosure } from "@mantine/hooks";
+import ChangePassword from "./ChangePassword";
 
 const useStyles = createStyles((theme) => ({
   hiddenMobile: {
@@ -96,6 +100,8 @@ export function HeaderMegaMenu({
   isOpen,
   profile,
 }) {
+  const [opened, { open, close }] = useDisclosure(false);
+  // const [opened, setOpened] = useState(false);
   const { pathname } = useLocation();
   const { colorScheme } = useMantineTheme();
   const navigate = useNavigate();
@@ -213,6 +219,10 @@ export function HeaderMegaMenu({
                 </Menu.Item>
                 <Menu.Divider />
 
+                <Menu.Item onClick={open} icon={<IconLock size={14} />}>
+                  Change Password
+                </Menu.Item>
+
                 <Menu.Item icon={<IconUserShare size={14} />}>
                   Manage Account
                 </Menu.Item>
@@ -231,6 +241,24 @@ export function HeaderMegaMenu({
           </Group>
         </Group>
       </Header>
+      {/* change password modal */}
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Change Password"
+        centered
+        classNames={{
+          title: "text-2xl",
+          content: `${
+            theme.colorScheme === "dark" ? "bg-[#1B1B1B]" : "bg-[#F8F5F0]"
+          }`,
+          header: `${
+            theme.colorScheme === "dark" ? "bg-[#1B1B1B]" : "bg-[#F8F5F0]"
+          } border-b border-gray-600 border-opacity-20`,
+        }}
+      >
+        <ChangePassword close={close} />
+      </Modal>
     </Box>
   );
 }

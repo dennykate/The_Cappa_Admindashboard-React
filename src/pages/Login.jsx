@@ -28,15 +28,14 @@ export default function Login() {
   const form = useForm({
     initialValues: {
       // Specify your form fields and their initial values here
-      email: "",
-      password: "",
+      email: "teamB@gmail.com",
+      password: "11223344",
     },
 
     // functions will be used to validate values at corresponding key
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      password: (value) =>
-        value.length < 8 ? "password must be at least 8 characters long" : null,
+      password: (value) => value.length<8 ?"Password must contain at least 8 characters": null
     },
   });
 
@@ -104,7 +103,11 @@ export default function Login() {
                 }}
               />
 
-              <Anchor component="button"  color="#AA8453" className="text-xs sm:text-sm">
+              <Anchor
+                component="button"
+                color="#AA8453"
+                className="text-xs sm:text-sm"
+              >
                 Forgot password?
               </Anchor>
             </Flex>
@@ -126,7 +129,10 @@ export default function Login() {
               >
                 Don't have an account?
               </Text>
-              <Link to={"/register"} className="text-[#AA8453] sm:text-sm text-xs">
+              <Link
+                to={"/register"}
+                className="text-[#AA8453] sm:text-sm text-xs"
+              >
                 Sign Up
               </Link>
             </div>
