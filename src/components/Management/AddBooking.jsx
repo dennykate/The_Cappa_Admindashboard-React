@@ -57,36 +57,23 @@ const AddBooking = () => {
             p={30}
           >
             <InputContainer label="Name">
-              <Box className=" grid grid-cols-2 gap-[10px] w-full">
-                <TextInput
-                  placeholder="First name"
-                  className="w-full"
-                  sx={{
-                    input: {
-                      background: dark ? "#222222" : "transparent",
-                      "&:focus": {
-                        border: "1px solid #AA8453",
-                      },
+              <TextInput
+                placeholder="John Doe"
+                className="w-full"
+                sx={{
+                  input: {
+                    background: dark ? "#222222" : "transparent",
+                    "&:focus": {
+                      border: "1px solid #AA8453",
                     },
-                  }}
-                />
-                <TextInput
-                  placeholder="Last name"
-                  className="w-full"
-                  sx={{
-                    input: {
-                      background: dark ? "#222222" : "transparent",
-                      "&:focus": {
-                        border: "1px solid #AA8453",
-                      },
-                    },
-                  }}
-                />
-              </Box>
+                  },
+                }}
+              />
             </InputContainer>
             <InputContainer label="Guests">
               <NumberInput
-                placeholder="Number of guests"
+                min={0}
+                placeholder="3"
                 className="w-full"
                 sx={{
                   input: {
@@ -100,7 +87,7 @@ const AddBooking = () => {
             </InputContainer>
             <InputContainer label="Mobile">
               <TextInput
-                placeholder="Mobile phone number"
+                placeholder="+959 969 969 969"
                 className="w-full"
                 sx={{
                   input: {
@@ -114,7 +101,7 @@ const AddBooking = () => {
             </InputContainer>
             <InputContainer label="Email">
               <TextInput
-                placeholder="Email address"
+                placeholder="hotel@gmail.com"
                 className="w-full"
                 sx={{
                   input: {
@@ -155,7 +142,7 @@ const AddBooking = () => {
                 searchable
                 className={{ input: "border border-red-600" }}
                 data={roomsTypeData}
-                placeholder="Select room type"
+                placeholder="Junior Suite"
                 nothingFound="Nothing found"
                 sx={{
                   "& .mantine-MultiSelect-input": {

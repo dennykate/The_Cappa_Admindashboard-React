@@ -87,12 +87,16 @@ const AddTeamLeader = () => {
               align="start"
               direction="column"
               gap={14}
+              mt={10}
             >
+              <Text className="text-sm -mb-1">
+                Basic Info <span className="text-red-500">*</span>
+              </Text>
               <FloatingInput
                 form={form}
                 dark={dark}
-                label="Name"
-                placeholder="Leader's name"
+                label="Leader's name"
+                placeholder="John Doe"
               />
               <FloatingInput
                 cusRef={imageRef}
@@ -104,21 +108,21 @@ const AddTeamLeader = () => {
               <FloatingInput
                 form={form}
                 dark={dark}
-                label="Department"
-                placeholder="Leader's department"
+                label="Leader's department"
+                placeholder="Restaurant"
               />
               <FloatingInput
                 form={form}
                 dark={dark}
-                label="Email"
-                placeholder="Leader's emai"
+                label="Leader's email"
+                placeholder="doe@gmail.com"
               />
-              <Box className="w-full">
-                <Text className="text-sm">
+              <Box className="w-full mt-[10px]" p={0}>
+                <Text className="text-sm mb-[20px]">
                   Social Accounts <span className="text-red-500">*</span>
                 </Text>
-                <Grid className="w-full mt-1 pl-[10px]">
-                  <Grid.Col md={6} p={0} pb={8}>
+                <Grid className="w-full mt-3 ml-[0px]">
+                  <Grid.Col md={6} p={0} pb={16}>
                     <Input
                       sx={{
                         input: {
@@ -132,7 +136,7 @@ const AddTeamLeader = () => {
                       }}
                     />
                   </Grid.Col>
-                  <Grid.Col md={6} p={0} pb={8} pl={8}>
+                  <Grid.Col md={6} p={0} pb={16} pl={16}>
                     <Input
                       sx={{
                         input: {
@@ -160,7 +164,7 @@ const AddTeamLeader = () => {
                       }}
                     />
                   </Grid.Col>
-                  <Grid.Col md={6} p={0} pl={8}>
+                  <Grid.Col md={6} p={0} pl={16}>
                     <Input
                       sx={{
                         input: {
@@ -176,8 +180,8 @@ const AddTeamLeader = () => {
                   </Grid.Col>
                 </Grid>
               </Box>
-              <Button className="bg-primary  hover:bg-[#755e42] ml-auto mt-[10px]">
-                Add Team Leader
+              <Button className="bg-primary  hover:bg-[#755e42] ml-auto mt-[20px]">
+                Add
               </Button>
             </Flex>
           </Flex>

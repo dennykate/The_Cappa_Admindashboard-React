@@ -13,6 +13,7 @@ import {
 } from "@mantine/core";
 import InputContainer from "../InputContainer";
 import { IconChevronDown } from "@tabler/icons-react";
+import { menuCategories } from "../../utils/data";
 
 const Addmenu = () => {
   const { colorScheme } = useMantineColorScheme();
@@ -34,9 +35,9 @@ const Addmenu = () => {
             gap={40}
             p={30}
           >
-            <InputContainer label="Name">
+            <InputContainer label="Menu Name">
               <TextInput
-                placeholder="Menu's name"
+                placeholder="Mont Hin Gar"
                 className="w-full"
                 sx={{
                   input: {
@@ -48,10 +49,10 @@ const Addmenu = () => {
                 }}
               />
             </InputContainer>
-            <InputContainer label="Price">
+            <InputContainer label="Menu Price">
               <NumberInput
                 min={0}
-                placeholder="Menu's price"
+                placeholder="34$"
                 className="w-full"
                 sx={{
                   input: {
@@ -63,15 +64,10 @@ const Addmenu = () => {
                 }}
               />
             </InputContainer>
-            <InputContainer label="Category">
+            <InputContainer label="Menu Category">
               <Select
-                placeholder="Menu's category"
-                data={[
-                  { value: "react", label: "React" },
-                  { value: "ng", label: "Angular" },
-                  { value: "svelte", label: "Svelte" },
-                  { value: "vue", label: "Vue" },
-                ]}
+                placeholder="Breakfast"
+                data={menuCategories}
                 className="w-full"
                 sx={{
                   input: {
@@ -80,6 +76,11 @@ const Addmenu = () => {
                       border: "1px solid #AA8453",
                     },
                   },
+                }}
+                classNames={{
+                  input: "focus:border-primary ",
+                  dropdown: "bg-[#1B1B1B]",
+                  item: "hover:bg-[#222222]",
                 }}
                 rightSection={
                   <IconChevronDown
@@ -90,7 +91,7 @@ const Addmenu = () => {
                 }
               />
             </InputContainer>
-            <InputContainer label="Description" noAsterisk start>
+            <InputContainer label="Description" start>
               <Textarea
                 placeholder="Description"
                 className=" w-full"
@@ -107,7 +108,7 @@ const Addmenu = () => {
               />
             </InputContainer>
             <Button className="bg-primary ml-auto  hover:bg-[#755e42]">
-              Add Menu
+              Add 
             </Button>
           </Flex>
         </Paper>

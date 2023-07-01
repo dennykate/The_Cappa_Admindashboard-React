@@ -103,7 +103,11 @@ const AddServices = () => {
               <Autocomplete
                 placeholder="Category"
                 data={hotelServiceCategories}
-                classNames={{ input: "focus:border-primary " }}
+                classNames={{
+                  input: "focus:border-primary ",
+                  dropdown: "bg-[#1B1B1B]",
+                  item: "hover:bg-[#222222]",
+                }}
                 sx={{
                   input: {
                     background: dark ? "#222222" : "transparent",
@@ -127,7 +131,7 @@ const AddServices = () => {
                 maxRows={7}
               />
               <Button className="bg-primary  hover:bg-[#755e42] ml-auto">
-                Add Service
+                Add 
               </Button>
             </Flex>
           </Flex>

@@ -495,12 +495,21 @@ export const roomsTypeData = [
   { value: "Wellness Room", label: "Wellness Room" },
 ];
 
-export const hotelServiceCategories = ["DISCOVER", "EXPERIENCES", "MODERN"];
+export const hotelServiceCategories = ["Discover", "Experiences", "Modern"];
 
 export const newsCategories = [
-  { value: "RESTAURANT", label: "RESTAURANT" },
-  { value: "SPA", label: "SPA" },
-  { value: "BATHROOMS", label: "BATHROOMS" },
-  { value: "HEALTH", label: "HEALTH" },
-  { value: "DESIGN", label: "DESIGN" },
+  { value: "Restaurant", label: "Restaurant" },
+  { value: "Spa", label: "Spa" },
+  { value: "Bathrooms", label: "Bathrooms" },
+  { value: "Health", label: "Health" },
+  { value: "Design", label: "Design" },
+];
+
+export const menuCategories = [
+  { value: "staters", label: "Starters" },
+  { value: "mains", label: "Mains" },
+  { value: "salads", label: "Salads" },
+  { value: "wine", label: "Wine" },
+  { value: "breakfast", label: "Breakfast" },
+  { value: "dessert", label: "Dessert" },
 ];

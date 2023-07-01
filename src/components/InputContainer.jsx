@@ -19,7 +19,8 @@ const InputContainer = ({ label, children, noAsterisk, start }) => {
     >
       <Box className="min-w-[30%] h-full flex justify-start items-center">
         <Text>
-          {label} {!noAsterisk && <span className="text-red-500">*</span>}
+          {label}{" "}
+          {!noAsterisk && <span className="text-red-700 text-sm">*</span>}
         </Text>
       </Box>
       {children}

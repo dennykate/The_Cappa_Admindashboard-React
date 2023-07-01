@@ -9,6 +9,7 @@ import {
   Textarea,
   useMantineColorScheme,
   TextInput,
+  Text,
 } from "@mantine/core";
 
 import { FloatingInput } from "../FloatingInput";
@@ -16,7 +17,7 @@ import { useForm } from "@mantine/form";
 import { newsCategories } from "../../utils/data";
 
 const AddNews = () => {
-  const inputRef = useRef();
+  const imageRef = useRef();
   const { colorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const [categories, setCategories] = useState(newsCategories);
@@ -41,6 +42,42 @@ const AddNews = () => {
           bg={dark ? "#1B1B1B" : "white"}
         >
           <Flex justify="space-between" align="start">
+            <Box
+              className={`w-[38%] h-[375px] border border-opacity-10  border-gray-400 p-[15px] rounded-md mt-[15px]
+              shadow-md shadow-[#0000008a]   ${
+                dark ? "border-white" : "border-black"
+              }`}
+            >
+              {form?.values?.image ? (
+                <img
+                  src={form?.values?.image}
+                  alt="image"
+                  className="w-full h-full object-cover rounded-md"
+                />
+              ) : (
+                <div
+                  className={`w-full h-full rounded-md flex justify-center items-center flex-col gap-[6px] relative
+                 border-opacity-20  ${dark ? "bg-[#222222]" : "bg-[#f5f5f5]"}`}
+                >
+                  <Text className="text-[28px] " fw="bold">
+                    768 x 800
+                  </Text>
+                  <Text color="dimmed" fz="xs" className=" text-center">
+                    Please choose image according <br /> to the aspected ratio
+                  </Text>
+
+                  <button
+                    onClick={() => imageRef.current.focus()}
+                    className={`w-[35px] h-[35px] rounded absolute top-3 right-3  flex justify-center
+                   items-center shadow-md shadow-[#0000008a] ${
+                     dark ? "bg-[#363636]" : "bg-[#f5f5f5]"
+                   }`}
+                  >
+                    <span class="fi fi-rr-pencil text-primary translate-y-[3px]"></span>
+                  </button>
+                </div>
+              )}
+            </Box>
             <Flex
               className="w-[60%] "
               align="start"
@@ -53,6 +90,13 @@ const AddNews = () => {
                 dark={dark}
                 label="Title"
                 placeholder="News Title"
+              />
+              <FloatingInput
+                cusRef={imageRef}
+                form={form}
+                dark={dark}
+                label="Image"
+                placeholder="Please add with url"
               />
               <Select
                 data={categories}
@@ -75,10 +119,15 @@ const AddNews = () => {
                     background: dark ? "#222222" : "transparent",
                   },
                 }}
+                classNames={{
+                  input: "focus:border-primary ",
+                  dropdown: "bg-[#1B1B1B]",
+                  item: "hover:bg-[#222222]",
+                }}
               />
 
               <Textarea
-                placeholder="Description"
+                placeholder="Content"
                 className="mt-[14px] w-full"
                 sx={{
                   textarea: {
@@ -88,45 +137,14 @@ const AddNews = () => {
                     background: dark ? "#222222" : "transparent",
                   },
                 }}
-                minRows={8}
-                maxRows={8}
-              />
-            </Flex>
-
-            <Flex
-              justify={"start"}
-              direction="column"
-              className="w-[38%] mt-[15px]"
-              gap={14}
-            >
-              <div className=" rounded-md overflow-hidden border border-gray-400 border-opacity-20 w-full h-[200px]">
-                {form?.values?.image ? (
-                  <img
-                    src={form?.values?.image}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <button
-                    onClick={() => inputRef.current.focus()}
-                    className="w-full h-full bg-[#222222]
-                flex justify-center items-center cursor-pointer"
-                  >
-                    <i class="fi fi-sr-mode-landscape text-[40px] text-primary"></i>
-                  </button>
-                )}
-              </div>
-              <FloatingInput
-                cusRef={inputRef}
-                form={form}
-                dark={dark}
-                label="Thumbnail"
-                placeholder="Please add with url"
+                minRows={7}
+                maxRows={7}
               />
             </Flex>
           </Flex>
           <Box className="w-full mt-[14px] flex">
             <Button className="bg-primary  hover:bg-[#755e42] ml-auto">
-              Add News
+              Add
             </Button>
           </Box>
         </Paper>
