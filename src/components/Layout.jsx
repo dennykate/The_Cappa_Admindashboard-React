@@ -73,7 +73,7 @@ const Layout = ({ children }) => {
       >
         <Box
           className={`lg:sticky fixed z-[100] top-0 left-0 overflow-x-hidden lg:overflow-x-visible   ${
-            isOpen ? " lg:w-[45vw] xl:w-[25vw] md:w-[32vw]  sm:w-[45vw] w-[60vw]" : "lg:w-[6.2vw] w-0 xl:w-[4.2vw]"
+            isOpen ? " lg:w-[40vw] xl:w-[25vw] md:w-[40vw]  sm:w-[45vw] w-[72vw]" : "lg:w-[5.2vw] w-0 xl:w-[4.2vw]"
           }`}
           style={{
             transition: "width 0.5s",
@@ -102,7 +102,7 @@ const Layout = ({ children }) => {
             handleIsOpen={handleIsOpenNavBar}
             isOpen={isOpen}
           ></HeaderMegaMenu>
-          {/* {children} */}
+          {children}
           {/* <div className="w-full h-[4000px] bg-red-400"></div> */}
         </Box>
 

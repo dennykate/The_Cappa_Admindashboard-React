@@ -162,7 +162,12 @@ function FeaturesCards() {
         cols={5}
         spacing="xl"
         mt={50}
-        breakpoints={[{ maxWidth: "sm", cols: 1 }]}
+        breakpoints={[
+          { maxWidth: "77rem", cols: 4, spacing: "sm" },
+          { maxWidth: "62rem", cols: 3, spacing: "sm" },
+          { maxWidth: "48rem", cols: 2, spacing: "sm" },
+          { maxWidth: "36rem", cols: 1, spacing: "sm" },
+        ]}
       >
         {features}
       </SimpleGrid>

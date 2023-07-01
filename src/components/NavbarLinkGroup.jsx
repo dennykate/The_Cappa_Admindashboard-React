@@ -22,7 +22,7 @@ const useStyles = createStyles((theme) => ({
       theme.colorScheme === "dark"
         ? theme.colors.dark[0]
         : theme.colors.dark[5],
-    fontSize: theme.fontSizes.md,
+    // fontSize: theme.fontSizes.md,
 
     "&:hover": {
       backgroundColor:
@@ -46,7 +46,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
     paddingLeft: rem(31),
     marginLeft: rem(30),
-    fontSize: theme.fontSizes.sm,
+    // fontSize: theme.fontSizes.sm,
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[1]
@@ -101,14 +101,15 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
         // order={2}
         className={classes.link}
         style={{
+          
           color:
             pathname == link.link
               ? "#aa8453"
               : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
         }}
-        // c="blue"
+        
       >
-        {link.label}
+       <p className="text-[12px] sm:text-[14px]"> {link.label}</p>
       </Text>
     </Link>
   ));
@@ -130,7 +131,7 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
       >
         <Group position="apart" spacing={0}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box ml="md">{label}</Box>
+            <Box ml="md" className="text-[13px] sm:text-[16px]" >{label}</Box>
           </Box>
           {hasLinks && (
             <ChevronIcon
@@ -146,7 +147,7 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
           )}
         </Group>
       </UnstyledButton>
-      {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
+      {hasLinks ? <Collapse in={opened} className="">{items}</Collapse> : null}
     </>
   );
 }

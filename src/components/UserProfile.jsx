@@ -99,7 +99,9 @@ const UserInfoAction = (props) => {
               </Group>
       </Flex>
       {/* card  */}
-      <FeaturesCards/>
+   <div className="">
+   <FeaturesCards/>
+   </div>
     </Paper>
   );
 };
