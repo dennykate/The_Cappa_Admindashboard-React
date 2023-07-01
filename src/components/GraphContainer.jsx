@@ -7,7 +7,7 @@ const GraphContainer = ({ dark }) => {
   const [active, setActive] = useState("daily");
 
   return (
-    <Grid.Col lg={6}>
+    <div>
       <Paper
         shadow="md"
         radius="md"
@@ -73,21 +73,21 @@ const GraphContainer = ({ dark }) => {
         </Box>
       </Paper>
 
-      <Grid my={10}>
-        <Grid.Col md={6}>
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-[20px] my-[20px]">
+        <div>
           <RoomDetail quantity={683} width="w-[70%]">
             Available Room <br /> Today
           </RoomDetail>
-        </Grid.Col>
-        <Grid.Col md={6}>
+        </div>
+        <div>
           <RoomDetail quantity={156} width="w-[27%]">
             Sold Out Room <br /> Today
           </RoomDetail>
-        </Grid.Col>
-      </Grid>
+        </div>
+      </div>
 
       <TotalData dark={dark} />
-    </Grid.Col>
+    </div>
   );
 };
 

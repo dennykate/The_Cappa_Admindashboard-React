@@ -150,6 +150,7 @@ export const reviewData = [
       "https://travl.dexignlab.com/react/demo/static/media/user7.4c1d93b2cc4f7fcc10bb.jpg",
   },
 ];
+
 export const data = [
   {
     name: "John Deo ",
@@ -644,4 +645,23 @@ export const roomsTypeData = [
   { value: "Deluxe Room", label: "Deluxe Room" },
   { value: "Superior Room", label: "Superior Room" },
   { value: "Wellness Room", label: "Wellness Room" },
+];
+
+export const hotelServiceCategories = ["Discover", "Experiences", "Modern"];
+
+export const newsCategories = [
+  { value: "Restaurant", label: "Restaurant" },
+  { value: "Spa", label: "Spa" },
+  { value: "Bathrooms", label: "Bathrooms" },
+  { value: "Health", label: "Health" },
+  { value: "Design", label: "Design" },
+];
+
+export const menuCategories = [
+  { value: "staters", label: "Starters" },
+  { value: "mains", label: "Mains" },
+  { value: "salads", label: "Salads" },
+  { value: "wine", label: "Wine" },
+  { value: "breakfast", label: "Breakfast" },
+  { value: "dessert", label: "Dessert" },
 ];

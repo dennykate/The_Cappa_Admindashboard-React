@@ -28,7 +28,7 @@ const CalendarContainer = ({ dark }) => {
   };
 
   return (
-    <Grid.Col lg={6}>
+    <div>
       <Paper
         shadow="md"
         radius={"md"}
@@ -62,7 +62,7 @@ const CalendarContainer = ({ dark }) => {
           </Flex>
         </Box>
       </Paper>
-    </Grid.Col>
+    </div>
   );
 };
 

@@ -29,6 +29,7 @@ import { guestListData } from "../../utils/guestListData";
 import CustomTable from "../CustomTable";
 
 import { DatePicker } from "@mantine/dates";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   icon: {
@@ -231,6 +232,8 @@ const GuestList = () => {
     }
   };
 
+  const mediumScreen = useMediaQuery("(min-width: 640px)");
+
   return (
     <Layout>
       <Box className="lg:p-10 p-2">
@@ -255,7 +258,7 @@ const GuestList = () => {
                 rightIcon={
                   <IconChevronDown size="1rem" className="text-white" />
                 }
-                h={40}
+                h={mediumScreen ? 40 : 37}
                 className="bg-primary hover:bg-primary hover:bg-opacity-80"
               >
                 {fullDate.join(" - ")}
@@ -365,7 +368,6 @@ const GuestList = () => {
           setInitialValue={setInitialValue}
           setValuesPerPage={setValuesPerPage}
           tab={{ activeTab, all: "All Guest", type: "status" }}
-
         >
           {rows}
         </CustomTable>

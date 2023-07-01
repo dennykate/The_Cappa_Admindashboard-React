@@ -57,7 +57,7 @@ export default function Register() {
       align={"center"}
       justify={"center"}
       w={"100%"}
-      minh={"100vh"}
+      mih={"100vh"}
       bg={dark ? "#1B1B1B" : "#F8F5F0"}
       className="relative py-[50px]"
     >

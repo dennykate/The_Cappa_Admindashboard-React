@@ -47,12 +47,12 @@ export const data = {
   labels,
   datasets: [
     {
-      data: labels.map(() => Math.floor(Math.random() * 1000)),
+      data: [302, 125, 754, 345, 789, 897, 323],
       backgroundColor: "#AA8453",
       barThickness: 10,
     },
     {
-      data: labels.map(() => Math.floor(Math.random() * 1000)),
+      data: [513, 211, 656, 490, 900, 754, 500],
       backgroundColor: "#E23428",
       barThickness: 10,
     },

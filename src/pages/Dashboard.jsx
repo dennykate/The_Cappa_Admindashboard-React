@@ -21,12 +21,11 @@ const Dashboard = () => {
     <Layout>
       <div className={`  pt-10 sm:px-5 px-1`}>
         <CardContainer dark={dark} />
-        <Grid mt={10} gutter={20}>
+        <div className="mt-[10px] grid md:grid-cols-2 grid-cols-1 gap-[20px]">
           <CalendarContainer dark={dark} />
           <GraphContainer dark={dark} />
-        </Grid>
+        </div>
         <ReviewContainer dark={dark} />
-        <Footer dark={dark} />
       </div>
     </Layout>
   );

@@ -1,16 +1,79 @@
-import { Box } from "@mantine/core";
+import {
+  Avatar,
+  Box,
+  Flex,
+  Menu,
+  Modal,
+  Text,
+  createStyles,
+  rem,
+  useMantineColorScheme,
+} from "@mantine/core";
 import React, { useState } from "react";
 import { BsBell, BsMenuButtonWideFill } from "react-icons/bs";
 import { IoMenu } from "react-icons/io5";
 import { HiXMark } from "react-icons/hi2";
 
 import { ActionToggle } from "./DarkandLightTheme";
+import { IconLock, IconLogout, IconUserShare } from "@tabler/icons-react";
+import Cookies from "js-cookie";
+import { useNavigate } from "react-router";
+import { useDisclosure } from "@mantine/hooks";
+import ChangePassword from "./ChangePassword";
 
+const useStyles = createStyles((theme) => ({
+  hiddenMobile: {
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  hiddenDesktop: {
+    [theme.fn.largerThan("sm")]: {
+      display: "none",
+    },
+  },
+  naviconLink: {
+    width: rem(35),
+    height: rem(35),
+    borderRadius: theme.radius.lg,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
+
+    "&:hover": {
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[5]
+          : theme.colors.gray[0],
+    },
+  },
+  // "#AA8453"
+  naviconLinkActive: {
+    "&:hover": {
+      color: "#AA8453",
+    },
+  },
+
+  title: {
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[0]
+        : theme.colors.dark[5],
+    textTransform: "capitalize",
+  },
+}));
 
 const NavButton = ({ showBtn }) => {
-
-
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const [opened, { open, close }] = useDisclosure(false);
+  const { colorScheme } = useMantineColorScheme();
+  const { classes, theme } = useStyles();
 
   return (
     <Box
@@ -40,13 +103,60 @@ const NavButton = ({ showBtn }) => {
             <BsMenuButtonWideFill size={16} />
           </button>
 
-          <button className="w-[32px] h-[32px] bg-black text-white rounded-full bg-opacity-20 absolute top-[210px] left-24 z-10 p-1 flex justify-center items-center">
-            <div className="w-full h-full overflow-hidden">
-              <img
-                src="https://tairo.cssninja.io/img/icons/flags/united-states-of-america.svg"
-                alt="svg"
-                className="w-full"
-              />
+          <button className="w-[34px] h-[34px] bg-black text-white rounded-full bg-opacity-20 absolute top-[210px] left-24 z-10 p-1 flex justify-center items-center">
+            <div className="w-full h-full ">
+              <Menu shadow="xl" width={180} withArrow position="bottom-end">
+                <Menu.Target className="cursor-pointer">
+                  <Avatar
+                    radius="lg"
+                    size="sm"
+                    color="dark"
+                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+                  />
+                </Menu.Target>
+
+                <Menu.Dropdown
+                
+                mt={10}
+                  style={{
+                    backgroundColor:
+                      colorScheme === "dark" ? "#282828" : "white",
+                  }}
+                >
+                  <Menu.Item>
+                    <Flex>
+                      <Avatar
+                        radius="lg"
+                        size="sm"
+                        color="dark"
+                        src={
+                          "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=250&q=80"
+                        }
+                      />
+                      <Text pl={15}> Profile</Text>
+                    </Flex>
+                  </Menu.Item>
+                  <Menu.Divider />
+
+                  <Menu.Item onClick={open} icon={<IconLock size={14} />}>
+                    Change Password
+                  </Menu.Item>
+
+                  <Menu.Item icon={<IconUserShare size={14} />}>
+                    Manage Account
+                  </Menu.Item>
+                  <Menu.Item
+                    onClick={() => {
+                      Cookies.remove("isLogin");
+                      navigate("/login");
+                    }}
+                    color="red"
+                    icon={<IconLogout size={14} />}
+                  >
+                    Logout
+                  </Menu.Item>
+                </Menu.Dropdown>
+              </Menu>
             </div>
           </button>
         </div>
@@ -64,6 +174,24 @@ const NavButton = ({ showBtn }) => {
           )}
         </button>
       </div>
+
+      <Modal
+        opened={opened}
+        onClose={close}
+        title="Change Password"
+        centered
+        classNames={{
+          title: "text-2xl",
+          content: `${
+            theme.colorScheme === "dark" ? "bg-[#1B1B1B]" : "bg-[#F8F5F0]"
+          }`,
+          header: `${
+            theme.colorScheme === "dark" ? "bg-[#1B1B1B]" : "bg-[#F8F5F0]"
+          } border-b border-gray-600 border-opacity-20`,
+        }}
+      >
+        <ChangePassword close={close} />
+      </Modal>
     </Box>
   );
 };

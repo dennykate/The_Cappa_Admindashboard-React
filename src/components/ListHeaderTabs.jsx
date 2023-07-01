@@ -8,6 +8,7 @@ import {
   Select,
   useMantineColorScheme,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 
 import { IconChevronDown, IconChevronUp, IconPlus } from "@tabler/icons-react";
 import React, { useState } from "react";
@@ -24,6 +25,8 @@ const ListHeaderTabs = ({
 }) => {
   const navigate = useNavigate();
   const { colorScheme } = useMantineColorScheme();
+  const mediumScreen = useMediaQuery("(min-width: 640px)");
+
   const [isOpen, setIsOpen] = useState(false);
 
   const dark = colorScheme === "dark";
@@ -35,11 +38,11 @@ const ListHeaderTabs = ({
             component="button"
             c={"dimmed"}
             onClick={() => setActiveTab(name)}
-            className={`pb-2 px-5 border-b  ${
+            className={`pb-2 sm:px-5 px-2 border-b  ${
               activeTab === name
                 ? "border-b-2 border-primary text-primary"
                 : "border-gray-400"
-            } text-md font-medium`}
+            } sm:text-base text-sm font-medium`}
             key={index}
           >
             {name}
@@ -51,10 +54,11 @@ const ListHeaderTabs = ({
           ? children
           : !isReviewList && (
               <Button
+                size={mediumScreen ? "md" : "xs"}
                 c={"dimmed"}
                 onClick={() => navigate(path)}
-                leftIcon={<IconPlus />}
-                className="border-primary  hover:bg-transparent hover:border-opacity-80 h-[40px]"
+                leftIcon={<IconPlus size={mediumScreen ? "1.2rem" : "1rem"} />}
+                className="border-primary hover:bg-transparent hover:border-opacity-80 h-[40px]"
               >
                 Add New
               </Button>
@@ -88,7 +92,7 @@ const ListHeaderTabs = ({
           }}
           classNames={{
             input:
-              "border text-[14px] border-primary bg-transparent w-[100px] h-[40px] focus:border-primary text-[#868E96] font-semibold font-barlow",
+              ` ${mediumScreen?"w-[120px] h-[40px]":"w-[100px] h-[30px]"} border text-[14px] border-primary bg-transparent  focus:border-primary text-[#868E96] font-semibold font-barlow`,
           }}
         />
       </Group>
