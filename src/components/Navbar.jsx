@@ -40,7 +40,6 @@ import Cookies from "js-cookie";
 import { useNavigate } from "react-router";
 import { useLocation } from "react-router-dom";
 
-
 const useStyles = createStyles((theme) => ({
   hiddenMobile: {
     [theme.fn.smallerThan("sm")]: {
@@ -95,7 +94,7 @@ export function HeaderMegaMenu({
   navbarSide,
   handleIsOpen,
   isOpen,
-  profile
+  profile,
 }) {
   const { pathname } = useLocation();
   const { colorScheme } = useMantineTheme();
@@ -129,30 +128,41 @@ export function HeaderMegaMenu({
                 cursor: "pointer",
               },
             }}
-            onClick={() => {
-              handleIsOpen();
+            align="center"
+            onClick={(e) => {
+              handleIsOpen(e);
             }}
           >
             {isOpen ? (
               <Burger
                 size={25}
                 color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+                className="lg:block hidden"
               />
             ) : (
               <MdKeyboardArrowRight
                 size={35}
                 color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+                className="lg:block hidden"
+              />
+            )}
+
+            {isOpen ? (
+              <MdKeyboardArrowRight
+                size={25}
+                color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+                className="lg:hidden block"
+              />
+            ) : (
+              <Burger
+                size={25}
+                color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+                className="lg:hidden block"
               />
             )}
 
             <div>
-              <Title
-                order={4}
-                fw={400}
-                pl={10}
-                pt={2}
-                className={classes.title}
-              >
+              <Title order={4} fw={400} pl={10} className={classes.title}>
                 {pathToName(pathname)}
               </Title>
             </div>
@@ -197,12 +207,7 @@ export function HeaderMegaMenu({
               >
                 <Menu.Item>
                   <Flex>
-                    <Avatar
-                      radius="lg"
-                      size="sm"
-                      color="dark"
-                      src={profile}
-                    />
+                    <Avatar radius="lg" size="sm" color="dark" src={profile} />
                     <Text pl={15}> Profile</Text>
                   </Flex>
                 </Menu.Item>

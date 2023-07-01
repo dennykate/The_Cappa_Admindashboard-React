@@ -13,6 +13,9 @@ import {
   useMantineTheme,
   ScrollArea,
   Flex,
+  MediaQuery,
+  Burger,
+  CloseButton,
 } from "@mantine/core";
 import {
   IconCalendarStats,
@@ -33,6 +36,8 @@ import {
   IconFileInvoice,
   IconMicrophoneOff,
   IconMicrophone,
+  IconCross,
+  IconCrossOff,
 } from "@tabler/icons-react";
 
 import { LinksGroup } from "./NavbarLinkGroup";
@@ -46,15 +51,17 @@ import { Link, useLocation } from "react-router-dom";
 const useStyles = createStyles((theme) => ({
   wrapper: {
     display: "flex",
+    height: "100%",
   },
 
   aside: {
+    height: "100%",
     flex: `0 0 ${rem(60)}`,
     backgroundColor: theme.colorScheme === "dark" ? "#1B1B1B" : theme.white,
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft: `${rem(9.5)}`,
+    marginLeft: `${rem(9)}`,
     paddingRight: `${rem(7.5)}`,
     borderRight: `${rem(0.5)} solid ${
       theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[3]
@@ -458,7 +465,7 @@ export function MantineSidebar({
   return (
     <StyledPaper>
       <Navbar
-        height={740}
+        height="100vh"
         width={{ sm: sideBarWidth() }}
         style={{
           transition: "width 0.5s",
@@ -467,11 +474,20 @@ export function MantineSidebar({
         <Navbar.Section grow className={classes.wrapper}>
           <div className={classes.aside}>
             {/* Logo  */}
-            <div className={classes.logo}></div>
+            <div className={classes.logo}>
+           {/* {isOpen &&  <CloseButton
+                size={25}
+                color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
+                onClick={() => {
+                  handleIsOpen();
+                }}
+              className="lg:hidden block"  
+              />} */}
+            </div>
 
-            <div className="">
+            <div className="flex flex-col justify-between items-center h-full">
               {/* side bar icons  */}
-              {mainLinks}
+              <div>{mainLinks}</div>
 
               <Modal
                 opened={opened}
@@ -542,7 +558,7 @@ export function MantineSidebar({
               </Modal>
 
               {/* footer icons  */}
-              <Stack justify="center" mt="650%">
+              <Stack justify="center">
                 <div className=""></div>
                 <div className={classes}>
                   <NavbarLink icon={IconSearch} label="search" onClick={open} />
@@ -584,7 +600,7 @@ export function MantineSidebar({
                       : "https://duruthemes.com/demo/html/cappa/demo2-light/img/logo-dark.png"
                   }
                   style={{
-                    width: "80%",
+                    width: "70%",
                     height: "100%",
                     margin: "0 auto",
                     // backgroundColor : "red"
@@ -602,5 +618,6 @@ export function MantineSidebar({
         </Navbar.Section>
       </Navbar>
     </StyledPaper>
+    //  </MediaQuery>
   );
 }

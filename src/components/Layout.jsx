@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-import { Box, Flex, Stack, useMantineColorScheme } from "@mantine/core";
+import {
+  Box,
+  Flex,
+  MediaQuery,
+  Stack,
+  useMantineColorScheme,
+} from "@mantine/core";
 
 import { MantineSidebar } from "./Sidebar";
 import { HeaderMegaMenu } from "./Navbar";
@@ -38,7 +44,7 @@ const Layout = ({ children }) => {
     setmenuSelect(newMenu);
   };
 
-  const getSideBarWidth = () => (isOpen ? "100%" : "0%");
+  const getSideBarWidth = () => (isOpen ? "100%" : "-4%");
   const getNavBarWidth = () => (isOpen ? "100%" : "150%");
 
   const handleIsOpenSideBar = () => {
@@ -46,7 +52,8 @@ const Layout = ({ children }) => {
       setIsOpen(!isOpen);
     }
   };
-  const handleIsOpenNavBar = () => {
+  const handleIsOpenNavBar = (e) => {
+    e.stopPropagation(0);
     setIsOpen(!isOpen);
   };
 
@@ -65,8 +72,12 @@ const Layout = ({ children }) => {
         style={layoutStyles}
       >
         <Box
-          className="sticky top-0"
-          style={{ width: isOpen ? "25vw" : "4.5vw", transition: "width 0.5s" }}
+          className={`lg:sticky fixed z-[100] top-0 left-0 overflow-x-hidden lg:overflow-x-visible   ${
+            isOpen ? " lg:w-[45vw] xl:w-[25vw] md:w-[32vw]  sm:w-[45vw] w-[60vw]" : "lg:w-[6.2vw] w-0 xl:w-[4.2vw]"
+          }`}
+          style={{
+            transition: "width 0.5s",
+          }}
         >
           <MantineSidebar
             onPropChange={handleMenuChange}
@@ -75,7 +86,9 @@ const Layout = ({ children }) => {
             isOpen={isOpen}
           ></MantineSidebar>
         </Box>
+
         <Box
+          onClick={() => setIsOpen(false)}
           sx={{
             width: "100%",
             minHeight: "100vh",
@@ -89,7 +102,8 @@ const Layout = ({ children }) => {
             handleIsOpen={handleIsOpenNavBar}
             isOpen={isOpen}
           ></HeaderMegaMenu>
-          {children}
+          {/* {children} */}
+          {/* <div className="w-full h-[4000px] bg-red-400"></div> */}
         </Box>
 
         <NavButton showBtn={showBtn} />
