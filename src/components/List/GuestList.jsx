@@ -21,7 +21,7 @@ import {
   IconEdit,
   IconTrash,
 } from "@tabler/icons-react";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import "dayjs/locale/en";
 
 import { dateRange, guestListHeads, guestListTabs } from "../../utils/data";
@@ -64,8 +64,6 @@ const GuestList = () => {
   const [sortedData, setSortedData] = useState(guestListData);
   const [initialValue, setInitialValue] = useState(null);
   const [valuesPerPage, setValuesPerPage] = useState(null);
-
-  console.log(activeTab);
 
   useEffect(() => {
     setFullDate([formatDateFunc(-30), formatDateFunc(null)]);

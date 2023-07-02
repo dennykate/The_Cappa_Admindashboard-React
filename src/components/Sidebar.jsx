@@ -429,7 +429,6 @@ export function MantineSidebar({
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
 
-  console.log(pathname);
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
       label={link.label}

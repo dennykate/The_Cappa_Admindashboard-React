@@ -14,8 +14,10 @@
       window.addEventListener("load", () => {
         const controls = document.querySelectorAll(".mantine-Carousel-control");
 
-        controls[0].style.transform = "translateX(-40px)";
-        controls[1].style.transform = "translateX(40px)";
+        if (controls.length > 0) {
+          controls[0].style.transform = "translateX(-40px)";
+          controls[1].style.transform = "translateX(40px)";
+        }
       });
     </script>
   </body>
