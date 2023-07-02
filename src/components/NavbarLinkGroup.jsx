@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 600,
     display: "block",
     width: "100%",
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
+    padding: `5px 0`,
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[0]
@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     textDecoration: "none",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    paddingLeft: rem(31),
+    paddingLeft: 12,
     marginLeft: rem(30),
     // fontSize: theme.fontSizes.sm,
     color:
@@ -106,7 +106,7 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
               : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
         }}
       >
-        <p className="text-[12px] sm:text-[14px]"> {link.label}</p>
+        <p className="text-[14px] sm:text-[16px] "> {link.label}</p>
       </Text>
     </Link>
   ));
@@ -128,7 +128,7 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
       >
         <Group position="apart" spacing={0}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box ml="md" className="text-[13px] sm:text-[16px]">
+            <Box ml="md" className="text-[16px] sm:text-[18px]">
               {label}
             </Box>
           </Box>

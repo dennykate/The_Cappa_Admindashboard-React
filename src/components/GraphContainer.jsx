@@ -46,7 +46,7 @@ const GraphContainer = ({ dark }) => {
           </Flex>
         </Flex>
 
-        <Box className="w-full h-[20px]  mt-10 flex items-center sm:gap-10 gap-3">
+        <Box className="w-full h-[20px]  mt-10 flex items-center sm:gap-10 gap-3 ">
           <Box className="flex items-center gap-1">
             <div className="w-[10px] h-[10px] bg-primary" />
             <Text className="text-xs font-medium text-opacity-50">
@@ -73,7 +73,7 @@ const GraphContainer = ({ dark }) => {
         </Box>
       </Paper>
 
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-[20px] my-[20px]">
+      <div className="grid md:grid-cols-2 grid-cols-1 gap-[20px] my-[20px] sm:px-[20px] px-[10px]">
         <div>
           <RoomDetail quantity={683} width="w-[70%]">
             Available Room <br /> Today

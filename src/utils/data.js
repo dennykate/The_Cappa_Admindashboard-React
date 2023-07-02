@@ -27,7 +27,7 @@ export const cardData = [
 export const notificationData = [
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room1.30b5f04027f80ebe153b.jpg",
+      "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Queen Bed A-12324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user1.7f3fb298b86a1ab4583c.jpg",
@@ -37,7 +37,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room2.d7f7bd89d8ddf1b58eee.jpg",
+      "https://images.pexels.com/photos/262048/pexels-photo-262048.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Deluxe Room B-1324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user2.fb833e6fe171b302776c.jpg",
@@ -47,7 +47,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room3.88e893a2177a9eea8226.jpg",
+      "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "King Big C-2445",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user3.549032e5cf86e7db0c58.jpg",
@@ -57,7 +57,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room2.d7f7bd89d8ddf1b58eee.jpg",
+      "https://images.pexels.com/photos/237371/pexels-photo-237371.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Queen Bed A-12324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user2.fb833e6fe171b302776c.jpg",
@@ -67,7 +67,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room3.88e893a2177a9eea8226.jpg",
+      "https://images.pexels.com/photos/271619/pexels-photo-271619.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "King Big C-2445",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user3.549032e5cf86e7db0c58.jpg",
@@ -77,7 +77,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room1.30b5f04027f80ebe153b.jpg",
+      "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Queen Bed A-12324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user1.7f3fb298b86a1ab4583c.jpg",
@@ -87,7 +87,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room3.88e893a2177a9eea8226.jpg",
+      "https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "King Big C-2445",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user3.549032e5cf86e7db0c58.jpg",
@@ -97,7 +97,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room1.30b5f04027f80ebe153b.jpg",
+      "https://images.pexels.com/photos/210604/pexels-photo-210604.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Queen Bed A-12324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user1.7f3fb298b86a1ab4583c.jpg",
@@ -107,7 +107,7 @@ export const notificationData = [
   },
   {
     image:
-      "https://travl.dexignlab.com/react/demo/static/media/room1.30b5f04027f80ebe153b.jpg",
+      "https://images.pexels.com/photos/1743231/pexels-photo-1743231.jpeg?auto=compress&cs=tinysrgb&w=600",
     title: "Queen Bed A-12324",
     avatar:
       "https://travl.dexignlab.com/react/demo/static/media/user1.7f3fb298b86a1ab4583c.jpg",
