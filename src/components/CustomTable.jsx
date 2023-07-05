@@ -270,28 +270,24 @@ const CustomTable = ({
                   transitionDuration={0}
                 />
               </th>
-              {heads?.map(({ name, sortType }, index) => {
-                return (
-                  <>
-                    {sortType ? (
-                      <Th
-                        key={index}
-                        sorted={sortBy === sortType}
-                        reversed={reverseSortDirection}
-                        onSort={() => setSorting(sortType)}
-                      >
-                        {name}
-                      </Th>
-                    ) : (
-                      <th key={index}>
-                        <Text fz="sm" fw={500} c="#AA8453">
-                          {name}
-                        </Text>
-                      </th>
-                    )}
-                  </>
-                );
-              })}
+              {heads?.map(({ name, sortType }, index) =>
+                sortType ? (
+                  <Th
+                    key={index}
+                    sorted={sortBy === sortType}
+                    reversed={reverseSortDirection}
+                    onSort={() => setSorting(sortType)}
+                  >
+                    {name}
+                  </Th>
+                ) : (
+                  <th key={index}>
+                    <Text fz="sm" fw={500} c="#AA8453">
+                      {name}
+                    </Text>
+                  </th>
+                )
+              )}
             </tr>
           </thead>
           <tbody>

@@ -21,7 +21,7 @@ import {
   IconEdit,
   IconTrash,
 } from "@tabler/icons-react";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 import "dayjs/locale/en";
 
 import { dateRange, guestListHeads, guestListTabs } from "../../utils/data";
@@ -64,8 +64,6 @@ const GuestList = () => {
   const [sortedData, setSortedData] = useState(guestListData);
   const [initialValue, setInitialValue] = useState(null);
   const [valuesPerPage, setValuesPerPage] = useState(null);
-
-  console.log(activeTab);
 
   useEffect(() => {
     setFullDate([formatDateFunc(-30), formatDateFunc(null)]);
@@ -249,7 +247,7 @@ const GuestList = () => {
             opened={showMenuDropdown}
             transitionProps={{ duration: 0, transition: "pop" }}
             withArrow
-            position="bottom-end"
+            position={mediumScreen ? "bottom-end" : "bottom-start"}
             withinPortal
             classNames={{ item: "w-[120px]" }}
           >
@@ -266,7 +264,7 @@ const GuestList = () => {
             </Menu.Target>
             <Menu.Dropdown>
               <div className="flex justify-center items-start">
-                <div className="">
+                <div className={showCalendar ? "sm:block hidden" : ""}>
                   {dateRange.map(({ name, dateFormat }, index) => (
                     <Menu.Item
                       key={index}
@@ -285,16 +283,7 @@ const GuestList = () => {
                       {name}
                     </Menu.Item>
                   ))}
-                  {/* <div
-                    onClick={() => setShowCalendar(true)}
-                    className={`w-full py-[10px] px-3 text-sm text-start rounded relative cursor-pointer ${
-                      dark
-                        ? "text-white hover:bg-[#383A40]"
-                        : "text-gray-400 hover:bg-[#F1F3F5]"
-                    }`}
-                  >
-                    Custom Range
-                  </div> */}
+
                   <Menu.Item
                     onClick={() => setShowCalendar(true)}
                     className={`w-[150px] ${

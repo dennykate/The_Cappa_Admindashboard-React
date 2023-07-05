@@ -212,11 +212,7 @@ const mainLinksMockdata = [
   {
     icon: IconLayoutDashboard,
     label: "Dashboard",
-    subLinks: [
-      "/dashboard/overview",
-      "/dashboard/chart",
-      "/dashboard/calendar",
-    ],
+    subLinks: ["/dashboard/overview"],
   },
   {
     icon: IconCalendarStats,
@@ -272,8 +268,8 @@ const mockdata_dashboard = [
     initiallyOpened: true,
     links: [
       { label: "Overview", link: "/dashboard/overview" },
-      { label: "Chart", link: "/dashboard/chart" },
-      { label: "Calendar", link: "/dashboard/calendar" },
+      // { label: "Chart", link: "/dashboard/chart" },
+      // { label: "Calendar", link: "/dashboard/calendar" },
     ],
   },
 ];
@@ -298,7 +294,7 @@ const mockdata_Department = [
     links: [
       { label: "Team Leader", link: "/department/team-leader" },
       { label: "Add Team Leader", link: "/department/add-teamleader" },
-      { label: "Edit Team Leader", link: "/department/edit-teamleader" },
+      // { label: "Edit Team Leader", link: "/department/edit-teamleader" },
     ],
   },
 ];
@@ -309,7 +305,7 @@ const mockdata_Management = [
     links: [
       { label: "All Booking", link: "/management/all-booking" },
       { label: "Add Booking", link: "/management/add-booking" },
-      { label: "Edit Booking", link: "/management/edit-booking" },
+      // // { label: "Edit Booking", link: "/management/edit-booking" },
     ],
   },
   {
@@ -317,7 +313,7 @@ const mockdata_Management = [
     links: [
       { label: "All Rooms", link: "/management/all-rooms" },
       { label: "Add Rooms", link: "/management/add-rooms" },
-      { label: "Edit Rooms", link: "/management/edit-room-suite" },
+      // // { label: "Edit Rooms", link: "/management/edit-room-suite" },
     ],
   },
 
@@ -326,7 +322,7 @@ const mockdata_Management = [
     links: [
       { label: "All Services", link: "/management/all-services" },
       { label: "Add Services", link: "/management/add-services" },
-      { label: "Edit Services", link: "/management/edit-services" },
+      // // { label: "Edit Services", link: "/management/edit-services" },
     ],
   },
   {
@@ -334,7 +330,7 @@ const mockdata_Management = [
     links: [
       { label: "All Facilities", link: "/management/all-facilities" },
       { label: "Add Facilities", link: "/management/add-facilities" },
-      { label: "Edit Facilities", link: "/management/edit-facilities" },
+      // // { label: "Edit Facilities", link: "/management/edit-facilities" },
     ],
   },
 
@@ -343,7 +339,7 @@ const mockdata_Management = [
     links: [
       { label: "All Menu", link: "/management/all-menu" },
       { label: "Add Menu", link: "/management/add-menu" },
-      { label: "Edit Menu", link: "/management/edit-menu" },
+      // // { label: "Edit Menu", link: "/management/edit-menu" },
     ],
   },
 ];
@@ -355,7 +351,7 @@ const mockdada_Article = [
     links: [
       { label: "All News", link: "/news/all-news" },
       { label: "Add News", link: "/news/add-news" },
-      { label: "Edit News", link: "/news/edit-news" },
+      // // { label: "Edit News", link: "/news/edit-news" },
     ],
   },
 ];
@@ -431,7 +427,6 @@ export function MantineSidebar({
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   const { colorScheme } = useMantineTheme();
 
-  console.log(pathname);
   const mainLinks = mainLinksMockdata.map((link, index) => (
     <Tooltip
       label={link.label}

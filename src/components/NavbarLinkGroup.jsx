@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
     fontWeight: 600,
     display: "block",
     width: "100%",
-    padding: `${theme.spacing.xs} ${theme.spacing.md}`,
+    padding: `5px 0`,
     color:
       theme.colorScheme === "dark"
         ? theme.colors.dark[0]
@@ -44,7 +44,7 @@ const useStyles = createStyles((theme) => ({
     display: "block",
     textDecoration: "none",
     padding: `${theme.spacing.xs} ${theme.spacing.md}`,
-    paddingLeft: rem(31),
+    paddingLeft: 12,
     marginLeft: rem(30),
     // fontSize: theme.fontSizes.sm,
     color:
@@ -77,7 +77,6 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
   );
   const { classes, theme } = useStyles();
   const hasLinks = Array.isArray(links);
-  console.log(pathname);
   const [opened, setOpened] = useState(() => {
     let foundItem = null;
     for (let i = 0; i < links.length; i++) {
@@ -101,15 +100,13 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
         // order={2}
         className={classes.link}
         style={{
-          
           color:
             pathname == link.link
               ? "#aa8453"
               : "colorScheme === dark ? theme.colors.gray[7] : theme.colors.gray[7]",
         }}
-        
       >
-       <p className="text-[12px] sm:text-[14px]"> {link.label}</p>
+        <p className="text-[14px] sm:text-[16px] "> {link.label}</p>
       </Text>
     </Link>
   ));
@@ -131,7 +128,9 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
       >
         <Group position="apart" spacing={0}>
           <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box ml="md" className="text-[13px] sm:text-[16px]" >{label}</Box>
+            <Box ml="md" className="text-[16px] sm:text-[18px]">
+              {label}
+            </Box>
           </Box>
           {hasLinks && (
             <ChevronIcon
@@ -147,7 +146,11 @@ export function LinksGroup({ label, initiallyOpened, links, onPropChange }) {
           )}
         </Group>
       </UnstyledButton>
-      {hasLinks ? <Collapse in={opened} className="">{items}</Collapse> : null}
+      {hasLinks ? (
+        <Collapse in={opened} className="">
+          {items}
+        </Collapse>
+      ) : null}
     </>
   );
 }

@@ -48,7 +48,7 @@ const CalendarContainer = ({ dark }) => {
           value={value}
         />
         <Divider />
-        <Box py={10}>
+        <Box py={20} className="sm:px-[20px] px-[10px]">
           {notificationData?.slice(0, limit).map((data, index) => (
             <NotificationCard key={index} dark={dark} {...data} />
           ))}
