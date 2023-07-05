@@ -46,7 +46,8 @@ import { useDisclosure } from "@mantine/hooks";
 import styled from "styled-components";
 import { Paper } from "@mantine/core";
 import { Input } from "@mantine/core";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -408,6 +409,7 @@ export function MantineSidebar({
   handleIsOpen,
   isOpen,
 }) {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const defaultTheme = useMantineTheme();
   const [opened, { open, close }] = useDisclosure(false);
@@ -474,7 +476,7 @@ export function MantineSidebar({
           <div className={classes.aside}>
             {/* Logo  */}
             <div className={classes.logo}>
-           {/* {isOpen &&  <CloseButton
+              {/* {isOpen &&  <CloseButton
                 size={25}
                 color={colorScheme === "dark" ? "#aa8453" : "#aa8453"}
                 onClick={() => {
@@ -568,7 +570,14 @@ export function MantineSidebar({
                       iconColor={pathname === "/setting" ? "#aa8453" : ""}
                     />
                   </Link>
-                  <NavbarLink icon={IconLogout} label="logout" />
+                  <NavbarLink
+                    icon={IconLogout}
+                    label="logout"
+                    onClick={() => {
+                      Cookies.remove("isLogin");
+                      navigate("/login");
+                    }}
+                  />
                 </div>
               </Stack>
             </div>
